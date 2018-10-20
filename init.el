@@ -6,8 +6,8 @@
 
 (require 'package)
 (setq package-user-dir "~/.emacs.d/packages/")
-(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("emacs-pe" . "https://emacs-pe.github.io/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
 
 (package-initialize)
 
@@ -18,9 +18,9 @@ Return a list of installed packages or nil for every skipped package."
    (lambda (package)
      (if (package-installed-p package)
          nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+       ;;(if (y-or-n-p (format "Package %s is missing. Install it? " package))
            (package-install package)
-         package)))
+         package)) ;;)
    packages))
 
 ;; make sure to have downloaded archive description.
