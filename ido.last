@@ -1,0 +1,577 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" . "inc/")
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/" . "template/")
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/" . "opengles_20/")
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/" . "simple_framework/")
+ ("/Users/gene/Programming/Rock960/glfw/include/" . "GLFW/")
+ ("/Users/gene/Programming/Rock960/glfw/deps/" . "glad/")
+ ("/Users/gene/Programming/Rock960/glfw/" . "src/")
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" . "src/")
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/" . "simple_framework/")
+ ("/Users/gene/Programming/Rock960/fractalbox/inc/" . "glad/")
+ ("/Users/gene/Programming/Rock960/fractalbox/" . "inc/")
+ ("/Users/gene/Programming/Rock960/" . "drm_gl/")
+ ("/Users/gene/Programming/fractalbox/" . "inc/")
+ ("/Users/gene/Progamming/fractalbox/inc/" . "glad/")
+ ("/Users/gene/Progamming/fractalbox/" . "scripts/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/lib/" . "arm/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/" . "models/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" . "src/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/" . "assets/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/" . "cube/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/" . "opengles_20/")
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/" . "samples/")
+ ("/Users/gene/Progamming/epimorphism2/src/" . "UI/")
+ ("/Users/gene/Progamming/epimorphism2/lib/" . "core/")
+ ("/Users/gene/Progamming/epimorphism2/html/" . "lib/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/src/Graphics/" . "WebGL/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/src/" . "Graphics/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/" . "src/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/Graphics/WebGL/" . "Raw/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/Graphics/" . "WebGL/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/" . "Graphics/")
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/" . "src/")
+ ("/Users/gene/Progamming/purescript/purescript-simple-dom/src/Data/DOM/" . "Simple/")
+ ("/Users/gene/Progamming/purescript/purescript-simple-dom/src/Data/" . "DOM/")
+ ("/Users/gene/Progamming/purescript/purescript-simple-dom/src/" . "Data/")
+ ("/Users/gene/Progamming/purescript/purescript-simple-dom/" . "src/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/test/Test/" . "Data/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/test/" . "Test/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/bower_components/purescript-prelude/src/" . "Data/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/bower_components/purescript-prelude/" . "src/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/bower_components/purescript-math/" . "src/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/bower_components/" . "purescript-prelude/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/src/" . "Data/")
+ ("/Users/gene/Progamming/purescript/purescript-complex/" . "test/")
+ ("/Users/gene/Progamming/purescript/" . "purescript-webgl-monad/")
+ ("/Users/gene/Progamming/epimorphism2/" . "src/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/vis/batch_0/flight_2/" . "all/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/vis/batch_0/flight_0/" . "all/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/vis/batch_0/" . "flight_2/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/vis/" . "batch_0/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/scratch/" . "brg5/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/LSTMVis/" . "parens/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/docs/" . "info/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/logs/" . "train/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/ITC_cur/" . "vis/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/experiments/" . "ITC_es/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/experiments/" . "ITC2/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/projects/" . "ITC_cur/")
+ ("/Users/gene/Progamming/Tuuyi/gpu1/" . "projects/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/archive/" . "KLF101_orig/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/KLF375/" . "logs/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/tensorflow/models/samples/core/" . "get_started/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/tensorflow/models/samples/" . "core/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/tensorflow/models/" . "samples/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/tensorflow/" . "models/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/projects/" . "TrkFltr/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/scratch/brg4/00/" . "02/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/scratch/brg4/" . "00/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/scratch/" . "brg4/")
+ ("/Users/gene/Progamming/epimorphism/bower_components/purescript-webgl-monad/src/Graphics/" . "WebGL/")
+ ("/Users/gene/Progamming/epimorphism/bower_components/purescript-webgl-monad/src/" . "Graphics/")
+ ("/Users/gene/Progamming/epimorphism/bower_components/purescript-webgl-monad/" . "src/")
+ ("/Users/gene/Progamming/epimorphism/lib/core/seeds/" . "distance/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/data/BRG5/feature10_data/" . "20180202_050920_flight0_variant0/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/data/BRG5/" . "feature10_data/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/data/BRG4/sims_0000_0999/" . "sys00run00001/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/data/BRG4/" . "sims_0000_0999/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/data/" . "BRG5/")
+ ("/Users/gene/Progamming/Tuuyi/cranium/" . "projects/")
+ ("/Users/gene/Progamming/Tuuyi/" . "gpu1/")
+ ("/Users/gene/Progamming/epimorphism/lib/user/" . "epimorphism/")
+ ("/Users/gene/Progamming/coursera-neural/" . "ps9/")
+ ("/Users/gene/Progamming/OpenARCDev/OpenARC/" . "openarc/")
+ ("/Users/gene/Progamming/OpenARCDev/arc_test_suite/" . "sig_gen/")
+ ("/Users/gene/Progamming/OpenARCDev/" . "OpenARC/")
+ ("/Users/gene/Progamming/arc_test_suite/" . "tests/")
+ ("/Users/gene/Progamming/OpenARC/" . "libopenarc/")
+ ("/Users/gene/Progamming/epimorphism/bower_components/" . "purescript-webgl-monad/")
+ ("/Users/gene/Progamming/epimorphism/src/Data/" . "Serialize/")
+ ("/Users/gene/Progamming/lp_dkimpy/dkimpy/dkim/tests/" . "data/")
+ ("/Users/gene/Progamming/lp_dkimpy/dkimpy/dkim/" . "tests/")
+ ("/Users/gene/Progamming/lp_dkimpy/dkimpy/" . "dkim/")
+ ("/Users/gene/Progamming/lp_dkimpy/" . "dkimpy/")
+ ("/Users/gene/Progamming/dkimpy/dkim/" . "tests/")
+ ("/Users/gene/Progamming/VeloStream/" . "velostream/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-diffcov/lib/python3.6/site-packages/" . "public/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-diffcov/lib/python3.6/" . "site-packages/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-diffcov/lib/" . "python3.6/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-diffcov/" . "lib/")
+ ("/Users/gene/Progamming/mailman/src/mailman/database/" . "alembic/")
+ ("/Users/gene/Progamming/mailman/src/mailman/rest/" . "docs/")
+ ("/Users/gene/Progamming/mailman/src/mailman/commands/" . "docs/")
+ ("/Users/gene/Progamming/authres-1.0.1/" . "authres/")
+ ("/Users/gene/Progamming/dkimpy/" . "dkim/")
+ ("/Users/gene/Progamming/authentication-headers/" . "test/")
+ ("/Users/gene/Downloads/authres-1.0.1/" . "authres/")
+ ("/Users/gene/Downloads/authheaders-0.8.6/" . "authheaders/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-nocov/lib/python3.6/site-packages/" . "authheaders/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-nocov/lib/python3.6/" . "site-packages/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-nocov/lib/" . "python3.6/")
+ ("/Users/gene/Progamming/mailman/.tox/py36-nocov/" . "lib/")
+ ("/Users/gene/Progamming/mailman/.tox/" . "py36-diffcov/")
+ ("/Users/gene/Progamming/mailman/src/mailman/handlers/" . "tests/")
+ ("/Users/gene/Progamming/mailman/src/mailman/" . "handlers/")
+ ("/Users/gene/Progamming/mailman/src/" . "mailman/")
+ ("/Users/gene/Progamming/mailman/" . "src/")
+ ("/Users/gene/Progamming/epimorphism/html/" . "javascript/")
+ ("/Users/gene/Progamming/epimorphism/src/" . "Script/")
+ ("/Users/gene/Progamming/VeloView/VelodyneHDL/" . "Testing/")
+ ("/Users/gene/Progamming/VeloView/" . "VelodyneHDL/")
+ ("/Users/gene/Progamming/epimorphism/lib/core/" . "seeds/")
+ ("/Users/gene/Progamming/epimorphism/lib/" . "core/")
+ ("/Users/gene/Progamming/epimorphism/" . "src/")
+ ("/Users/gene/Progamming/" . "epimorphism2/")
+ ("/Users/gene/work/dtest/dkimpy/" . "dkim/")
+ ("/Users/gene/work/dtest/" . "dkimpy/")
+ ("/Users/gene/Downloads/publicsuffix-1.1.0/" . "publicsuffix/")
+ ("/Users/gene/work/dkimpy/dev/dkim/" . "tests/")
+ ("/Users/gene/work/go/src/github.com/evalphobia/" . "logrus_sentry/")
+ ("/Users/gene/work/go/src/github.com/geneshuman/" . "hello/")
+ ("/Users/gene/work/go/src/github.com/ValiMail/pythia/query/" . "data/")
+ ("/Users/gene/work/go/src/github.com/ValiMail/pythia/" . "scripts/")
+ ("/Users/gene/work/go/src/github.com/ValiMail/" . "pythia/")
+ ("/Users/gene/work/go/src/github.com/BurntSushi/" . "toml/")
+ ("/Users/gene/work/go/src/github.com/" . "evalphobia/")
+ ("/Users/gene/work/go/src/" . "github.com/")
+ ("/Users/gene/work/go/" . "src/")
+ ("/Users/gene/work/dkimpy/dev/" . "dkim/")
+ ("/Users/gene/work/dkimpy/trunk/" . "dkim/")
+ ("/Users/gene/work/bzr-dkimpy/trunk/" . "dkim/")
+ ("/Users/gene/work/bzr-dkimpy/" . "trunk/")
+ ("/Users/gene/work/opendkim-2.10.3/" . "opendkim/")
+ ("/Users/gene/Downloads/opendkim-2.10.3/" . "libopendkim/")
+ ("/Users/gene/work/OpenARCDev/arc_test_suite/" . "runners/")
+ ("/Users/gene/work/OpenARCDev/OpenARC/" . "libopenarc/")
+ ("/Users/gene/work/OpenARCDev/" . "arc_test_suite/")
+ ("/Users/gene/work/examplemailinglist/" . "libopenarc/")
+ ("/Users/gene/work/auth_manager/app/views/auth_status/" . "shared/")
+ ("/Users/gene/Programming/epimorphism/src/Data/" . "Serialize/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-sets/src/" . "Data/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-sets/" . "src/")
+ ("/Users/gene/work/ruby-saml/test/responses/" . "invalids/")
+ ("/Users/gene/work/ruby-saml/test/" . "responses/")
+ ("/Users/gene/work/ruby-saml/lib/onelogin/" . "ruby-saml/")
+ ("/Users/gene/work/ruby-saml/lib/" . "onelogin/")
+ ("/Users/" . "gene/")
+ ("/Users/gene/work/ruby-saml/" . "lib/")
+ ("/Users/gene/work/auth_manager/spec/fixtures/" . "files/")
+ ("/Users/gene/work/auth_manager/spec/mailers/" . "previews/")
+ ("/Users/gene/work/auth_manager/tmp/" . "mails/")
+ ("/Users/gene/work/auth_manager/app/workers/events/" . "system/")
+ ("/Users/gene/Programming/purescript-complex/src/" . "Data/")
+ ("/Users/gene/Programming/purescript-complex/" . "src/")
+ ("/Users/gene/Programming/epimorphism/lib/core/" . "seeds/")
+ ("/Users/gene/Programming/epimorphism/lib/modules/" . "save/")
+ ("/Users/gene/Programming/epimorphism/lib/" . "user/")
+ ("/Users/gene/Applications/" . "Chrome Apps.localized/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-raw/src/Graphics/WebGL/" . "Raw/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-raw/src/Graphics/" . "WebGL/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-raw/src/" . "Graphics/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-raw/" . "src/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-monad/src/Graphics/" . "WebGL/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-monad/src/" . "Graphics/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-webgl-monad/" . "src/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-eff/src/Control/Monad/" . "Eff/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-eff/src/Control/" . "Monad/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-eff/src/" . "Control/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-eff/" . "src/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-complex/src/" . "Data/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-complex/" . "src/")
+ ("/Users/gene/Programming/pstest/" . "src/")
+ ("/Users/gene/Programming/epimorphism/output/" . "Control.Monad.Trans.Class/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-canvas/src/" . "Graphics/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-canvas/" . "src/")
+ ("/Users/gene/Programming/epimorphism/html/lib/modules/" . "save/")
+ ("/Users/gene/work/auth_manager/spec/factories/" . "auth_status/")
+ ("/Users/gene/work/auth_manager/spec/controllers/" . "instructions/")
+ ("/Users/gene/work/auth_manager/app/views/devise/registrations/" . "edit/")
+ ("/Users/gene/work/auth_manager/app/views/devise/" . "devise_authy/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-extensions/src/" . "Data/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-extensions/" . "src/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-newtype/src/" . "Data/")
+ ("/Users/gene/Programming/epimorphism/bower_components/purescript-newtype/" . "src/")
+ ("/Users/gene/Programming/epimorphism/bower_components/" . "purescript-webgl-raw/")
+ ("/Users/gene/Programming/epimorphism/html/lib/" . "user/")
+ ("/Users/gene/Programming/epimorphism/html/" . "stylesheets/")
+ ("/Users/gene/Programming/epimorphism/src/" . "Engine/")
+ ("/Users/gene/Programming/epimorphism/" . "lib/")
+ ("/Users/gene/Programming/" . "Rock960/")
+ ("/Users/gene/work/auth_manager/app/workers/dmarc/reports/" . "aggregate/")
+ ("/Users/gene/work/auth_manager/app/workers/dmarc/" . "reports/")
+ ("/Users/gene/work/mailman/src/mailman/commands/" . "docs/")
+ ("/Users/gene/work/OpenARC/openarc/" . "tests/")
+ ("/Users/gene/work/OpenARC/libopenarc/" . "docs/")
+ ("/Users/gene/work/OpenARC/" . "openarc/")
+ ("/Users/gene/work/mailman/src/mailman/app/" . "docs/")
+ ("/" . "etc/")
+ ("/Users/gene/.emacs.d/packages/" . "powerline-20161121.2320/")
+ ("/Users/gene/.emacs.d/" . "epimorphism/")
+ ("/Users/gene/work/postorius/src/postorius/" . "auth/")
+ ("/Users/gene/work/postorius/src/" . "postorius/")
+ ("/Users/gene/work/postorius/" . "src/")
+ ("/Users/gene/work/mailman/src/mailman/runners/" . "docs/")
+ ("/Users/gene/work/mailman/var/" . "etc/")
+ ("/Users/gene/work/mailman/src/mailman/tests/" . "data/")
+ ("/Users/gene/work/skit/trunk/dkim/" . "tests/")
+ ("/Users/gene/work/authheaders/" . "authheaders/")
+ ("/Users/gene/work/skit/python3fixes/" . "dkim/")
+ ("/Users/gene/work/pyspf-2.0.12/" . "test/")
+ ("/Users/gene/work/skit/dkimpy/gene/dkim/" . "tests/")
+ ("/Users/gene/work/authentication-headers/" . "test/")
+ ("/Users/gene/work/mailman/src/mailman/bin/" . "tests/")
+ ("/Users/gene/Downloads/" . "draws (1)/")
+ ("/Users/gene/work/mailman/src/mailman/handlers/" . "tests/")
+ ("/Users/gene/work/aditya_arc/arc_authentication_results/" . "tests/")
+ ("/Users/gene/work/aditya_arc/" . "arc_authentication_results/")
+ ("/Users/gene/work/aditya_mailman/src/mailman/handlers/tests/" . "test_data/")
+ ("/Users/gene/work/aditya_mailman/src/mailman/handlers/" . "tests/")
+ ("/Users/gene/work/aditya_mailman/src/mailman/core/" . "tests/")
+ ("/Users/gene/work/aditya_mailman/src/mailman/" . "runners/")
+ ("/Users/gene/work/aditya_mailman/src/" . "mailman/")
+ ("/Users/gene/work/aditya_mailman/" . "src/")
+ ("/Users/gene/work/mailman/src/mailman/rest/" . "tests/")
+ ("/Users/gene/work/skit/trunk/" . "dkim/")
+ ("/Users/gene/work/skit/dkimpy/gene/" . "dkim/")
+ ("/Users/gene/work/dkimpy_old/" . "dkim/")
+ ("/Users/gene/work/aditya_dkimpy/" . "dkim/")
+ ("/Users/gene/work/dkimpy/dkim/tests/" . "data/")
+ ("/Users/gene/work/dkimpy/dkim/" . "tests/")
+ ("/Users/gene/work/skit/dkimpy/" . "gene/")
+ ("/Users/gene/work/skit/" . "trunk/")
+ ("/Users/gene/work/authentication-results-python/" . "authres/")
+ ("/Users/gene/work/ansible/profiles/" . "auth_manager/")
+ ("/Users/gene/work/ansible/" . "profiles/")
+ ("/Users/gene/work/auth_manager/app/lib/dmarc/reports/" . "aggregate/")
+ ("/Users/gene/work/auth_manager/app/lib/dmarc/" . "reports/")
+ ("/Users/gene/work/auth_manager/app/workers/" . "events/")
+ ("/Users/gene/work/auth_manager/app/lib/shoryuken/middleware/" . "server/")
+ ("/Users/gene/work/auth_manager/app/lib/shoryuken/" . "middleware/")
+ ("/Users/gene/work/auth_manager/spec/lib/dmarc/reports/" . "aggregate/")
+ ("/Users/gene/work/auth_manager/spec/lib/dmarc/" . "reports/")
+ ("/Users/gene/work/dkimpy_arc/dkim/tests/" . "data/")
+ ("/Users/gene/work/dkimpy_arc/dkim/" . "tests/")
+ ("/Users/gene/work/dnslib-0.9.6/" . "dnslib/")
+ ("/Users/gene/work/arc_test_suite/" . "sig_gen/")
+ ("/Users/gene/work/auth_manager/app/views/org_domains/show/" . "dmarc_status/")
+ ("/Users/gene/work/dkimpy_arc/arc/" . "tests/")
+ ("/Users/gene/work/auth_manager/app/workers/notifications/" . "new_domain/")
+ ("/Users/gene/work/sign-message/" . "dkim/")
+ ("/Users/gene/work/mailman/src/mailman/" . "config/")
+ ("/Users/gene/work/mailman/src/" . "mailman/")
+ ("/Users/gene/work/mailman/" . "src/")
+ ("/Users/gene/work/dkimpy_arc/" . "arc/")
+ ("/Users/gene/work/auth_manager/spec/lib/" . "dmarc/")
+ ("/Users/gene/work/dkimpy/arc/" . "tests/")
+ ("/Users/gene/work/dkimpy/" . "trunk/")
+ ("/Users/gene/Dropbox/" . "Documents/")
+ ("/Users/gene/work/auth_manager/lib/tasks/" . "temporary/")
+ ("/Users/gene/work/auth_manager/lib/" . "tasks/")
+ ("/Users/gene/work/auth_manager/app/lib/" . "dmarc/")
+ ("/Users/gene/work/auth_manager/config/" . "environments/")
+ ("/Users/gene/work/auth_manager/app/controllers/" . "auth_status/")
+ ("/Users/gene/work/auth_manager/app/views/org_domains/" . "org_domain_abbr_li/")
+ ("/Users/gene/work/auth_manager/app/models/" . "concerns/")
+ ("/Users/gene/work/auth_manager/spec/" . "controllers/")
+ ("/Users/gene/work/auth_manager/app/assets/stylesheets/sites/" . "agari/")
+ ("/Users/gene/work/auth_manager/app/assets/stylesheets/" . "sites/")
+ ("/Users/gene/work/auth_manager/app/assets/" . "javascripts/")
+ ("/Users/gene/work/auth_manager/app/views/" . "dkim_key_pairs/")
+ ("/Users/gene/work/auth_manager/app/" . "controllers/")
+ ("/Users/gene/work/auth_manager/db/warehouse/" . "migrate/")
+ ("/Users/gene/work/auth_manager/db/" . "warehouse/")
+ ("/Users/gene/work/auth_manager/" . "spec/")
+ ("/Users/gene/work/src/github.com/ValiMail/" . "pythia/")
+ ("/Users/gene/work/src/github.com/" . "ValiMail/")
+ ("/Users/gene/work/src/" . "github.com/")
+ ("/Users/gene/work/" . "arc_test_suite/")
+ ("/Users/gene/Valimail/gowork/src/github.com/ValiMail/" . "pythia/")
+ ("/Users/gene/Valimail/gowork/src/github.com/geneshuman/" . "hello/")
+ ("/Users/gene/Valimail/gowork/src/github.com/" . "ValiMail/")
+ ("/Users/gene/Valimail/gowork/src/" . "github.com/")
+ ("/Users/gene/Valimail/gowork/" . "src/")
+ ("/Users/gene/Valimail/pythia/" . "cli/")
+ ("/Users/gene/Valimail/auth_manager/db/" . "data/")
+ ("/Users/gene/Valimail/auth_manager/app/" . "models/")
+ ("/Users/gene/Valimail/auth_manager/" . "db/")
+ ("/Users/gene/Valimail/" . "auth_manager/")
+ ("/Users/gene/" . "Programming/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/gene/.emacs.d/"
+ "/Users/gene/"
+ "/Users/gene/Programming/Rock960/drm_gl/"
+ "/Users/gene/Programming/Rock960/glfw/src/"
+ "/Users/gene/Programming/Rock960/glfw/include/GLFW/"
+ "/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/"
+ "/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/"
+ "/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/template/"
+ "/Users/gene/Programming/Rock960/glfw/examples/"
+ "/Users/gene/Programming/Rock960/fractalbox/inc/"
+ "/Users/gene/Programming/Rock960/fractalbox/src/"
+ "/Users/gene/Programming/Rock960/fractalbox/inc/glad/"
+ "/Users/gene/Programming/Rock960/fractalbox/"
+ "/Users/gene/Programming/Rock960/glfw/deps/glad/"
+ "/Users/gene/Programming/Rock960/fractalbox/inc/KHR/"
+ "/Users/gene/Programming/fractalbox/"
+ "/Users/gene/Programming/fractalbox/src/"
+ "/Users/gene/Programming/fractalbox/inc/"
+ "/Users/gene/Programming/nova/"
+ "/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/"
+ "/Users/gene/Programming/Rock960/glfw/tests/"
+ "/Users/gene/Programming/Rock960/glfw/deps/"
+ "/Users/gene/Programming/Rock960/glfw/"
+ "/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/"
+ "/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/"
+ "/Users/gene/Programming/fractalbox/scripts/"
+ "/Users/gene/Progamming/fractalbox/scripts/"
+ "/Users/gene/Progamming/epimorphism2/"
+ "/Users/gene/Progamming/fractalbox/"
+ "/Users/gene/Progamming/fractalbox/inc/glad/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/cube/"
+ "/Users/gene/Progamming/fractalbox/src/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/lib/arm/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/"
+ "/Users/gene/.ssh/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/"
+ "/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/assets/"
+ "/Users/gene/Progamming/epimorphism/src/Script/"
+ "/Users/gene/Progamming/epimorphism2/src/"
+ "/Users/gene/Progamming/epimorphism/src/"
+ "/Users/gene/Progamming/epimorphism2/src/UI/"
+ "/Users/gene/Progamming/epimorphism2/src/Pattern/"
+ "/Users/gene/Progamming/epimorphism2/src/Engine/"
+ "/Users/gene/Progamming/epimorphism2/src/Data/"
+ "/Users/gene/Progamming/epimorphism/src/Data/"
+ "/Users/gene/Progamming/epimorphism/src/UI/"
+ "/Users/gene/Progamming/epimorphism2/scripts/"
+ "/Users/gene/Progamming/epimorphism2/html/javascript/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ ".emacs"
+ "drm_gl.c"
+ "egl_context.c"
+ "window.c"
+ "context.c"
+ "glfw3.pc"
+ "glfw3.h"
+ "EGLRuntime.h"
+ "EGLRuntime.cpp"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/gene/.emacs.d/" (23498 52954 512562 295000) "themes/" "recentf" "packages/" "network-security.data" "auto-save-list/" "epimorphism/" "projectile-bookmarks.eld" "ido.last" "../" "./")
+
+ ("/Users/gene/" (23499 42880 710619 638000) ".bash_history" ".bazaar/" ".pypirc" ".gitconfig" ".cache/" ".python_history" "Downloads/" ".Xauthority" ".bzr.log" ".gem/" ".bash_profile" ".emacs.save" "Documents/" ".npm/" ".Trash/" "Dropbox/" ".emacs~" "Applications/" ".emacs" "Movies/" ".ssh/" "Programming/" "Wine Files/" ".emacs_anywhere/" ".dropbox/" "Public/" ".gitcinclude" ".bash_sessions/" ".cups/" ".octave_hist" ".emacs.d/" ".matplotlib/" "Library/" "Desktop/" ".rvm/" "travel.txt" "Pictures/" ".local/" ".bash_profile2" ".bashrc" ".subversion/" ".vagrant.d/" "flycheck_.emacs" ".CFUserTextEncoding" ".DS_Store" ".node-gyp/" "kill_ableton.sh" "Music/" ".config/" ".#.emacs" "../" "./")
+
+ ("/Users/gene/Programming/Rock960/" (23495 56313 633579 648000) "../" "./")
+
+ ("/Users/gene/Programming/Rock960/glfw/src/" (23499 42204 0 0) "glfw_config.h.in" "xkb_unicode.c" "x11_init.c" "posix_thread.c" "win32_init.c" "../" "window.c" "null_monitor.c" "mappings.h.in" "./" "x11_window.c" "null_init.c" "win32_platform.h" "win32_monitor.c" "win32_time.c" "glfw3.pc.in" "glx_context.h" "win32_joystick.h" "glfw3Config.cmake" "glfw3.pc" "cocoa_time.c" "cmake_install.cmake" "win32_thread.c" "x11_platform.h" "linux_joystick.h" "egl_context.h" "null_platform.h" "libglfw3.a" "context.c" "cocoa_joystick.h" "x11_monitor.c" "internal.h" "input.c" "osmesa_context.c" "glx_context.c" "glfw3Config.cmake.in" "wl_window.c" "CMakeFiles/" "posix_time.h" "cocoa_window.m" "osmesa_context.h" "null_joystick.h" "posix_time.c" "cocoa_init.m" "glfw3ConfigVersion.cmake" "CMakeLists.txt" "cocoa_monitor.m" "null_window.c" "wl_platform.h" "linux_joystick.c" "xkb_unicode.h" "mappings.h" "null_joystick.c" "wl_monitor.c" "vulkan.c" "cocoa_platform.h" "wgl_context.c" "nsgl_context.h" "monitor.c" ".#window.c" "posix_thread.h" "Makefile" "wl_init.c" "win32_window.c" ".#egl_context.c" "win32_joystick.c" "nsgl_context.m" "cocoa_joystick.m" "init.c" "egl_context.c" "wgl_context.h" "glfw_config.h")
+
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/" (23497 5762 0 0) "ETCHeader.cpp" "#EGLRuntime.cpp#" "Shader.cpp" "../" "HDRImage.cpp" "./" "EGLRuntime.cpp" "Platform.cpp" "EGLRuntime.cpp~" "WindowsPlatform.cpp" "LinuxOnARMPlatform.cpp" "models/" "Matrix.cpp" "Texture.cpp" "DesktopLinuxPlatform.cpp" "Text.cpp" "Timer.cpp")
+
+ ("/Users/gene/Programming/fractalbox/inc/" (23498 51503 639548 622000) "system.h" "util.h" "glad/" "KHR/" "ui.h" "engine.h" "../" "./")
+
+ ("/Users/gene/Programming/fractalbox/src/" (23498 51531 965678 680000) "main.cpp" "engine.cpp" "glad.c" "system.cpp" "tmp.cpp" "util.cpp" "ui.cpp" "../" "./")
+
+ ("/Users/gene/Programming/fractalbox/" (23498 51503 635573 545000) "src/" "inv.dSYM/" ".git/" "deps/" "scripts/" ".gitignore" "business-plan.org" "Makefile_OSX" "Makefile" "TODO.txt" "inc/" "inv" "../" "./")
+
+ ("/Users/gene/Programming/Rock960/fractalbox/" (23498 53308 0 0) "TODO.txt" ".gitignore" "../" "deps/" "./" "inc/" "Makefile_OSX" "inv" "business-plan.org" ".depend" "Makefile" "src/" ".git/" "scripts/")
+
+ ("/Users/gene/Programming/Rock960/fractalbox/inc/glad/" (23498 52053 0 0) "../" "./" "glad.h")
+
+ ("/Users/gene/Programming/Rock960/fractalbox/src/" (23498 53358 0 0) "../" "./" "main.cpp" "engine.cpp" "glad.c" "._glad_egl.c" "system.cpp" "ui.cpp" "util.cpp" "._glad2.c" "tmp.cpp")
+
+ ("/Users/gene/Programming/Rock960/fractalbox/inc/" (23498 53243 0 0) "../" "./" "engine.h" "glad/" "util.h" "._glad" ".#engine.h" "system.h" "._KHR" "ui.h" "KHR/")
+
+ ("/Users/gene/Programming/Rock960/drm_gl/" (23499 42178 0 0) "../" "./")
+
+ ("/Users/gene/Programming/Rock960/glfw/include/GLFW/" (23499 38518 0 0) "glfw3native.h" "../" "./" "glfw3.h")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/" (23499 37820 721097 796000) "LinuxOnARMPlatform.cpp" "Platform.cpp" "Matrix.cpp" "EGLRuntime.cpp" "Shader.cpp" "models/" "WindowsPlatform.cpp" "Texture.cpp" "ETCHeader.cpp" "Timer.cpp" "Text.cpp" "DesktopLinuxPlatform.cpp" "HDRImage.cpp" ".#EGLRuntime.cpp" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/" (22777 52642 0 0) "Mathematics.h" "Platform.h" "HDRImage.h" "DesktopLinuxPlatform.h" "Texture.h" "WindowsPlatform.h" "VectorTypes.h" "Timer.h" "models/" "Matrix.h" "mali/" "ETCHeader.h" "EGLRuntime.h" "LinuxOnARMPlatform.h" "Text.h" "ump/" "Shader.h" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" (23495 51993 990739 811000) "src/" "fonts/" "simple_framework OpenGL ES 3.0.vcxproj" "simple_framework OpenGL ES 3.0.vcxproj.filters" "CMakeLists.txt" "simple_framework OpenGL ES 2.0.vcxproj.filters" "inc/" "simple_framework OpenGL ES 2.0.vcxproj" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/template/" (22777 52642 0 0) "Template.vcxproj" "Template.h" "assets/" "Template.vcxproj.filters" "CMakeLists.txt" "Template.cpp" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/" (22777 52642 0 0) "frame_buffer_object/" "particle/" "etc_uncompressed_alpha/" "shadow_map/" "antialias/" "fetch_depth/" "texts/" "list_egl_configs/" "rotozoom/" "triangle/" "fur/" "template/" "cube/" "etc_atlas_alpha/" "egl_preserve/" "etc_mipmap/" "CMakeLists.txt" "etc_compressed_alpha/" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/" (22777 52642 0 0) "opengles_30/" "opengles_31/" "opengles_20/" "CMakeLists.txt" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/" (22777 52642 0 0) "lib/" "simple_framework/" "samples/" "Mali_OpenGL_ES_SDK_v2.4.4_Documentation.html" "docs/" "arm-linux.cmake" "CMakeLists.txt" "inc/" "../" "./")
+
+ ("/Users/gene/Programming/Rock960/glfw/examples/" (23497 10903 0 0) "splitview" "../" "glfw.icns" "./" "sharing" "gears" "cmake_install.cmake" "heightmap" "offscreen.c" "particles" "CMakeFiles/" "simple" "CMakeLists.txt" "splitview.c" "heightmap.c" "wave" "boing" "Makefile" "particles.c" "sharing.c" "glfw.ico" "offscreen" "wave.c" "glfw.rc" "boing.c" "simple.c" "gears.c")
+
+ ("/Users/gene/Programming/Rock960/glfw/include/" (23494 30374 0 0) "../" "./" "GLFW/")
+
+ ("/Users/gene/Programming/Rock960/fractalbox/inc/KHR/" (23495 57962 0 0) "../" "./" "khrplatform.h" "._khrplatform.h")
+
+ ("/Users/" (23043 19207 166681 626000) "Guest/" "gene/" "Shared/" ".localized" "../" "./")
+
+ ("/Users/gene/Programming/nova/" (23498 26635 781917 409000) "includes.h" "generator.h" "server.h" "data/" "structs.h" "engine_backend.c" "z[2" "util.h" "path.c" "nova.c" "databank.h" "engine.c" "TODO" "interface.h" "server.c" "generator.c" "nova" "input_images/" "makefile" "nova.o" "path.h" "semantic.cache" "util.c" "interface.c" "engine.h" "kernels/" "databank.c" "../" "./")
+
+ ("/Users/gene/Programming/" (23497 17742 579997 943000) "practice/" "lp_dkimpy/" "OpenARCDev/" "vidplans.txt" "coursera-neural/" "Mali_OpenGL_ES_SDK_v2.4.4/" "euler/" "mailman/" "VeloStream/" "rkdeveloptool/" "nova/" "rock960-model-ab-debian-lxde-armhf-20180814_2020/" "epimorphism/" "purescript/" "authentication-headers/" "arc_test_suite/" "Fractal Textures/" "Rock960/" "epimorphism2/" ".DS_Store" "Tuuyi/" "authres-1.0.1/" "OpenARC/" "dkimpy/" "fractalbox/" "pcap/" "../" "./")
+
+ ("/Users/gene/Programming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/" (23492 62625 860924 809000) "assets/" "FrameBufferObject.cpp" "FrameBufferObject.vcxproj.filters" "FrameBufferObject.h" "CMakeLists.txt" "FrameBufferObject.vcxproj" "../" "./")
+
+ ("/Users/gene/Programming/fractalbox/scripts/" (23495 57078 986375 696000) "mount_rock.sh" "../" "./")
+
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/" (23495 59332 0 0) "Mathematics.h" "LinuxOnARMPlatform.h" "../" "DesktopLinuxPlatform.h" "./" ".#EGLRuntime.h" "Text.h" "Timer.h" "Shader.h" "ump/" "HDRImage.h" "Texture.h" "models/" "VectorTypes.h" "Platform.h~" "Platform.h" "Matrix.h" "mali/" "ETCHeader.h" "WindowsPlatform.h" "EGLRuntime.h")
+
+ ("/Users/gene/Programming/Rock960/glfw/deps/glad/" (23494 30374 0 0) "../" "./" "glad.h")
+
+ ("/Users/gene/Programming/Rock960/glfw/deps/" (23494 30374 0 0) "nuklear_glfw_gl2.h" "../" "./" "getopt.h" "vulkan/" "glad/" "nuklear.h" "linmath.h" "glad.c" "vs2008/" "getopt.c" "mingw/" "tinycthread.c" "stb_image_write.h" "KHR/" "tinycthread.h")
+
+ ("/Users/gene/Programming/Rock960/glfw/tests/" (23495 61373 0 0) "joysticks" "icon.c" "../" "./" "msaa" "events" "gamma" "inputlag.c" "inputlag" "msaa.c" "cmake_install.cmake" "cursor" "threads" "glfwinfo.c" "CMakeFiles/" "timeout.c" "empty" "clipboard.c" "CMakeLists.txt" "joysticks.c" "cursor.c" "monitors.c" "iconify.c" "vulkan.c" "reopen.c" "windows" "glfwinfo" "threads.c" "timeout" "empty.c" "reopen" "Makefile" "opacity.c" "tearing" "title.c" "windows.c" "title" "monitors" "gamma.c" "clipboard" "events.c" "opacity" "iconify" "tearing.c" "icon" ".#glfwinfo.c")
+
+ ("/Users/gene/Programming/Rock960/glfw/" (23494 30671 0 0) ".appveyor.yml" ".gitignore" "../" "deps/" "./" "README.md" "examples/" "cmake_install.cmake" ".travis.yml" "cmake_uninstall.cmake" ".gitattributes" "CMakeFiles/" "glfw-build/" "CMakeLists.txt" "docs/" "include/" "install_manifest.txt" "tests/" "Makefile" "LICENSE.md" "cmake_uninstall.cmake.in" "src/" "CMakeCache.txt" ".git/" "CMake/")
+
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" (23493 30371 0 0) "fonts/" "../" "./" "cmake_install.cmake" "simple_framework OpenGL ES 2.0.vcxproj.filters" "inc/" "CMakeFiles/" "simple_framework OpenGL ES 2.0.vcxproj" "CMakeLists.txt" "simple_framework OpenGL ES 3.0.vcxproj" "build_arm/" "simple_framework OpenGL ES 3.0.vcxproj.filters" "Makefile" "src/" "CMakeCache.txt")
+
+ ("/Users/gene/Programming/Rock960/Mali_OpenGL_ES_SDK_v2.4.4/" (23493 15384 0 0) "../" "Mali_OpenGL_ES_SDK_v2.4.4_Documentation.html" "bin_arm/" "./" "lib/" "samples/" "inc/" "arm-linux.cmake" "CMakeLists.txt" "docs/" "build_arm/" "simple_framework/")
+
+ ("/Users/gene/Applications/" (23214 57269 88964 687000) "Desktop Dungeons.app/" "Chrome Apps.localized/" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/gene/Progamming/fractalbox/scripts/" (23495 56084 544814 124000) "../" "./")
+
+ ("/Users/gene/Progamming/fractalbox/" (23495 56084 544833 100000) "src/" "inv.dSYM/" ".depend" ".git/" "scripts/" ".gitignore" "business-plan.org" "Makefile" "TODO.txt" "inc/" "inv" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/html/" (23491 57914 709633 860000) "stylesheets/" "javascript/" "lib/" "images/" "index.html" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/src/Data/" (23491 54215 177430 437000) "Types.purs" "Library.purs" "Library.js" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/src/Pattern/" (23491 57910 885963 758000) "Pattern.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/src/UI/" (23491 47703 662598 31000) "UI.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/" (23495 51993 997122 279000) "Engine/" "Data/" "Main.purs" "Dev.purs" "Command.purs" "Script/" "Command.js" "Paths.purs" "Pattern.purs" "Util.purs" "Util.js" "System.purs" "UI/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/src/" (23495 51993 994568 208000) "Engine/" "Data/" "Pattern/" "Main.purs" "Command.purs" "Util.purs" "Util.js" "System.purs" "UI/" "../" "./")
+
+ ("/Users/gene/.ssh/" (23494 16700 269714 456000) "known_hosts" "id_rsa.pub" "epimorphism.pem" "id_rsa" "config" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/" (23495 51993 991353 520000) "LinuxOnARMPlatform.cpp" "Platform.cpp" "Matrix.cpp" "EGLRuntime.cpp" "Shader.cpp" "models/" "WindowsPlatform.cpp" "Texture.cpp" "ETCHeader.cpp" "Timer.cpp" "Text.cpp" "DesktopLinuxPlatform.cpp" "HDRImage.cpp" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/lib/arm/" (23495 51993 993230 694000) "GLESv2.c" "Readme.txt" "GLESv1_CM.c" "EGL.c" "CMakeLists.txt" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/" (23495 51993 990739 811000) "src/" "fonts/" "simple_framework OpenGL ES 3.0.vcxproj" "simple_framework OpenGL ES 3.0.vcxproj.filters" "CMakeLists.txt" "simple_framework OpenGL ES 2.0.vcxproj.filters" "inc/" "simple_framework OpenGL ES 2.0.vcxproj" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/" (23495 55964 332687 840000) "src/" "tmp" ".git/" "lib/" "scripts/" "package.json" ".gitignore" "bower.json" "html/" "output/" ".#.gitignore" ".pulp-cache/" "bower_components/" "TODO.txt" "../" "./")
+
+ ("/Users/gene/Progamming/fractalbox/src/" (23495 55914 387147 938000) ".#main.cpp" "main.cpp" "../" "./")
+
+ ("/Users/gene/Progamming/fractalbox/inc/glad/" (23495 54797 106398 547000) "glad.h" "../" "./")
+
+ ("/Users/gene/Progamming/fractalbox/inc/" (23495 54797 108132 517000) "glad/" "KHR/" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/cube/" (23495 52816 366970 493000) "Cube.vcxproj.filters" "assets/" ".#Cube.cpp" "Cube.cpp" "Cube.vcxproj" "Cube.h" "CMakeLists.txt" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/lib/" (22777 52642 0 0) "arm/" "emulator_x64/" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/template/" (22777 52642 0 0) "Template.vcxproj" "Template.h" "assets/" "Template.vcxproj.filters" "CMakeLists.txt" "Template.cpp" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/inc/" (22777 52642 0 0) "Mathematics.h" "Platform.h" "HDRImage.h" "DesktopLinuxPlatform.h" "Texture.h" "WindowsPlatform.h" "VectorTypes.h" "Timer.h" "models/" "Matrix.h" "mali/" "ETCHeader.h" "EGLRuntime.h" "LinuxOnARMPlatform.h" "Text.h" "ump/" "Shader.h" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/simple_framework/src/models/" (22777 52642 0 0) "TorusModel.cpp" "SphereModel.cpp" "PlaneModel.cpp" "CubeModel.cpp" "SuperEllipsoidModel.cpp" "../" "./")
+
+ ("/Users/gene/Progamming/" (23493 14461 404355 827000) "data/" "openssl/" "practice/" "lp_dkimpy/" "OpenARCDev/" "vidplans.txt" "coursera-neural/" "rock960_ubuntu_server_16.04_arm64_20180115.tar.gz" "Mali_OpenGL_ES_SDK_v2.4.4/" "euler/" "rock960-model-ab-debian-lxde-armhf-20180814_2020.tar.gz" "timelines/" "mailman/" "Mali_OpenGL_ES_SDK_v2.4.4.ef7d5a_Linux_x64.tar.gz" "VeloStream/" "rkdeveloptool/" "rock960-model-ab-debian-lxde-armhf-20180814_2020/" "epimorphism/" "purescript/" "webgl-shader-loader/" "authentication-headers/" "arc_test_suite/" "Fractal Textures/" "epimorphism2/" ".DS_Store" "draws/" "Tuuyi/" "authres-1.0.1/" "OpenARC/" "dkimpy/" "fractalbox/" "pcap/" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/assets/" (22777 52642 0 0) "font.frag" "FrameBufferObject_cube.frag" "font.png" "FrameBufferObject_cube.vert" "font.raw" "font.vert" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/frame_buffer_object/" (23492 62625 860924 809000) "assets/" "FrameBufferObject.cpp" "FrameBufferObject.vcxproj.filters" "FrameBufferObject.h" "CMakeLists.txt" "FrameBufferObject.vcxproj" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/opengles_20/" (22777 52642 0 0) "frame_buffer_object/" "particle/" "etc_uncompressed_alpha/" "shadow_map/" "antialias/" "fetch_depth/" "texts/" "list_egl_configs/" "rotozoom/" "triangle/" "fur/" "template/" "cube/" "etc_atlas_alpha/" "egl_preserve/" "etc_mipmap/" "CMakeLists.txt" "etc_compressed_alpha/" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/samples/" (22777 52642 0 0) "opengles_30/" "opengles_31/" "opengles_20/" "CMakeLists.txt" "../" "./")
+
+ ("/Users/gene/Progamming/Mali_OpenGL_ES_SDK_v2.4.4/" (22777 52642 0 0) "lib/" "simple_framework/" "samples/" "Mali_OpenGL_ES_SDK_v2.4.4_Documentation.html" "docs/" "arm-linux.cmake" "CMakeLists.txt" "inc/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/lib/" (23491 43861 882639 759000) "main.lib" "sections.slib" "user.lib" "core/" "core.lib" "textures/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/lib/core/" (23488 59865 8442 810000) "main.lib" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/html/javascript/" (23486 33679 45936 620000) "index.js" "jquery-3.3.1.min.js" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/scripts/" (23486 37946 262553 215000) "watch_nofs.sh" "bundle_lib.sh" "deploy.sh" "server.sh" "resize.rb" "finish.sh" "watch.sh" "test_deploy.sh" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/UI/" (23491 43861 879873 853000) "KeyHandlers.purs" "UIUtil.purs" "Console.purs" "UI.purs" "Console.js" "Layout.purs" "UI.js" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/Data/" (23490 38601 332083 409000) "Kernels.purs" "Script.purs" "Types.purs" "Library.purs" "Serialize/" "Comp.purs" "types.js" "System.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/src/Engine/" (23491 45783 738250 913000) "Engine.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/" (23490 41142 467319 637000) "purescript-effect/" "purescript-prelude/" "purescript-foldable-traversable/" "purescript-invariant/" "purescript-identity/" "purescript-lists/" "purescript-tailrec/" "purescript-nonempty/" "purescript-tuples/" "purescript-proxy/" "purescript-control/" "purescript-record/" "purescript-distributive/" "purescript-type-equality/" "purescript-gen/" "purescript-ordered-collections/" "purescript-maybe/" "purescript-either/" "purescript-refs/" "purescript-orders/" "purescript-bifunctors/" "purescript-newtype/" "purescript-functions/" "purescript-lazy/" "purescript-arrays/" "purescript-typelevel-prelude/" "purescript-unfoldable/" "purescript-unsafe-coerce/" "purescript-st/" "purescript-partial/" "purescript-transformers/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/bower_components/" (23482 44943 794348 98000) "purescript-effect/" "purescript-prelude/" "purescript-foldable-traversable/" "purescript-web-file/" "purescript-invariant/" "purescript-identity/" "purescript-webgl-raw/" "purescript-lists/" "purescript-tailrec/" "purescript-web-storage/" "purescript-nonempty/" "purescript-console/" "purescript-tuples/" "purescript-foreign/" "purescript-lcg/" "purescript-proxy/" "purescript-psci-support/" "purescript-jquery/" "purescript-arraybuffer-types/" "purescript-control/" "purescript-enums/" "purescript-web-html/" "purescript-web-dom/" "purescript-record/" "purescript-distributive/" "purescript-generics-rep/" "purescript-typedarray/" "purescript-type-equality/" "purescript-js-date/" "purescript-gen/" "purescript-exceptions/" "purescript-datetime/" "purescript-foreign-object/" "purescript-ordered-collections/" "purescript-math/" "purescript-maybe/" "purescript-integers/" "purescript-either/" "purescript-complex/" "purescript-refs/" "purescript-webgl-monad/" "purescript-orders/" "purescript-bifunctors/" "purescript-newtype/" "purescript-random/" "purescript-functions/" "purescript-now/" "purescript-lazy/" "purescript-arrays/" "purescript-strings/" "purescript-format/" "purescript-typelevel-prelude/" "purescript-unfoldable/" "purescript-unsafe-coerce/" "purescript-globals/" "purescript-st/" "purescript-quickcheck/" "purescript-partial/" "purescript-canvas/" "purescript-nullable/" "purescript-transformers/" "purescript-web-events/" "purescript-media-types/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/html/lib/" (23486 31432 918436 760000) "sections.slib" "user.lib" ".#core.lib" "core/" "core.lib" "textures/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/purescript-transformers/" (23485 24601 339306 800000) "src/" ".bower.json" "README.md" "bower.json" "LICENSE" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/purescript-transformers/src/" (23482 36588 0 0) "Control/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/purescript-transformers/src/Control/" (23482 36588 0 0) "Monad/" "Comonad/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/purescript-transformers/src/Control/Monad/" (23482 36589 0 0) "Cont/" "Error/" "Trans/" "State.purs" "List/" "RWS.purs" "Cont.purs" "Writer/" "State/" "Maybe/" "Reader.purs" "Writer.purs" "Except/" "RWS/" "Except.purs" "Reader/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism2/bower_components/purescript-transformers/src/Control/Monad/Except/" (23307 11611 0 0) "Trans.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/Script/" (23482 47101 871692 592000) "Switch.purs" "Script.purs" "ScriptUtil.purs" "Scripts.purs" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-complex/" (23482 38139 402063 935000) "src/" ".git/" "package.json" ".gitignore" ".psci_modules/" "README.md" "docs/" "bower.json" ".pulp-cache/" "bower_components/" "test/" "LICENSE" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/" (23482 40819 950752 81000) "src/" ".git/" ".gitignore" "purescript-webgl-raw.cabal" ".psci_modules/" "generator/" "README.md" "docs/" "bower.json" ".pulp-cache/" "bower_components/" "LICENSE" "Setup.hs" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-typedarray/" (23482 39544 982963 351000) "src/" ".travis.yml" ".git/" "package.json" ".gitignore" "README.md" "docs/" "bower.json" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/Graphics/WebGL/" (23482 39869 24423 562000) "Raw/" "Raw.purs" "Raw.js" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/" (23482 40588 518413 783000) "src/" ".git/" "package.json" ".gitignore" ".psci_modules/" "README.md" "docs/" "bower.json" ".pulp-cache/" "bower_components/" "gruntfile.js" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/src/Graphics/" (23482 41496 974104 152000) "WebGL/" "WebGL.purs" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/src/Graphics/WebGL/" (23482 40785 576932 213000) "Unsafe.purs" "Context.js" "Unsafe.js" "Types.purs" "Shader.js" "Methods.purs" "Shader.purs" "Context.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/test/" (23482 45045 613936 139000) "Main.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/Engine/" (23482 48493 209472 865000) "Texture.js" "Parser.js" "Engine.js" "Audio.js" "Engine.purs" "Compiler.purs" "EngineUtil.purs" "Parser.purs" "Audio.purs" "Texture.purs" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/html/javascript/" (23485 16748 833696 691000) "platform.min.js" "index.js" "global.js" "cookies.js" "jquery-2.2.0.min.js" ".DS_Store" "math.min.js" "seedrandom.min.js" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/src/Data/Serialize/" (23482 46736 254552 149000) "Serialize.purs" "Parse.purs" "Serializable.purs" "SLib.purs" "Serializable.js" "../" "./")
+
+ ("/Users/gene/.emacs.d/packages/psc-ide-20181002.1319/" (23483 47352 195523 581000) "psc-ide-protocol.elc" "psc-ide-autoloads.el" "psc-ide-flycheck.elc" "psc-ide-backported.el" "psc-ide-pkg.el" "psc-ide-flycheck.el" "psc-ide-protocol.el" "psc-ide.el" "psc-ide.elc" "psc-ide-backported.elc" "../" "./")
+
+ ("/Users/gene/.emacs.d/packages/" (23483 46769 606866 524000) "dash-20170810.137/" "popup-20160709.729/" "magit-20170808.1712/" "exec-path-from-shell-20170508.4/" "powerline-20170708.1442/" "use-package-20170812.2256/" "helm-core-20170815.647/" "coffee-mode-20170324.240/" "grizzl-20160818.37/" "projectile-20170727.2351/" "glsl-mode-20170927.736/" "psc-ide-20181002.1319/" "pkg-info-20150517.443/" "with-editor-20170816.742/" "s-20170428.1026/" "expand-region-20170514.1309/" "helm-20170818.2025/" "magit-popup-20170810.917/" "glsl-mode-readme.txt" "archives/" "intero-20170812.1029/" "async-20170804.2158/" "flx-ido-20151030.1112/" "flycheck-20170817.57/" "spaceline-20170630.2327/" "flx-20151030.1112/" "diminish-20170419.1036/" "rvm-20150402.742/" "bind-key-20161218.1520/" "git-commit-20170609.2310/" "psc-ide-readme.txt" "purescript-mode-20161216.133/" "haskell-mode-20170810.1519/" "helm-projectile-20170613.14/" "epl-20150517.433/" "dash-functional-20160615.1351/" "company-20170818.340/" "../" "./")
+
+ ("/Users/gene/Progamming/epimorphism/" (23483 46421 985697 814000) "src/" ".git/" "save.txt" "lib/" "scripts/" "package.json" "package-lock.json" ".gitignore" "save_server/" ".psci_modules/" "README.md" "bower.json" "html/" ".pulp-cache/" "bower_components/" "test/" "TODO.txt" ".DS_Store" "distance.txt" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-monad/src/" (23482 38936 501601 65000) "Graphics/" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/Graphics/WebGL/Raw/" (23482 39735 126375 810000) "Types.purs" "Util.purs" "Util.js" "Enums.purs" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/Graphics/" (23482 38948 413550 680000) "WebGL/" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-webgl-raw/src/" (23482 38948 413465 398000) "Graphics/" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/" (23482 39473 574981 621000) "purescript-webgl-raw/" "purescript-typedarray/" "purescript-complex/" "purescript-webgl-monad/" "purescript-simple-dom/" "../" "./")
+
+ ("/Users/gene/Progamming/purescript/purescript-simple-dom/src/Data/DOM/Simple/" (23482 38925 224055 136000) "Events.purs" "Encode.purs" "Ajax.purs" "Unsafe/" "Types.purs" "Ajax.js" "NodeList.purs" "Document.purs" "Navigator.purs" "Encode.js" "Window.js" "Window.purs" "Element.purs" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
