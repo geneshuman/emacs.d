@@ -1,0 +1,12 @@
+packages/*
+recentf
+projectile*
+ido.last
+network-security.data
+auto-save-list*
+
+*~
+*.cache
+*#*
+*.log
+*.DS_Store
