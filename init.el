@@ -90,6 +90,12 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 (add-hook 'haskell-mode-hook 'intero-mode)
 
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+
 (require 'psc-ide)
 
 ;;(setq psc-ide-use-purs nil)
@@ -152,6 +158,7 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; projectile setup
 (projectile-global-mode) ;; to enable in all buffers
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;;(setq projectile-enable-caching t)
 (helm-mode 1)
 (setq projectile-use-git-grep 1)
@@ -207,7 +214,7 @@ Return a list of installed packages or nil for every skipped package."
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+    (projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
 
 
 
