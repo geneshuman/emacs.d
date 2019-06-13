@@ -28,7 +28,7 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'flx-ido 'flx 'grizzl 'haskell-mode 'helm-projectile 'projectile 'helm 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'flx-ido 'flx 'grizzl 'haskell-mode 'helm-projectile 'projectile 'helm 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode)
 
 
 ;; fundamental mode for scratch buffer
