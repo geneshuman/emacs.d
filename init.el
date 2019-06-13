@@ -170,7 +170,7 @@ Return a list of installed packages or nil for every skipped package."
 (require 'ido)
 (require 'flx-ido)
 (ido-mode 1)
-(ido-everywhere 1)
+;;(ido-everywhere 1)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
@@ -293,6 +293,8 @@ Return a list of installed packages or nil for every skipped package."
 ;;(load-theme 'afternoon t)
 
 (fringe-mode 6)
+
+(require 'uniquify)
 
 
 (use-package spaceline
