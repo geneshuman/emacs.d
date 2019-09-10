@@ -68,6 +68,7 @@ Return a list of installed packages or nil for every skipped package."
 ;; Temporary files
 (setq auto-save-default nil)
 (setq make-backup-files nil)
+(setq create-lockfiles nil)
 
 (add-to-list 'exec-path "/usr/local/bin")
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
@@ -82,6 +83,7 @@ Return a list of installed packages or nil for every skipped package."
 
 (add-to-list 'load-path "~/.emacs.d/epimorphism/")
 (autoload 'epimorphism-mode "epimorphism-mode" nil t)
+(setq auto-mode-alist (cons '("\.epi$" . epimorphism-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\.lib$" . epimorphism-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\.slib$" . epimorphism-mode) auto-mode-alist))
 
@@ -126,6 +128,8 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq c-default-style "linux")
 ;;(define-key c-mode-base-map "\t" 'self-insert-command)
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
 
 (add-hook 'c-mode-hook
       '(lambda()
@@ -214,7 +218,7 @@ Return a list of installed packages or nil for every skipped package."
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+    (cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
 
 
 
