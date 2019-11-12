@@ -84,8 +84,7 @@ Return a list of installed packages or nil for every skipped package."
 (add-to-list 'load-path "~/.emacs.d/epimorphism/")
 (autoload 'epimorphism-mode "epimorphism-mode" nil t)
 (setq auto-mode-alist (cons '("\.epi$" . epimorphism-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\.lib$" . epimorphism-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\.slib$" . epimorphism-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\.epic$" . epimorphism-mode) auto-mode-alist))
 
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
@@ -129,7 +128,9 @@ Return a list of installed packages or nil for every skipped package."
 (setq c-default-style "linux")
 ;;(define-key c-mode-base-map "\t" 'self-insert-command)
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-hook 'c-mode-hook
       '(lambda()

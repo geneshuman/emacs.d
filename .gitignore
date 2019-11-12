@@ -4,6 +4,7 @@ projectile*
 ido.last
 network-security.data
 auto-save-list*
+tramp
 
 *~
 *.cache
