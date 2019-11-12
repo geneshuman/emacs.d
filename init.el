@@ -97,6 +97,8 @@ Return a list of installed packages or nil for every skipped package."
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
 
+(global-set-key (kbd "C-M-f") (lambda () (interactive) (find-file "/ssh:linaro:~/Programming/epimorphism6/TODO.txt")))
+
 (require 'psc-ide)
 
 ;;(setq psc-ide-use-purs nil)

@@ -5,6 +5,7 @@ ido.last
 network-security.data
 auto-save-list*
 tramp
+elpa
 
 *~
 *.cache
