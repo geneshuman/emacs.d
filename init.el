@@ -230,6 +230,8 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key (kbd "C-M-w") 'kill-ring-save)
 (global-set-key (kbd "C-x 1") 'nil)
 (global-set-key (kbd "C-x C-b") 'nil)
+(global-set-key (kbd "M-?") 'nil)
+(global-set-key (kbd "M-.") 'nil)
 
 (global-set-key (kbd "M-B") 'magit-blame)
 (global-set-key (kbd "M-L") 'flycheck-next-error)
@@ -264,8 +266,8 @@ Return a list of installed packages or nil for every skipped package."
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
-(set-frame-parameter (selected-frame) 'alpha '(92 . 75))
-(add-to-list 'default-frame-alist '(alpha . (92 . 75)))
+;;(set-frame-parameter (selected-frame) 'alpha '(92 . 75))
+;;(add-to-list 'default-frame-alist '(alpha . (92 . 75)))
 
 (defun toggle-fullscreen (&optional f)
   (interactive)
