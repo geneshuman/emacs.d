@@ -99,6 +99,8 @@ Return a list of installed packages or nil for every skipped package."
 
 (global-set-key (kbd "C-M-f") (lambda () (interactive) (find-file "/ssh:linaro:~/Programming/epimorphism6/TODO.txt")))
 
+(define-key key-translation-map [(control ?\;)]  [127])
+
 (require 'psc-ide)
 
 ;;(setq psc-ide-use-purs nil)
@@ -266,6 +268,8 @@ Return a list of installed packages or nil for every skipped package."
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
+ (set-frame-parameter (selected-frame) 'alpha '(87 . 50))
+ (add-to-list 'default-frame-alist '(alpha . (87 . 50)))
 ;;(set-frame-parameter (selected-frame) 'alpha '(92 . 75))
 ;;(add-to-list 'default-frame-alist '(alpha . (92 . 75)))
 
