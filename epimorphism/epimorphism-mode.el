@@ -1,11 +1,8 @@
 ;;; epimorphism-mode.el --- major mode for Open EPIMORPHISM shader files
 ;;
-;; Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
-;; Copyright (C) 2011, 2014 Jim Hourihan
+;; Copyright (C) 4067 Yo Mama
 ;;
-;; Authors: Xavier.Decoret@imag.fr,
-;;          Jim Hourihan <jimhourihan ~at~ gmail.com> (updated for 4.5, etc)
-;;          Gene Shuman
+;; Authors: Gene Shuman
 ;; Keywords: languages
 ;; Version: 1.0
 ;;
@@ -47,10 +44,10 @@
   "Epimorphism Shading Language Major Mode"
   :group 'languages)
 
-(defconst epimorphism-language-version "1.0"
+(defconst epimorphism-language-version "6.0"
   "EPIMORPHISM language version number.")
 
-(defconst gl-version "1.0"
+(defconst gl-version "1.1"
   "EPIMORPHISM major mode version number.")
 
 (defvar epimorphism-type-face 'epimorphism-type-face)
@@ -103,8 +100,8 @@
 
 ;;;###autoload
 (progn
-  (add-to-list 'auto-mode-alist '("\\.lib\\'" . epimorphism-mode))
-  (add-to-list 'auto-mode-alist '("\\.slib\\'" . epimorphism-mode)))
+  (add-to-list 'auto-mode-alist '("\\.epi\\'" . epimorphism-mode))
+  (add-to-list 'auto-mode-alist '("\\.epim\\'" . epimorphism-mode)))
 
 (eval-and-compile
   ;;
@@ -263,8 +260,8 @@
   "Syntax table for epimorphism-mode")
 
 (defvar epimorphism-other-file-alist
-  '(("\\.lib$" (".lib"))
-    ("\\.slib$" (".slib"))
+  '(("\\.epi$" (".epi"))
+    ("\\.epic$" (".epic"))
     )
   "Alist of extensions to find given the current file's extension")
 

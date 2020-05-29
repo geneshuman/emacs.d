@@ -2,23 +2,18 @@
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
 
-;; GLOBAL CONFIGURATION
-
+;; PACKAGE CONFIGURATION
 (require 'package)
 (setq package-user-dir "~/.emacs.d/packages/")
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
-
 (package-initialize)
 
 (defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-Return a list of installed packages or nil for every skipped package."
   (mapcar
    (lambda (package)
      (if (package-installed-p package)
          nil
-       ;;(if (y-or-n-p (format "Package %s is missing. Install it? " package))
            (package-install package)
          package)) ;;)
    packages))
@@ -28,14 +23,48 @@ Return a list of installed packages or nil for every skipped package."
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'flx-ido 'flx 'grizzl 'haskell-mode 'helm-projectile 'projectile 'helm 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile)
 
+(auto-package-update-maybe)
+
+;; requires
+(require 'expand-region)
+(require 'uniquify)
+(require 'powerline)
+(require 'sql)
+(require 'psc-ide)
+
+;; (require 'magit)
+
+;; misc
+(setq default-directory "~" )
+(global-subword-mode 1)
+(define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
+(put 'upcase-region 'disabled nil)
+(setq auto-window-vscroll nil) ;; speed up next-line
+(setq gc-cons-threshold 20000000) ;; less frequent gc
+
+;; key bindings
+(global-set-key (kbd "M-+") (lambda () (interactive) (load "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-M-/") 'company-complete)
+(global-set-key (kbd "C-M-w") 'kill-ring-save)
+(global-set-key (kbd "C-x 1") 'nil)
+(global-set-key (kbd "C-x C-b") 'nil)
+(global-set-key (kbd "M-?") 'nil)
+(global-set-key (kbd "M-.") 'nil)
+(global-set-key (kbd "M-B") 'magit-blame)
+(global-set-key (kbd "M-L") 'flycheck-next-error)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-M-f") (lambda () (interactive) (find-file "/ssh:linaro:~/Programming/epimorphism6/TODO.txt")))
+
+(global-set-key "\C-s" 'swiper)
+(global-set-key "\C-r" 'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "M-x") 'counsel-M-x)
 
 ;; fundamental mode for scratch buffer
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message nil)
-
-(setq default-directory "~" )
 
 ;; automatically sync with disk changes
 (defun revert-all-buffers ()
@@ -50,196 +79,7 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key (kbd "M-R") 'revert-all-buffers)
 (global-auto-revert-mode t)
 
-;; automatically clean up bad whitespace
-
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
-
-(setq-default indent-tabs-mode nil)
-;; if indent-tabs-mode is off, untabify before saving
-(add-hook 'write-file-hooks
-         (lambda () (if (not indent-tabs-mode)
-                        (untabify (point-min) (point-max)))
-                     nil ))
-
-(global-subword-mode 1)
-
-;; Temporary files
-(setq auto-save-default nil)
-(setq make-backup-files nil)
-(setq create-lockfiles nil)
-
-(add-to-list 'exec-path "/usr/local/bin")
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-
-;; add osx path & sync with rvm
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-(rvm-activate-corresponding-ruby)
-
-
-;; INDIVIDUAL PACKAGE & MODE CONFIGURATION
-
-(add-to-list 'load-path "~/.emacs.d/epimorphism/")
-(autoload 'epimorphism-mode "epimorphism-mode" nil t)
-(setq auto-mode-alist (cons '("\.epi$" . epimorphism-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\.epic$" . epimorphism-mode) auto-mode-alist))
-
-(add-hook 'after-init-hook 'global-flycheck-mode)
-
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-(add-hook 'haskell-mode-hook 'intero-mode)
-
-(autoload 'glsl-mode "glsl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
-
-(global-set-key (kbd "C-M-f") (lambda () (interactive) (find-file "/ssh:linaro:~/Programming/epimorphism6/TODO.txt")))
-
-(define-key key-translation-map [(control ?\;)]  [127])
-
-(require 'psc-ide)
-
-;;(setq psc-ide-use-purs nil)
-(add-hook 'purescript-mode-hook
-  (lambda ()
-    (psc-ide-mode)
-    (company-mode)
-    (flycheck-mode)
-    (turn-on-purescript-indentation)))
-
-;;(setq psc-ide-use-npm-bin t)
-
-(global-set-key (kbd "C-M-/") 'company-complete)
-
-(setq auto-mode-alist
-      (cons '("\\.m$" . octave-mode) auto-mode-alist))
-
-;; tab width bs
-(setq-default c-basic-offset 2
-                  tab-width 2
-                  indent-tabs-mode nil)
-
-(add-hook 'python-mode-hook
-      (lambda ()
-        (setq indent-tabs-mode nil)
-        (setq tab-width 4)
-        (setq python-indent 4)))
-
-(setq c-default-style "linux")
-;;(define-key c-mode-base-map "\t" 'self-insert-command)
-
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
-
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
-(add-hook 'c-mode-hook
-      '(lambda()
-        (setq c-basic-offset 2)
-        (setq indent-tabs-mode t)))
-
-(add-hook 'css-mode-hook
-      (lambda ()
-        (setq css-indent-offset 2)
-        (setq indent-tabs-mode nil)))
-
-(add-hook 'scss-mode-hook
-      (lambda ()
-        (setq css-indent-offset 2)
-        (setq indent-tabs-mode nil)))
-
-(add-hook 'coffee-mode-hook 'coffee-custom)
-(setq auto-mode-alist (cons '("\\.coffee.erb$" . coffee-mode) auto-mode-alist))
-(defun coffee-custom ()
-  "coffee-mode-hook"
-  (make-local-variable 'tab-width)
-  (set 'tab-width 2)
-)
-
-(setq tab-width 2)
-(setq js-indent-level 2)
-
-;; no coding: utf-8 lines
-(setq ruby-insert-encoding-magic-comment nil)
-
-;; projectile setup
-(projectile-global-mode) ;; to enable in all buffers
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;;(setq projectile-enable-caching t)
-(helm-mode 1)
-(setq projectile-use-git-grep 1)
-
-(require 'grizzl)
-(setq projectile-completion-system 'grizzl)
-
-;; ido mode
-(require 'ido)
-(require 'flx-ido)
-(ido-mode 1)
-;;(ido-everywhere 1)
-(flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-
-;; org mode
-;; The following lines are always needed.  Choose your own keys.
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
-(setq org-startup-indented t)
-(setq org-log-done t)
-
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
-;; windmove setup
-(windmove-default-keybindings)
-(global-set-key (kbd "C-M-j") 'windmove-left)
-(global-set-key (kbd "C-M-<left>") 'windmove-left)
-(global-set-key (kbd "C-M-l") 'windmove-right)
-(global-set-key (kbd "C-M-<right>") 'windmove-right)
-(global-set-key (kbd "C-M-i") 'windmove-up)
-(global-set-key (kbd "C-M-<up>") 'windmove-up)
-(global-set-key (kbd "C-M-k") 'windmove-down)
-(global-set-key (kbd "C-M-<down>") 'windmove-down)
-
-(require 'sql)
-(autoload 'sql-mode "sql-mode" "SQL Editing Mode" t)
-      (setq auto-mode-alist
-         (append '(("\\.sql$" . sql-mode)
-                   ("\\.q$" . sql-mode))
-                 auto-mode-alist))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(haskell-process-type (quote stack-ghci))
- '(package-selected-packages
-   (quote
-    (cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
-
-
-
-
-
-(global-set-key (kbd "C-M-w") 'kill-ring-save)
-(global-set-key (kbd "C-x 1") 'nil)
-(global-set-key (kbd "C-x C-b") 'nil)
-(global-set-key (kbd "M-?") 'nil)
-(global-set-key (kbd "M-.") 'nil)
-
-(global-set-key (kbd "M-B") 'magit-blame)
-(global-set-key (kbd "M-L") 'flycheck-next-error)
-
-
-
+;; misc function
 (defun find-first-non-ascii-char ()
   "Find the first non-ascii character from point onwards."
   (interactive)
@@ -255,17 +95,190 @@ Return a list of installed packages or nil for every skipped package."
     (if point
         (goto-char point)
         (message "No non-ascii characters."))))
-(custom-set-faces
+
+;; automatically clean up bad whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+(setq-default indent-tabs-mode nil)
+
+;; if indent-tabs-mode is off, untabify before saving
+(add-hook 'write-file-hooks
+         (lambda () (if (not indent-tabs-mode)
+                        (untabify (point-min) (point-max)))
+                     nil ))
+
+;; Temporary files
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
+
+;; add to path
+(add-to-list 'exec-path "/usr/local/bin")
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+
+;; add osx path & sync with rvm
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+(rvm-activate-corresponding-ruby)
+
+;; tab width bs
+(setq-default c-basic-offset 2
+              tab-width 2
+              indent-tabs-mode nil)
+(setq tab-width 2)
+(setq js-indent-level 2)
+
+;; specific package configuration
+
+;; projectile setup
+(projectile-global-mode) ;; to enable in all buffers
+(counsel-projectile-mode)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;;(setq projectile-enable-caching t)
+(setq projectile-use-git-grep 1)
+
+;; dired
+(put 'dired-find-alternate-file 'disabled nil)
+(setq-default dired-listing-switches "-alh")
+
+;; ivy/counsel/swiper
+(use-package ivy :ensure t
+  :diminish (ivy-mode . "")
+  :bind
+  ;;(:map ivy-mode-map
+  ;; ("C-'" . ivy-avy))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t) ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq enable-recursive-minibuffers t)
+  (setq ivy-height 10) ;; number of result lines to display
+  (setq ivy-count-format "") ;; does not count candidates
+  (setq ivy-initial-inputs-alist nil)   ;; no regexp by default
+  (setq ivy-use-selectable-prompt t) ;; selectable prompt
+  (setq ivy-re-builders-alist   ;; configure regexp engine.
+        '((t   . ivy--regex-ignore-order))))   ;; allow input not in order
+
+;; org mode
+;; The following lines are always needed.  Choose your own keys.
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+(setq org-startup-indented t)
+(setq org-log-done t)
+
+;; windmove setup
+(windmove-default-keybindings)
+(global-set-key (kbd "C-M-j") 'windmove-left)
+(global-set-key (kbd "C-M-<left>") 'windmove-left)
+(global-set-key (kbd "C-M-l") 'windmove-right)
+(global-set-key (kbd "C-M-<right>") 'windmove-right)
+(global-set-key (kbd "C-M-i") 'windmove-up)
+(global-set-key (kbd "C-M-<up>") 'windmove-up)
+(global-set-key (kbd "C-M-k") 'windmove-down)
+(global-set-key (kbd "C-M-<down>") 'windmove-down)
+
+;; Language modes
+
+;; epimorphism
+(add-to-list 'load-path "~/.emacs.d/epimorphism/")
+(autoload 'epimorphism-mode "epimorphism-mode" nil t)
+(setq auto-mode-alist (cons '("\.epi$" . epimorphism-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\.epic$" . epimorphism-mode) auto-mode-alist))
+
+;; flycheck
+(add-hook 'after-init-hook 'global-flycheck-mode)
+
+;; haskell
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+(add-hook 'haskell-mode-hook 'intero-mode)
+
+;; glsl
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+
+;;(setq psc-ide-use-purs nil)
+(add-hook 'purescript-mode-hook
+  (lambda ()
+    (psc-ide-mode)
+    (company-mode)
+    (flycheck-mode)
+    (turn-on-purescript-indentation)))
+
+;; octave
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+;; python
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode nil)
+        (setq tab-width 4)
+        (setq python-indent 4)))
+
+;; c & c++
+(setq c-default-style "linux")
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(add-hook 'c-mode-hook
+      '(lambda()
+        (setq c-basic-offset 2)
+        (setq indent-tabs-mode t)))
+
+;; css
+(add-hook 'css-mode-hook
+      (lambda ()
+        (setq css-indent-offset 2)
+        (setq indent-tabs-mode nil)))
+
+(add-hook 'scss-mode-hook
+      (lambda ()
+        (setq css-indent-offset 2)
+        (setq indent-tabs-mode nil)))
+
+;; coffescript
+(add-hook 'coffee-mode-hook 'coffee-custom)
+(setq auto-mode-alist (cons '("\\.coffee.erb$" . coffee-mode) auto-mode-alist))
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (make-local-variable 'tab-width)
+  (set 'tab-width 2)
+  )
+
+;; sql mode
+(autoload 'sql-mode "sql-mode" "SQL Editing Mode" t)
+      (setq auto-mode-alist
+         (append '(("\\.sql$" . sql-mode)
+                   ("\\.q$" . sql-mode))
+                 auto-mode-alist))
+
+;; ruby - no coding: utf-8 lines
+(setq ruby-insert-encoding-magic-comment nil)
+
+;; what the hells is this stuff
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-process-type (quote stack-ghci))
+ '(package-selected-packages
+   (quote
+    (auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+
+
+;;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-(put 'upcase-region 'disabled nil)
-
+ ;;)
 
 ;; UI CONFIGURATION
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
  (set-frame-parameter (selected-frame) 'alpha '(87 . 50))
@@ -282,14 +295,9 @@ Return a list of installed packages or nil for every skipped package."
                            (progn (setq old-fullscreen current-value)
                                   'fullboth)))))
 
-;; remap mac modifier keys
-(setq mac-command-modifier 'control)
-(setq mac-option-modifier 'meta)
-
 (set-background-color "Black")
 (set-foreground-color "White")
 
-(require 'powerline)
 (powerline-default-theme)
 
 (tool-bar-mode -1)
@@ -306,9 +314,6 @@ Return a list of installed packages or nil for every skipped package."
 ;;(load-theme 'afternoon t)
 
 (fringe-mode 6)
-
-(require 'uniquify)
-
 
 (use-package spaceline
 :init
