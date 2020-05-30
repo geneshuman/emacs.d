@@ -182,9 +182,12 @@
 
 ;; epimorphism
 (add-to-list 'load-path "~/.emacs.d/epimorphism/")
-(autoload 'epimorphism-mode "epimorphism-mode" nil t)
-(setq auto-mode-alist (cons '("\.epi$" . epimorphism-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\.epic$" . epimorphism-mode) auto-mode-alist))
+(autoload 'epic-mode "epic-mode" nil t)
+(setq auto-mode-alist (cons '("\.epic$" . epic-mode) auto-mode-alist))
+(autoload 'epim-mode "epim-mode" nil t)
+(setq auto-mode-alist (cons '("\.epim$" . epim-mode) auto-mode-alist))
+(autoload 'epi-mode "epi-mode" nil t)
+(setq auto-mode-alist (cons '("\.epi$" . epi-mode) auto-mode-alist))
 
 ;; flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)

@@ -1,4 +1,4 @@
-;;; epimorphism-mode.el --- major mode for Open EPIMORPHISM shader files
+;;; epic-mode.el --- major mode for EPIMORPHISM shader files
 ;;
 ;; Copyright (C) 4067 Yo Mama
 ;;
@@ -24,15 +24,15 @@
 
 ;; This file requires Emacs-20.3 or higher and package cc-mode.
 
-;; If epimorphism-mode is not part of your distribution, put this file into your
+;; If epic-mode is not part of your distribution, put this file into your
 ;; load-path and the following into your ~/.emacs:
-;;   (autoload 'epimorphism-mode "epimorphism-mode" nil t)
-;;   (add-to-list 'auto-mode-alist '("\\.lib\\'" . epimorphism-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.slib\\'" . epimorphism-mode))
+;; (add-to-list 'load-path "~/.emacs.d/epimorphism/")
+;; (autoload 'epic-mode "epic-mode" nil t)
+;; (setq auto-mode-alist (cons '("\.epic$" . epic-mode) auto-mode-alist))
 
 ;;; Code:
 
-(provide 'epimorphism-mode)
+(provide 'epic-mode)
 
 (eval-when-compile      ; required and optional libraries
   (require 'cc-mode)
@@ -40,68 +40,57 @@
 
 (require 'align)
 
-(defgroup epimorphism nil
-  "Epimorphism Shading Language Major Mode"
+(defgroup epic nil
+  "Epimorphism Component Major Mode"
   :group 'languages)
 
-(defconst epimorphism-language-version "6.0"
-  "EPIMORPHISM language version number.")
+(defconst epic-language-version "6.0"
+  "EPIC language version number.")
 
 (defconst gl-version "1.1"
-  "EPIMORPHISM major mode version number.")
+  "EPIC major mode version number.")
 
-(defvar epimorphism-type-face 'epimorphism-type-face)
-(defface epimorphism-type-face
-  '((t (:inherit font-lock-type-face))) "epimorphism: type face"
-  :group 'epimorphism)
+(defvar epic-type-face 'epic-type-face)
+(defface epic-type-face
+  '((t (:inherit font-lock-type-face))) "epic: type face"
+  :group 'epic)
 
-(defvar epimorphism-builtin-face 'epimorphism-builtin-face)
-(defface epimorphism-builtin-face
-  '((t (:inherit font-lock-builtin-face))) "epimorphism: builtin face"
-  :group 'epimorphism)
+(defvar epic-builtin-face 'epic-builtin-face)
+(defface epic-builtin-face
+  '((t (:inherit font-lock-builtin-face))) "epic: builtin face"
+  :group 'epic)
 
-(defvar epimorphism-deprecated-builtin-face 'epimorphism-deprecated-builtin-face)
-(defface epimorphism-deprecated-builtin-face
-  '((t (:inherit epimorphism-builtin-face))) "epimorphism: deprecated builtin face"
-  :group 'epimorphism)
+(defvar epic-keyword-face 'epic-keyword-face)
+(defface epic-keyword-face
+  '((t (:inherit font-lock-keyword-face))) "epic: keyword face"
+  :group 'epic)
 
-(defvar epimorphism-keyword-face 'epimorphism-keyword-face)
-(defface epimorphism-keyword-face
-  '((t (:inherit font-lock-keyword-face))) "epimorphism: keyword face"
-  :group 'epimorphism)
+(defvar epic-module-name-face 'epic-module-name-face)
+(defface epic-module-name-face
+  '((t (:inherit font-lock-variable-name-face :foreground "#389"))) "epim: module face"
+  :group 'epim)
 
-(defvar epimorphism-deprecated-keyword-face 'epimorphism-deprecated-keyword-face)
-(defface epimorphism-deprecated-keyword-face
-  '((t (:inherit epimorphism-keyword-face))) "epimorphism: deprecated keyword face"
-  :group 'epimorphism)
+(defvar epic-par-name-face 'epic-par-name-face)
+(defface epic-par-name-face
+  '((t (:inherit font-lock-variable-name-face :foreground "#C42"))) "epim: par face"
+  :group 'epim)
 
-(defvar epimorphism-variable-name-face 'epimorphism-variable-name-face)
-(defface epimorphism-variable-name-face
-  '((t (:inherit font-lock-variable-name-face))) "epimorphism: variable face"
-  :group 'epimorphism)
+(defvar epic-preprocessor-face 'epic-preprocessor-face)
+(defface epic-preprocessor-face
+  '((t (:inherit font-lock-preprocessor-face))) "epic: preprocessor face"
+  :group 'epic)
 
-(defvar epimorphism-deprecated-variable-name-face 'epimorphism-deprecated-variable-name-face)
-(defface epimorphism-deprecated-variable-name-face
-  '((t (:inherit epimorphism-variable-name-face))) "epimorphism: deprecated variable face"
-  :group 'epimorphism)
+(defvar epic-mode-hook nil)
 
-(defvar epimorphism-preprocessor-face 'epimorphism-preprocessor-face)
-(defface epimorphism-preprocessor-face
-  '((t (:inherit font-lock-preprocessor-face))) "epimorphism: preprocessor face"
-  :group 'epimorphism)
-
-(defvar epimorphism-mode-hook nil)
-
-(defvar epimorphism-mode-map
-  (let ((epimorphism-mode-map (make-sparse-keymap)))
-    (define-key epimorphism-mode-map [S-iso-lefttab] 'ff-find-other-file)
-    epimorphism-mode-map)
-  "Keymap for EPIMORPHISM major mode")
+(defvar epic-mode-map
+  (let ((epic-mode-map (make-sparse-keymap)))
+    (define-key epic-mode-map [S-iso-lefttab] 'ff-find-other-file)
+    epic-mode-map)
+  "Keymap for EPIC major mode")
 
 ;;;###autoload
 (progn
-  (add-to-list 'auto-mode-alist '("\\.epi\\'" . epimorphism-mode))
-  (add-to-list 'auto-mode-alist '("\\.epim\\'" . epimorphism-mode)))
+  (add-to-list 'auto-mode-alist '("\\.epic\\'" . epic-mode)))
 
 (eval-and-compile
   ;;
@@ -110,7 +99,7 @@
   ;;    have optimized regexps so its not done at eval time.
   ;;
 
-  (defvar epimorphism-type-list
+  (defvar epic-type-list
     '("float" "double" "int" "void" "bool" "true" "false" "mat2" "mat3"
       "mat4" "dmat2" "dmat3" "dmat4" "mat2x2" "mat2x3" "mat2x4" "dmat2x2"
       "dmat2x3" "dmat2x4" "mat3x2" "mat3x3" "mat3x4" "dmat3x2" "dmat3x3"
@@ -137,7 +126,7 @@
       "half" "fixed" "unsigned" "hvec2" "hvec3" "hvec4" "fvec2" "fvec3" "fvec4"
       "sampler3DRect"))
 
-  (defvar epimorphism-modifier-list
+  (defvar epic-modifier-list
     '("attribute" "const" "uniform" "varying" "buffer" "shared" "coherent" "volatile" "restrict"
       "readonly" "writeonly" "atomic_uint" "layout" "centroid" "flat" "smooth"
       "noperspective" "patch" "sample" "break" "continue" "do" "for" "while"
@@ -147,12 +136,9 @@
       "typedef" "template" "this" "packed" "resource" "goto" "inline" "noinline"
       "public" "static" "extern" "external" "interface" "superp" "input" "output"
       "filter" "sizeof" "cast" "namespace" "using" "row_major"
-      "early_fragment_tests" "Module" "Component" "code" ))
+      "early_fragment_tests"))
 
-  (defvar epimorphism-deprecated-modifier-list
-    '("varying" "attribute")) ; centroid is deprecated when used with varying
-
-  (defvar epimorphism-builtin-list
+  (defvar epic-builtin-list
     '("abs" "acos" "acosh" "all" "any" "asin" "asinh" "atan" "atanh"
       "atomicCounter" "atomicCounterDecrement" "atomicCounterIncrement"
       "barrier" "bitCount" "bitfieldExtract" "bitfieldInsert" "bitfieldReverse"
@@ -182,102 +168,72 @@
       "textureSize" "transpose" "trunc" "uaddCarry" "uintBitsToFloat"
       "umulExtended" "unpackDouble2x32" "unpackHalf2x16" "unpackSnorm2x16"
       "unpackSnorm4x8" "unpackUnorm2x16" "unpackUnorm4x8" "usubBorrow"
-      "id" "family" "includes" "default_mod" "children" "component" "flags" "par"
-      "modules" "sub" "images" "scripts" "zn"))
+      "flags" "desc" "include"))
 
-  (defvar epimorphism-deprecated-builtin-list
-    '("texture1D" "texture1DProj" "texture1DLod" "texture1DProjLod"
-      "texture2D" "texture2DProj" "texture2DLod" "texture2DProjLod"
-      "texture2DRect" "texture2DRectProj"
-      "texture3D" "texture3DProj" "texture3DLod" "texture3DProjLod"
-      "shadow1D" "shadow1DProj" "shadow1DLod" "shadow1DProjLod"
-      "shadow2D" "shadow2DProj" "shadow2DLod" "shadow2DProjLod"
-      "textureCube" "textureCubeLod"))
-
-  (defvar epimorphism-deprecated-variables-list
-    '("gl_FragColor" "gl_FragData" "gl_MaxVarying" "gl_MaxVaryingFloats"
-      "gl_MaxVaryingComponents"))
-
-  (defvar epimorphism-preprocessor-directive-list
+  (defvar epic-preprocessor-directive-list
     '("define" "undef" "if" "ifdef" "ifndef" "else" "elif" "endif"
       "error" "pragma" "extension" "version" "line"))
 
-  (defvar epimorphism-preprocessor-expr-list
+  (defvar epic-preprocessor-expr-list
     '("defined" "##"))
-
-  (defvar epimorphism-preprocessor-builtin-list
-    '("__LINE__" "__FILE__" "__VERSION__"))
 
   (autoload 'w3m-browse-url "w3m" "View URL using w3m")
   ) ; eval-and-compile
 
 (eval-when-compile
-  (defun epimorphism-ppre (re)
+  (defun epic-ppre (re)
     (format "\\<\\(%s\\)\\>" (regexp-opt re))))
 
-(defvar epimorphism-font-lock-keywords-1
+(defvar epic-font-lock-keywords-1
   (list
    (cons (eval-when-compile
            (format "^[ \t]*#[ \t]*\\<\\(%s\\)\\>"
-                   (regexp-opt epimorphism-preprocessor-directive-list)))
-         epimorphism-preprocessor-face)
+                   (regexp-opt epic-preprocessor-directive-list)))
+         epic-preprocessor-face)
    (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-type-list))
-         epimorphism-type-face)
+           (epic-ppre epic-type-list))
+         epic-type-face)
    (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-deprecated-modifier-list))
-         epimorphism-deprecated-keyword-face)
+           (epic-ppre epic-modifier-list))
+         epic-keyword-face)
    (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-modifier-list))
-         epimorphism-keyword-face)
-   (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-preprocessor-builtin-list))
-         epimorphism-keyword-face)
-   (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-deprecated-builtin-list))
-         epimorphism-deprecated-builtin-face)
-   (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-builtin-list))
-         epimorphism-builtin-face)
-   (cons (eval-when-compile
-           (epimorphism-ppre epimorphism-deprecated-variables-list))
-         epimorphism-deprecated-variable-name-face)
-   (cons "gl_[A-Z][A-Za-z_]+" epimorphism-variable-name-face)
+           (epic-ppre epic-builtin-list))
+         epic-builtin-face)
+   (cons "#[A-Z_0-9]+" epic-module-name-face)
+   (cons "\\$[A-Za-z0-9_]+" epic-par-name-face)
    )
-  "Minimal highlighting expressions for EPIMORPHISM mode")
+  "Minimal highlighting expressions for EPIC mode")
 
 
-(defvar epimorphism-font-lock-keywords epimorphism-font-lock-keywords-1
-  "Default highlighting expressions for EPIMORPHISM mode")
+(defvar epic-font-lock-keywords epic-font-lock-keywords-1
+  "Default highlighting expressions for EPIC mode")
 
-(defvar epimorphism-mode-syntax-table
-  (let ((epimorphism-mode-syntax-table (make-syntax-table)))
-    (modify-syntax-entry ?/ ". 124b" epimorphism-mode-syntax-table)
-    (modify-syntax-entry ?* ". 23" epimorphism-mode-syntax-table)
-    (modify-syntax-entry ?\n "> b" epimorphism-mode-syntax-table)
-    (modify-syntax-entry ?_ "w" epimorphism-mode-syntax-table)
-    epimorphism-mode-syntax-table)
-  "Syntax table for epimorphism-mode")
+(defvar epic-mode-syntax-table
+  (let ((epic-mode-syntax-table (make-syntax-table)))
+    (modify-syntax-entry ?/ ". 124b" epic-mode-syntax-table)
+    (modify-syntax-entry ?* ". 23" epic-mode-syntax-table)
+    (modify-syntax-entry ?\n "> b" epic-mode-syntax-table)
+    (modify-syntax-entry ?_ "w" epic-mode-syntax-table)
+    epic-mode-syntax-table)
+  "Syntax table for epic-mode")
+
 
 (defvar epimorphism-other-file-alist
-  '(("\\.epi$" (".epi"))
-    ("\\.epic$" (".epic"))
-    )
+  '(("\\.epic$" (".epic")))
   "Alist of extensions to find given the current file's extension")
 
-
-(defun epimorphism-man-completion-list ()
-  (append epimorphism-builtin-list epimorphism-deprecated-builtin-list))
+(defun epic-man-completion-list ()
+  (append epic-builtin-list epic-deprecated-builtin-list))
 
 ;;;###autoload
-(define-derived-mode epimorphism-mode c-mode "EPIMORPHISM"
-  "Major mode for editing OpenEPIMORPHISM shader files."
-  (set (make-local-variable 'font-lock-defaults) '(epimorphism-font-lock-keywords))
-  (set (make-local-variable 'ff-other-file-alist) 'epimorphism-other-file-alist)
+(define-derived-mode epic-mode c-mode "EpiComponent"
+  "Major mode for editing Epimorphism Component files."
+  (set (make-local-variable 'font-lock-defaults) '(epic-font-lock-keywords))
+  (set (make-local-variable 'ff-other-file-alist) 'epic-other-file-alist)
   (set (make-local-variable 'comment-start) "// ")
   (set (make-local-variable 'comment-end) "")
   (set (make-local-variable 'comment-padding) "")
-  (add-to-list 'align-c++-modes 'epimorphism-mode)
+  (add-to-list 'align-c++-modes 'epic-mode)
   )
 
-;;; epimorphism-mode.el ends here
+;;; epic-mode.el ends here
