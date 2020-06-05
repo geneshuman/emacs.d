@@ -23,7 +23,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree)
 
 (auto-package-update-maybe)
 
@@ -33,12 +33,17 @@
 (require 'powerline)
 (require 'sql)
 (require 'psc-ide)
+(require 'flx)
+(require 'whole-line-or-region)
+(require 'dired-x)
+
+(whole-line-or-region--turn-on)
 
 ;; (require 'magit)
 
 ;; misc
 (setq default-directory "~" )
-(global-subword-mode 1)
+(global-subword-mode 1) ;; split by camel case
 (define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
 (put 'upcase-region 'disabled nil)
 (setq auto-window-vscroll nil) ;; speed up next-line
@@ -46,21 +51,22 @@
 
 ;; key bindings
 (global-set-key (kbd "M-+") (lambda () (interactive) (load "~/.emacs.d/init.el")))
-(global-set-key (kbd "C-M-/") 'company-complete)
-(global-set-key (kbd "C-M-w") 'kill-ring-save)
+(global-set-key (kbd "C-M-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-x 1") 'nil)
-(global-set-key (kbd "C-x C-b") 'nil)
+;;(global-set-key (kbd "C-x C-b") 'nil)
 (global-set-key (kbd "M-?") 'nil)
 (global-set-key (kbd "M-.") 'nil)
 (global-set-key (kbd "M-B") 'magit-blame)
 (global-set-key (kbd "M-L") 'flycheck-next-error)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-M-f") (lambda () (interactive) (find-file "/ssh:linaro:~/Programming/epimorphism6/TODO.txt")))
+(global-set-key (kbd "M-i") 'imenu)
+(global-set-key (kbd "C-=") 'er/expand-reg )
+(global-set-key (kbd "C-M-<backspace>") 'kill-sexp)
 
-(global-set-key "\C-s" 'swiper)
-(global-set-key "\C-r" 'swiper)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "M-x") 'counsel-M-x)
+(autoload 'zap-up-to-char "misc"
+    "Kill up to, but not including ARGth occurrence of CHAR.
+  \(fn arg char)"
+    'interactive)
+(global-set-key [remap zap-to-char] 'zap-up-to-char)
 
 ;; fundamental mode for scratch buffer
 (setq initial-major-mode 'fundamental-mode)
@@ -105,7 +111,16 @@
 (add-hook 'write-file-hooks
          (lambda () (if (not indent-tabs-mode)
                         (untabify (point-min) (point-max)))
-                     nil ))
+           nil ))
+
+;; remote sudo function
+(defun sudo ()
+  "Use TRAMP to `sudo' the current buffer."
+  (interactive)
+  (when buffer-file-name
+    (find-alternate-file
+     (concat "/sudo:root@localhost:"
+             buffer-file-name))))
 
 ;; Temporary files
 (setq auto-save-default nil)
@@ -140,13 +155,16 @@
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
 (setq-default dired-listing-switches "-alh")
+(setq dired-dwim-target t)
+(require 'dired-filetype-face)
+(setq dired-listing-switches "-alh")
 
 ;; ivy/counsel/swiper
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
-  :bind
+  ;;:bin
   ;;(:map ivy-mode-map
-  ;; ("C-'" . ivy-avy))
+  ;;      ("C-'" . ivy-avy))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t) ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
@@ -155,8 +173,30 @@
   (setq ivy-count-format "") ;; does not count candidates
   (setq ivy-initial-inputs-alist nil)   ;; no regexp by default
   (setq ivy-use-selectable-prompt t) ;; selectable prompt
-  (setq ivy-re-builders-alist   ;; configure regexp engine.
-        '((t   . ivy--regex-ignore-order))))   ;; allow input not in order
+  (define-key ivy-minibuffer-map (kbd "C-m") 'ivy-alt-done)
+  (setq ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (counsel-grep-or-swiper . ivy--regex-plus)
+          (counsel-git-grep . ivy--regex-plus)
+          (t      . ivy--regex-fuzzy))))
+
+(require 'ivy-rich)
+(ivy-rich-mode 1)
+(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+
+(global-set-key "\C-s" 'swiper)
+(global-set-key "\C-r" 'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-c b") 'counsel-bookmark)
+(global-set-key (kbd "C-S-s") 'isearch-forward)
+(global-set-key (kbd "C-S-r") 'isearch-backward)
+
+;; avy
+(global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
+(global-set-key (kbd "M-g f") 'avy-goto-line)
+(setq avy-timeout-seconds 0.35)
 
 ;; org mode
 ;; The following lines are always needed.  Choose your own keys.
@@ -166,6 +206,11 @@
 (global-set-key "\C-cb" 'org-switchb)
 (setq org-startup-indented t)
 (setq org-log-done t)
+
+;; undo tree
+(global-undo-tree-mode)
+(setq undo-tree-visualizer-diff t   )
+(global-set-key (kbd "C-M-/") 'undo-tree-redo)
 
 ;; windmove setup
 (windmove-default-keybindings)
@@ -180,7 +225,7 @@
 
 ;; Language modes
 
-;; epimorphism
+;; Epimorphism
 (add-to-list 'load-path "~/.emacs.d/epimorphism/")
 (autoload 'epic-mode "epic-mode" nil t)
 (setq auto-mode-alist (cons '("\.epic$" . epic-mode) auto-mode-alist))
@@ -271,7 +316,7 @@
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+    (diredfl dired-filetype-face avy-zap avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
 
 
 ;;(custom-set-faces
@@ -340,3 +385,9 @@
     (spaceline-toggle-major-mode-on)
     (spaceline-toggle-hud-on) ;; ?
     (spaceline-emacs-theme)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
