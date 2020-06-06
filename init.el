@@ -63,9 +63,9 @@
 (global-set-key (kbd "C-M-<backspace>") 'kill-sexp)
 
 (autoload 'zap-up-to-char "misc"
-    "Kill up to, but not including ARGth occurrence of CHAR.
-  \(fn arg char)"
-    'interactive)
+  "Kill up to, but not including ARGth occurrence of CHAR.
+   \(fn arg char)"
+  'interactive)
 (global-set-key [remap zap-to-char] 'zap-up-to-char)
 
 ;; fundamental mode for scratch buffer
@@ -214,6 +214,7 @@
 ;; windmove setup
 (windmove-default-keybindings)
 (global-set-key (kbd "C-M-j") 'windmove-left)
+(global-set-key (kbd "C-M-o") 'windmove-left)
 (global-set-key (kbd "C-M-<left>") 'windmove-left)
 (global-set-key (kbd "C-M-l") 'windmove-right)
 (global-set-key (kbd "C-M-<right>") 'windmove-right)
