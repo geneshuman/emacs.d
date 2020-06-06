@@ -183,19 +183,21 @@
 (ivy-rich-mode 1)
 (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
-(global-set-key "\C-s" 'swiper)
-(global-set-key "\C-r" 'swiper)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-c b") 'counsel-bookmark)
+
+(global-set-key (kbd "C-M-s") 'swiper)
+(global-set-key (kbd "C-M-r") 'swiper)
 (global-set-key (kbd "C-S-s") 'isearch-forward)
 (global-set-key (kbd "C-S-r") 'isearch-backward)
 
 ;; avy
-(global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
+(global-set-key (kbd "\C-s") 'avy-goto-char-timer)
+(global-set-key (kbd "\C-r") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
-(setq avy-timeout-seconds 0.35)
+(setq avy-timeout-seconds 0.3)
 
 ;; org mode
 ;; The following lines are always needed.  Choose your own keys.
