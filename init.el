@@ -157,6 +157,8 @@
 (setq dired-dwim-target t)
 (require 'dired-filetype-face)
 (setq dired-listing-switches "-alh")
+(setq-default dired-omit-files-p t) ; Buffer-local variable
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
 ;; ivy/counsel/swiper
 (use-package ivy :ensure t
@@ -188,14 +190,14 @@
 (global-set-key (kbd "C-M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-c b") 'counsel-bookmark)
 
-(global-set-key (kbd "C-M-s") 'swiper)
-(global-set-key (kbd "C-M-r") 'swiper)
+(global-set-key (kbd "\C-s") 'swiper)
+(global-set-key (kbd "\C-r") 'swiper)
 (global-set-key (kbd "C-S-s") 'isearch-forward)
 (global-set-key (kbd "C-S-r") 'isearch-backward)
 
 ;; avy
-(global-set-key (kbd "\C-s") 'avy-goto-char-timer)
-(global-set-key (kbd "\C-r") 'avy-goto-char-timer)
+(global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
+(global-set-key (kbd "C-M-r") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (setq avy-timeout-seconds 0.3)
 
