@@ -23,7 +23,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'ccls  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode)
 
 (auto-package-update-maybe)
 
@@ -47,7 +47,8 @@
 (define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
 (put 'upcase-region 'disabled nil)
 (setq auto-window-vscroll nil) ;; speed up next-line
-(setq gc-cons-threshold 20000000) ;; less frequent gc
+(setq gc-cons-threshold 100000000) ;; less frequent gc
+(setq read-process-output-max (* 1024 1024))
 
 ;; key bindings
 (global-set-key (kbd "M-+") (lambda () (interactive) (load "~/.emacs.d/init.el")))
@@ -179,6 +180,7 @@
         '((swiper . ivy--regex-plus)
           (counsel-grep-or-swiper . ivy--regex-plus)
           (counsel-git-grep . ivy--regex-plus)
+          (lsp-ivy-workspace-symbol . ivy--regex-plus)
           (t      . ivy--regex-fuzzy))))
 
 (require 'ivy-rich)
@@ -194,6 +196,18 @@
 (global-set-key (kbd "\C-r") 'swiper)
 (global-set-key (kbd "C-S-s") 'isearch-forward)
 (global-set-key (kbd "C-S-r") 'isearch-backward)
+
+(use-package ivy-xref
+  :ensure t
+  :init
+  ;; xref initialization is different in Emacs 27 - there are two different
+  ;; variables which can be set rather than just one
+  (when (>= emacs-major-version 27)
+    (setq xref-show-definitions-function #'ivy-xref-show-defs))
+  ;; Necessary in Emacs <27. In Emacs 27 it will affect all xref-based
+  ;; commands other than xref-find-definitions (e.g. project-find-regexp)
+  ;; as well
+  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 ;; avy
 (global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
@@ -241,6 +255,15 @@
 ;; flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
+;; company
+(use-package company
+  :init
+  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev)))
+  :config
+  (global-company-mode 1))
+
+(add-to-list 'company-backends 'company-c-headers)
+
 ;; haskell
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 (add-hook 'haskell-mode-hook 'intero-mode)
@@ -274,12 +297,56 @@
 ;; c & c++
 (setq c-default-style "linux")
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-hook 'c-mode-hook
       '(lambda()
         (setq c-basic-offset 2)
         (setq indent-tabs-mode t)))
+
+(setq lsp-keymap-prefix "C-'")
+
+(use-package lsp-mode :commands lsp :ensure t)
+(use-package lsp-mode
+    :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
+           (lsp-mode . lsp-enable-which-key-integration))
+    :custom
+    (lsp-prefer-capf t)
+    :commands lsp)
+
+(use-package lsp-ui :commands lsp-ui-mode :ensure t)
+(setq lsp-ui-sideline-delay 1.5)
+
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+  ;;:config
+  ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
+  ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
+
+
+(dap-auto-configure-mode 1)
+(require 'dap-lldb)
+
+(use-package which-key
+  :config
+  (setq which-key-show-early-on-C-h t)
+  ;; make sure which-key doesn't show normally but refreshes quickly after it is
+  ;; triggered.
+  (setq which-key-idle-delay 10000)
+  (setq which-key-idle-secondary-delay 0.05)
+    (which-key-mode))
+
+(global-set-key (kbd "M-.") 'xref-find-definitions)
+(global-set-key (kbd "M-?") 'xref-find-references)
+(add-hook 'lsp-ui-mode-hook
+          (lambda()
+            (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)))
+
+(define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
+
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
 ;; css
 (add-hook 'css-mode-hook
@@ -318,9 +385,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(haskell-process-type (quote stack-ghci))
+ '(lsp-prefer-capf t)
  '(package-selected-packages
    (quote
-    (diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+    (dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
 
 
 ;;(custom-set-faces

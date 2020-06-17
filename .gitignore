@@ -12,3 +12,8 @@ elpa
 *#*
 *.log
 *.DS_Store
+
+.lsp*
+.dap*
+bookmarks
+.last*
