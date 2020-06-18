@@ -23,7 +23,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'ccls  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key)
 
 (auto-package-update-maybe)
 
@@ -229,18 +229,6 @@
 (setq undo-tree-visualizer-diff t   )
 (global-set-key (kbd "C-M-/") 'undo-tree-redo)
 
-;; windmove setup
-(windmove-default-keybindings)
-(global-set-key (kbd "C-M-j") 'windmove-left)
-(global-set-key (kbd "C-M-o") 'windmove-left)
-(global-set-key (kbd "C-M-<left>") 'windmove-left)
-(global-set-key (kbd "C-M-l") 'windmove-right)
-(global-set-key (kbd "C-M-<right>") 'windmove-right)
-(global-set-key (kbd "C-M-i") 'windmove-up)
-(global-set-key (kbd "C-M-<up>") 'windmove-up)
-(global-set-key (kbd "C-M-k") 'windmove-down)
-(global-set-key (kbd "C-M-<down>") 'windmove-down)
-
 ;; Language modes
 
 ;; Epimorphism
@@ -311,18 +299,41 @@
     :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
            (lsp-mode . lsp-enable-which-key-integration))
     :custom
+    (lsp-auto-guess-root t)
     (lsp-prefer-capf t)
     :commands lsp)
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
-(setq lsp-ui-sideline-delay 1.5)
+(setq lsp-ui-sideline-delay 1.0)
 
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
-  ;;:config
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-enable-indentation nil)
+
+(setq company-minimum-prefix-length 3
+      company-idle-delay 0.0)
+
+(add-hook 'lsp-ui-mode-hook
+          (lambda()
+            (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)))
+
+;;(setq lsp-ui-doc-position 'bottom)
+;;(setq lsp-ui-doc-alignment 'window)
+;;(setq lsp-doc-use-we-webkit t)
+(setq lsp-ui-doc-enable nil)
+
+;;(use-package ccls
+;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;         (lambda () (require 'ccls) (lsp)))
+;;  :config
+;;  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
+
   ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
   ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
+
+
+(require 'lsp-mode)
+(add-hook 'c++-mode-hook 'lsp)
 
 
 (dap-auto-configure-mode 1)
@@ -339,10 +350,6 @@
 
 (global-set-key (kbd "M-.") 'xref-find-definitions)
 (global-set-key (kbd "M-?") 'xref-find-references)
-(add-hook 'lsp-ui-mode-hook
-          (lambda()
-            (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)))
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
@@ -388,7 +395,7 @@
  '(lsp-prefer-capf t)
  '(package-selected-packages
    (quote
-    (dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+    (modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
 
 
 ;;(custom-set-faces
@@ -397,6 +404,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;;)
+
+
+;; windmove setup
+(windmove-default-keybindings)
+(global-set-key (kbd "C-M-j") 'windmove-left)
+(global-set-key (kbd "C-M-o") 'windmove-left)
+(global-set-key (kbd "C-M-<left>") 'windmove-left)
+(global-set-key (kbd "C-M-l") 'windmove-right)
+(global-set-key (kbd "C-M-<right>") 'windmove-right)
+(global-set-key (kbd "C-M-i") 'windmove-up)
+(global-set-key (kbd "C-M-<up>") 'windmove-up)
+(global-set-key (kbd "C-M-k") 'windmove-down)
+(global-set-key (kbd "C-M-<down>") 'windmove-down)
 
 ;; UI CONFIGURATION
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
