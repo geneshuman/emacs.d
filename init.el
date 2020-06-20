@@ -23,7 +23,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls)
 
 (auto-package-update-maybe)
 
@@ -153,6 +153,7 @@
 ;;(setq projectile-enable-caching t)
 (setq projectile-use-git-grep 1)
 
+
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
@@ -191,6 +192,9 @@
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-c b") 'counsel-bookmark)
+
+(define-key projectile-mode-map [remap projectile-grep] nil)
+(global-set-key (kbd "C-c p s G") 'counsel-projectile-grep)
 
 (global-set-key (kbd "\C-s") 'swiper)
 (global-set-key (kbd "\C-r") 'swiper)
@@ -247,10 +251,26 @@
 (use-package company
   :init
   (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev)))
+  :custom
+  (company-tooltip-align-annotations 't)
   :config
   (global-company-mode 1))
 
+;; (use-package company-box
+;;   :after company
+;;   :diminish
+;;   :hook (company-mode . company-box-mode))
+
+(require 'company-tng)
+(company-tng-configure-default)
+(add-to-list 'company-frontends 'company-tng-frontend)
+
 (add-to-list 'company-backends 'company-c-headers)
+
+(setq company-minimum-prefix-length 2
+      company-idle-delay 0.0)
+
+;;(global-set-key (kbd "M-/") 'company-select-next) ;; defined in company-tng
 
 ;; haskell
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
@@ -299,34 +319,44 @@
     :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
            (lsp-mode . lsp-enable-which-key-integration))
     :custom
-    (lsp-auto-guess-root t)
+    ;;(lsp-auto-guess-root t)
     (lsp-prefer-capf t)
     :commands lsp)
 
-(use-package lsp-ui :commands lsp-ui-mode :ensure t)
-(setq lsp-ui-sideline-delay 1.0)
-
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-enable-indentation nil)
-
-(setq company-minimum-prefix-length 3
-      company-idle-delay 0.0)
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-before-save-edits nil)
 
 (add-hook 'lsp-ui-mode-hook
           (lambda()
             (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
             (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)))
 
+(with-eval-after-load 'lsp-mode
+  ;; :project/:workspace/:file
+  (setq lsp-diagnostics-modeline-scope :project)
+  (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
+
+
+(lsp-treemacs-sync-mode 1)
+
+(use-package lsp-ui :commands lsp-ui-mode :ensure t)
+(setq lsp-ui-sideline-delay 0.0)
+(setq lsp-ui-sideline-show-code-actions nil)
 ;;(setq lsp-ui-doc-position 'bottom)
 ;;(setq lsp-ui-doc-alignment 'window)
 ;;(setq lsp-doc-use-we-webkit t)
 (setq lsp-ui-doc-enable nil)
 
-;;(use-package ccls
-;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;         (lambda () (require 'ccls) (lsp)))
-;;  :config
-;;  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
+
+
+
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp)))
+  :config
+  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
 
   ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
   ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
@@ -391,19 +421,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-type 'stack-ghci)
  '(lsp-prefer-capf t)
  '(package-selected-packages
-   (quote
-    (modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))))
+   '(counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode)))
 
 
-;;(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;;)
 
 
 ;; windmove setup
@@ -477,9 +500,10 @@
     (spaceline-toggle-major-mode-on)
     (spaceline-toggle-hud-on) ;; ?
     (spaceline-emacs-theme)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-box-selection ((t (:background "dark turquoise" :foreground "black")))))
