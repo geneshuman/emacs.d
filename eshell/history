@@ -1,9 +1,0 @@
-ls
-./epi
-sudo ./epi
-make
-make
-cd Programming/fractalbox/
-ls
-di master
-git diff master
