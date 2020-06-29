@@ -152,33 +152,38 @@
 (defun epim-indent-line ()
   "Indent current line as Epimorphism Module code."
   (interactive)
-  (beginning-of-line)
-  (if (looking-at "^###")
-      (indent-line-to 0)
-    (let (to-indent prev-diff cur-diff)
-      (setq cur-diff (get-paren-diff))
-      (save-excursion
-        (forward-line -1)
-        (setq prev-diff (get-paren-diff))
-        (setq to-indent (current-indentation)))
-      (if (< 0 prev-diff)
-          (setq to-indent (+ to-indent (* 2 prev-diff)))
-        ())
-      (if (> 0 cur-diff)
-          (setq to-indent (+ to-indent (* 2 cur-diff)))
-        ())
-      (indent-line-to to-indent))))
+  (let (cur)
+    (setq cur (point))
+    (beginning-of-line)
+    (if (looking-at "^###")
+        (indent-line-to 0)
+      (let (to-indent prev-diff cur-diff)
+        (setq cur-diff (get-paren-diff))
+        (save-excursion
+          (forward-line -1)
+          (setq prev-diff (get-paren-diff))
+          (setq to-indent (current-indentation)))
+        (if (< 0 prev-diff)
+            (setq to-indent (+ to-indent (* 2 prev-diff)))
+          ())
+        (if (> 0 cur-diff)
+            (setq to-indent (+ to-indent (* 2 cur-diff)))
+          ())
+        (indent-line-to to-indent)))
+    (goto-char cur)
+  ))
 
 (defun epim-indent-region (st end &optional col)
   "Indent region as Epimorphism Module code."
   (interactive)
-  (beginning-of-line)
   (save-excursion
+    (beginning-of-line)
     (goto-char st)
     (while (and (< (point) end)
-               (progn
-                 (epim-indent-line)
-                 (/= (forward-line 1) 1))))))
+                (progn
+                  (epim-indent-line)
+                  (/= (forward-line 1) 1))))))
+
 
 ;;;###autoload
 (define-derived-mode epim-mode c-mode "EpiModule"

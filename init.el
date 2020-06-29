@@ -23,7 +23,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters)
 
 (auto-package-update-maybe)
 
@@ -39,12 +39,11 @@
 
 (whole-line-or-region--turn-on)
 
-;; (require 'magit)
-
 ;; misc
 (setq default-directory "~" )
 (global-subword-mode 1) ;; split by camel case
-(define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
+;;(define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
+(global-key-binding (kbd "C-[") nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-window-vscroll nil) ;; speed up next-line
 (setq gc-cons-threshold 100000000) ;; less frequent gc
@@ -54,20 +53,27 @@
 (global-set-key (kbd "M-+") (lambda () (interactive) (load "~/.emacs.d/init.el")))
 (global-set-key (kbd "C-M-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-x 1") 'nil)
-;;(global-set-key (kbd "C-x C-b") 'nil)
-(global-set-key (kbd "M-?") 'nil)
+(global-set-key (kbd "M-?") 'nil) ;; was crashing ido?
 (global-set-key (kbd "M-.") 'nil)
-(global-set-key (kbd "M-B") 'magit-blame)
-(global-set-key (kbd "M-L") 'flycheck-next-error)
+(global-set-key (kbd "C-M-f") 'flycheck-next-error)
 (global-set-key (kbd "M-i") 'imenu)
-(global-set-key (kbd "C-=") 'er/expand-reg )
+(global-set-key (kbd "C-=") 'er/expand-region )
 (global-set-key (kbd "C-M-<backspace>") 'kill-sexp)
 
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.
-   \(fn arg char)"
-  'interactive)
-(global-set-key [remap zap-to-char] 'zap-up-to-char)
+;; gene mode
+(define-prefix-command 'gene-mode-map)
+(global-set-key (kbd "C-M-g") 'gene-mode-map)
+
+;; get rid of C-[ == ESC
+(define-key input-decode-map [?\C-\[] (kbd "<C-[>"))
+(global-set-key (kbd "<C-[>") nil)
+
+;; disable ESC-ESC-ESC fucking with window layout
+(require 'cl-lib)
+(defun my-keyboard-escape-quit (fun &rest args)
+  (cl-letf (((symbol-function 'one-window-p) (lambda (&rest _) t)))
+    (apply fun args)))
+(advice-add 'keyboard-escape-quit :around #'my-keyboard-escape-quit)
 
 ;; fundamental mode for scratch buffer
 (setq initial-major-mode 'fundamental-mode)
@@ -85,23 +91,6 @@
 
 (global-set-key (kbd "M-R") 'revert-all-buffers)
 (global-auto-revert-mode t)
-
-;; misc function
-(defun find-first-non-ascii-char ()
-  "Find the first non-ascii character from point onwards."
-  (interactive)
-  (let (point)
-    (save-excursion
-      (setq point
-            (catch 'non-ascii
-              (while (not (eobp))
-                (or (eq (char-charset (following-char))
-                        'ascii)
-                    (throw 'non-ascii (point)))
-                (forward-char 1)))))
-    (if point
-        (goto-char point)
-        (message "No non-ascii characters."))))
 
 ;; automatically clean up bad whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -137,6 +126,46 @@
   (exec-path-from-shell-initialize))
 (rvm-activate-corresponding-ruby)
 
+;; shell
+(defvar shell-window)
+(defun shelly-times ()
+  "Sets the ignore-other-window property or switches to window"
+  (interactive)
+  (if (boundp 'shell-window)
+      (select-window shell-window)
+    (progn
+      ;;(purpose-toggle-window-buffer-dedicated)
+      (setq shell-window (selected-window))
+      (set-window-parameter (selected-window) 'no-other-window 't)
+      (message "shelly times"))))
+
+(global-set-key (kbd "C-M-=") 'shelly-times)
+
+(define-key comint-mode-map (kbd "C-M-l") nil)
+
+(require 'xterm-color)
+
+(setq comint-output-filter-functions
+      (remove 'ansi-color-process-output comint-output-filter-functions))
+
+(add-hook 'shell-mode-hook
+          (lambda ()
+            ;; Disable font-locking in this buffer to improve performance
+            (font-lock-mode -1)
+            ;; Prevent font-locking from being re-enabled in this buffer
+            (make-local-variable 'font-lock-function)
+            (setq font-lock-function (lambda (_) nil))
+            (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
+
+
+(require 'eshell) ; or use with-eval-after-load
+
+(add-hook 'eshell-before-prompt-hook
+          (lambda ()
+            (setq xterm-color-preserve-properties t)))
+
+(setenv "TERM" "ansi")
+
 ;; tab width bs
 (setq-default c-basic-offset 2
               tab-width 2
@@ -146,13 +175,43 @@
 
 ;; specific package configuration
 
-;; projectile setup
-(projectile-global-mode) ;; to enable in all buffers
-(counsel-projectile-mode)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;;(setq projectile-enable-caching t)
-(setq projectile-use-git-grep 1)
+;; rainbow
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; purpose mode
+;; (purpose-mode)
+;; (define-key purpose-mode-map (kbd "C-x b") nil)
+;; (add-to-list 'purpose-user-mode-purposes '(shell-mode . terminal))
+;; (purpose-compile-user-configuration)
+
+;; (require 'window-purpose-x)
+;; (purpose-x-magit-single-on)
+
+;; magit
+(require 'magit)
+(global-set-key (kbd "M-B") 'magit-blame)
+
+(defun magit-stage-all-and-commit(message)
+  (interactive "sCommit Message: ")
+  (magit-stage-modified)
+  (magit-commit-create (list "-m" message)))
+
+(define-key gene-mode-map (kbd "c") 'magit-stage-all-and-commit)
+
+;; zap up to char
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.
+   \(fn arg char)"
+  'interactive)
+(global-set-key [remap zap-to-char] 'zap-up-to-char)
+
+;; helpful
+(global-set-key (kbd "C-h f") #'helpful-callable)
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+(global-set-key (kbd "C-h F") #'helpful-function)
+(global-set-key (kbd "C-h C") #'helpful-command)
 
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
@@ -165,14 +224,11 @@
 ;; ivy/counsel/swiper
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
-  ;;:bin
-  ;;(:map ivy-mode-map
-  ;;      ("C-'" . ivy-avy))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t) ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
   (setq enable-recursive-minibuffers t)
-  (setq ivy-height 10) ;; number of result lines to display
+  (setq ivy-height 15) ;; number of result lines to display
   (setq ivy-count-format "") ;; does not count candidates
   (setq ivy-initial-inputs-alist nil)   ;; no regexp by default
   (setq ivy-use-selectable-prompt t) ;; selectable prompt
@@ -187,6 +243,63 @@
 (require 'ivy-rich)
 (ivy-rich-mode 1)
 (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+
+(defun counsel-helpful-keymap-describe ()
+  "select keymap with ivy, display help with helpful"
+  (interactive)
+  (ivy-read "describe keymap: " (let (cands)
+                  (mapatoms
+                   (lambda (x)
+                     (and (boundp x) (keymapp (symbol-value x))
+                      (push (symbol-name x) cands))))
+                  cands)
+        :require-match t
+        :history 'counsel-describe-keymap-history
+        :sort t
+        :preselect (ivy-thing-at-point)
+        :keymap counsel-describe-map
+        :caller 'counsel-helpful-keymap-describe
+        :action (lambda (map-name)
+                  (helpful-variable (intern map-name))) ))
+
+(setq counsel-describe-function-function #'helpful-callable)
+(setq counsel-describe-variable-function #'helpful-variable)
+
+(global-set-key (kbd "C-h M") #'counsel-helpful-keymap-describe)
+
+(setq ivy-rich-display-transformers-list (plist-put
+                      ivy-rich-display-transformers-list 'counsel-helpful-keymap-describe
+                      '(:columns ((counsel-describe-variable-transformer (:width 40))
+                              (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))))
+(ivy-rich-set-display-transformer)
+
+(defun posframe-poshandler-bottom-center (info)
+  "Posframe's position handler.
+
+Get a position which let posframe stay onto its
+parent-frame's center.  The structure of INFO can
+be found in docstring of `posframe-show'."
+  (cons (/ (- (plist-get info :parent-frame-width)
+              (plist-get info :posframe-width))
+           2)
+        (* (/ (- (plist-get info :parent-frame-height)
+              (plist-get info :posframe-height))
+           12) 11)))
+
+(defun ivy-posframe-display-at-bottom-center (str)
+  (ivy-posframe--display str #'posframe-poshandler-bottom-center))
+
+
+(require 'ivy-posframe)
+;; display at `ivy-posframe-style'
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-bottom-center)))
+(ivy-posframe-mode 1)
+
+
+(setq ivy-posframe-parameters
+      '((left-fringe . 3)
+        (right-fringe . 3)))
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -218,6 +331,17 @@
 (global-set-key (kbd "C-M-r") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (setq avy-timeout-seconds 0.3)
+
+
+;; projectile setup
+(projectile-global-mode) ;; to enable in all buffers
+(counsel-projectile-mode)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;;(setq projectile-enable-caching t)
+(setq projectile-use-git-grep 1)
+
+(define-key ctl-x-map (kbd "C-f") 'counsel-projectile-find-file-dwim)
+(define-key ctl-x-map (kbd "C-S-f") 'counsel-find-file)
 
 ;; org mode
 ;; The following lines are always needed.  Choose your own keys.
@@ -344,12 +468,12 @@
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
 (setq lsp-ui-sideline-delay 0.0)
 (setq lsp-ui-sideline-show-code-actions nil)
-;;(setq lsp-ui-doc-position 'bottom)
-;;(setq lsp-ui-doc-alignment 'window)
-;;(setq lsp-doc-use-we-webkit t)
+(setq lsp-ui-doc-position 'bottom)
+(setq lsp-ui-doc-alignment 'window)
+;;(setq lsp-ui-doc-use-webkit t)
 (setq lsp-ui-doc-enable nil)
 
-
+(global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
 
 
 (use-package ccls
@@ -361,10 +485,8 @@
   ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
   ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
 
-
 (require 'lsp-mode)
 (add-hook 'c++-mode-hook 'lsp)
-
 
 (dap-auto-configure-mode 1)
 (require 'dap-lldb)
@@ -415,24 +537,29 @@
 ;; ruby - no coding: utf-8 lines
 (setq ruby-insert-encoding-magic-comment nil)
 
-;; what the hells is this stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-tooltip-align-annotations t)
  '(haskell-process-type 'stack-ghci)
  '(lsp-prefer-capf t)
  '(package-selected-packages
-   '(counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode)))
+   '(window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode)))
 
-
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-box-selection ((t (:background "dark turquoise" :foreground "black")))))
 
 
 ;; windmove setup
 (windmove-default-keybindings)
 (global-set-key (kbd "C-M-j") 'windmove-left)
-(global-set-key (kbd "C-M-o") 'windmove-left)
+;;(global-set-key (kbd "C-M-o") 'windmove-left)
 (global-set-key (kbd "C-M-<left>") 'windmove-left)
 (global-set-key (kbd "C-M-l") 'windmove-right)
 (global-set-key (kbd "C-M-<right>") 'windmove-right)
@@ -444,10 +571,10 @@
 ;; UI CONFIGURATION
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
- (set-frame-parameter (selected-frame) 'alpha '(87 . 50))
- (add-to-list 'default-frame-alist '(alpha . (87 . 50)))
-;;(set-frame-parameter (selected-frame) 'alpha '(92 . 75))
-;;(add-to-list 'default-frame-alist '(alpha . (92 . 75)))
+;;(set-frame-parameter (selected-frame) 'alpha '(87 . 50))
+(add-to-list 'default-frame-alist '(alpha . (87 . 65)))
+(add-to-list 'default-frame-alist '(width . 180))
+(add-to-list 'default-frame-alist '(height . 60))
 
 (defun toggle-fullscreen (&optional f)
   (interactive)
@@ -465,6 +592,7 @@
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(menu-bar-mode -1)
 
 ;;(set-default-font "8x13")
 (set-cursor-color "Grey")
@@ -501,9 +629,126 @@
     (spaceline-toggle-hud-on) ;; ?
     (spaceline-emacs-theme)))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-box-selection ((t (:background "dark turquoise" :foreground "black")))))
+;; misc uitls
+
+;; misc function
+(defun find-first-non-ascii-char ()
+  "Find the first non-ascii character from point onwards."
+  (interactive)
+  (let (point)
+    (save-excursion
+      (setq point
+            (catch 'non-ascii
+              (while (not (eobp))
+                (or (eq (char-charset (following-char))
+                        'ascii)
+                    (throw 'non-ascii (point)))
+                (forward-char 1)))))
+    (if point
+        (goto-char point)
+        (message "No non-ascii characters."))))
+
+;; search c++ docs
+(defun cplusplus-search (term)
+  "Search cplusplus for given TERM."
+  (interactive (list
+                (read-string (format "Search Term (%s): " (thing-at-point 'symbol))
+                             nil nil (thing-at-point 'symbol))))
+  (eww (concat "www.cplusplus.com " term)))
+
+(global-set-key (kbd "C-M-D") 'cplusplus-search)
+
+;; do shit to other buffers
+(defvar other-prefix-ret)
+
+(defun other-pre-hook ()
+  "Hook to move to other window before executing command."
+  ;;(message "OTHER PRE")
+  (setq other-prefix-ret (selected-window))
+  (other-window 1)
+  (remove-hook 'pre-command-hook 'other-pre-hook))
+
+(defun other-pre-hook-w-buffer ()
+  "Hook to move to other window before executing command."
+  ;;(message "OTHER PRE w BUFFER")
+  (setq other-prefix-ret (selected-window))
+  (let ((cur (current-buffer)))
+    (other-window 1)
+    (set-window-buffer (selected-window) cur)
+    (other-window 0)
+    (remove-hook 'pre-command-hook 'other-pre-hook-w-buffer)))
+
+(defun other-post-hook ()
+  "Hook to move to other window after executing command."
+  ;;(message "OTHER POST")
+  (unless (minibufferp (current-buffer))
+    (if (and (boundp 'other-prefix-ret) other-prefix-ret)
+        (progn
+          ;;(message "OTHER POST DO")
+          (select-window other-prefix-ret)
+          (setq other-prefix-ret nil)
+          (remove-hook 'post-command-hook 'other-post-hook)) () )))
+
+(defun do-in-other-window ()
+  (interactive)
+  "Executes next command in other window."
+  (setq other-prefix-ret nil)
+  (add-hook 'pre-command-hook 'other-pre-hook)
+  (add-hook 'post-command-hook 'other-post-hook))
+
+(defun do-to-this-and-stay-in-other-window ()
+  (interactive)
+  "Functions as a prefix to execute next command in other window."
+  (setq other-prefix-ret nil)
+  (add-hook 'pre-command-hook 'other-pre-hook-w-buffer))
+
+(defun do-to-this-in-other-window ()
+  (interactive)
+  "Functions as a prefix to execute next command in other window."
+  (setq other-prefix-ret nil)
+  (add-hook 'pre-command-hook 'other-pre-hook-w-buffer)
+  (add-hook 'post-command-hook 'other-post-hook))
+
+(global-set-key (kbd "C-;") 'do-in-other-window)
+(global-set-key (kbd "C-:") 'do-to-this-and-stay-in-other-window)
+(global-set-key (kbd "C-M-:") 'do-to-this-in-other-window)
+
+(defun transpose-other-buffer ()
+  "Transpose the buffers shown in two windows."
+  (interactive)
+  (let* ((other-win (or (windmove-find-other-window 'right)
+                        (windmove-find-other-window 'left)))
+         (this-win (selected-window))
+         (this-buf (window-buffer))
+         (next-buf (window-buffer other-win)))
+    (set-window-buffer other-win this-buf)
+    (set-window-buffer this-win next-buf)
+    (select-window this-win)
+    (recenter)))
+
+(global-set-key (kbd "C-M-b") 'transpose-other-buffer)
+
+(defvar epi-args)
+(setq epi-args "linux")
+(defun epi-build-and-run (args)
+  "Build epimorphism & run it"
+  (interactive (list
+                (read-string (format "Args: (%s): " epi-args)
+                             nil nil epi-args)))
+  (let ((epi-exec-ret (selected-window)))
+    (setq epi-args args)
+    (shelly-times)
+    (goto-char (point-max))
+    (insert (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ./epimorphism " args))
+    (comint-send-input)
+    (select-window epi-exec-ret)))
+
+(defun epi-build-and-run-no-prompt ()
+  "Build epimorphism & run it no prompt"
+  (interactive)
+  (epi-build-and-run epi-args))
+
+(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
+(define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
+(define-key gene-mode-map (kbd "r") 'epi-build-and-run)
+(put 'downcase-region 'disabled nil)

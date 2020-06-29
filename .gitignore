@@ -17,3 +17,5 @@ elpa
 .dap*
 bookmarks
 .last*
+layouts
+session*
