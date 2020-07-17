@@ -306,9 +306,6 @@ be found in docstring of `posframe-show'."
 (global-set-key (kbd "C-M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-c b") 'counsel-bookmark)
 
-(define-key projectile-mode-map [remap projectile-grep] nil)
-(global-set-key (kbd "C-c p s G") 'counsel-projectile-grep)
-
 (global-set-key (kbd "\C-s") 'swiper)
 (global-set-key (kbd "\C-r") 'swiper)
 (global-set-key (kbd "C-S-s") 'isearch-forward)
@@ -342,6 +339,9 @@ be found in docstring of `posframe-show'."
 
 (define-key ctl-x-map (kbd "C-f") 'counsel-projectile-find-file-dwim)
 (define-key ctl-x-map (kbd "C-S-f") 'counsel-find-file)
+
+(define-key projectile-mode-map [remap projectile-grep] nil)
+(global-set-key (kbd "C-c p s G") 'counsel-projectile-grep)
 
 ;; org mode
 ;; The following lines are always needed.  Choose your own keys.

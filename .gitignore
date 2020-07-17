@@ -19,5 +19,5 @@ bookmarks
 .last*
 layouts
 session*
-eshell/
+eshell/*
 transient/*
