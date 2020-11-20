@@ -5,7 +5,8 @@
 ;; PACKAGE CONFIGURATION
 (require 'package)
 (setq package-user-dir "~/.emacs.d/packages/")
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
 (package-initialize)
 
@@ -37,7 +38,7 @@
 (require 'whole-line-or-region)
 (require 'dired-x)
 
-(whole-line-or-region--turn-on)
+
 
 ;; misc
 (setq default-directory "~" )
@@ -143,7 +144,7 @@
 
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
-(require 'xterm-color)
+;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
       (remove 'ansi-color-process-output comint-output-filter-functions))
@@ -262,6 +263,8 @@
         :action (lambda (map-name)
                   (helpful-variable (intern map-name))) ))
 
+(setq counsel-find-file-ignore-regexp "\\.png\\'")
+
 (setq counsel-describe-function-function #'helpful-callable)
 (setq counsel-describe-variable-function #'helpful-variable)
 
@@ -299,7 +302,8 @@ be found in docstring of `posframe-show'."
 
 (setq ivy-posframe-parameters
       '((left-fringe . 3)
-        (right-fringe . 3)))
+        (right-fringe . 3)
+        (alpha . (95 . 95))))
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -336,12 +340,14 @@ be found in docstring of `posframe-show'."
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;;(setq projectile-enable-caching t)
 (setq projectile-use-git-grep 1)
+(setq projectile-enable-caching 1)
 
-(define-key ctl-x-map (kbd "C-f") 'counsel-projectile-find-file-dwim)
+(define-key ctl-x-map (kbd "C-f") 'counsel-projectile-find-file)
 (define-key ctl-x-map (kbd "C-S-f") 'counsel-find-file)
 
 (define-key projectile-mode-map [remap projectile-grep] nil)
 (global-set-key (kbd "C-c p s G") 'counsel-projectile-grep)
+(setq projectile-file-exists-remote-cache-expire (* 10 60))
 
 ;; org mode
 ;; The following lines are always needed.  Choose your own keys.
@@ -558,6 +564,7 @@ be found in docstring of `posframe-show'."
 
 ;; windmove setup
 (windmove-default-keybindings)
+(define-key c-mode-base-map "\C-\M-j" nil)
 (global-set-key (kbd "C-M-j") 'windmove-left)
 ;;(global-set-key (kbd "C-M-o") 'windmove-left)
 (global-set-key (kbd "C-M-<left>") 'windmove-left)
@@ -572,7 +579,7 @@ be found in docstring of `posframe-show'."
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
 ;;(set-frame-parameter (selected-frame) 'alpha '(87 . 50))
-(add-to-list 'default-frame-alist '(alpha . (87 . 65)))
+(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 60))
 
