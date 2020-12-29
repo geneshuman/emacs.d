@@ -21,3 +21,6 @@ layouts
 session*
 eshell/*
 transient/*
+eln-cache/*
+url/*
+flycheck_init.el

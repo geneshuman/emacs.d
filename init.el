@@ -193,7 +193,7 @@
 (global-set-key (kbd "M-B") 'magit-blame)
 
 (defun magit-stage-all-and-commit(message)
-  (interactive "sCommit Message: ")
+  (interactive "Commit Message: ")
   (magit-stage-modified)
   (magit-commit-create (list "-m" message)))
 
@@ -469,7 +469,7 @@ be found in docstring of `posframe-show'."
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
 
-(lsp-treemacs-sync-mode 1)
+;;(lsp-treemacs-sync-mode 1)
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
 (setq lsp-ui-sideline-delay 0.0)
@@ -494,8 +494,8 @@ be found in docstring of `posframe-show'."
 (require 'lsp-mode)
 (add-hook 'c++-mode-hook 'lsp)
 
-(dap-auto-configure-mode 1)
-(require 'dap-lldb)
+;;(dap-auto-configure-mode 1)
+;;(require 'dap-lldb)
 
 (use-package which-key
   :config
@@ -638,6 +638,17 @@ be found in docstring of `posframe-show'."
 
 ;; misc uitls
 
+(global-set-key (kbd "C-M-T") 'open-linaro-todo)
+
+(defun open-linaro-todo ()
+  "open TODO on linaro"
+  (interactive)
+  (find-file "/ssh:linaro:/home/linaro/Programming/epimorphism6/TODO.txt")
+  )
+
+
+
+
 ;; misc function
 (defun find-first-non-ascii-char ()
   "Find the first non-ascii character from point onwards."
@@ -755,7 +766,34 @@ be found in docstring of `posframe-show'."
   (interactive)
   (epi-build-and-run epi-args))
 
-(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
+(defvar epi-fb-args)
+(setq epi-fb-args "fb")
+(defun epi-build-and-run-fb (args)
+  "Build epimorphism & run it on linaro"
+  ;; TODO: check if sshed in, if not, do so
+  (interactive (list
+                (read-string (format "Args: (%s): " epi-fb-args)
+                             nil nil epi-fb-args)))
+  (let ((epi-exec-ret (selected-window)))
+    (setq epi-fb-args args)
+    (shelly-times)
+    (goto-char (point-max))
+    (insert (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && ./epimorphism " args))
+    (comint-send-input)
+    ;;(select-window epi-exec-ret)
+    ))
+
+(defun epi-build-and-run-fb-no-prompt ()
+  "Build epimorphism & run it no prompt"
+  (interactive)
+  (epi-build-and-run-fb epi-fb-args))
+
+;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
-(define-key gene-mode-map (kbd "r") 'epi-build-and-run)
+(define-key gene-mode-map (kbd "g") 'epi-build-and-run)
+
+(define-key gene-mode-map (kbd "C-M-f") 'epi-build-and-run-fb-no-prompt)
+(define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
+
+
 (put 'downcase-region 'disabled nil)
