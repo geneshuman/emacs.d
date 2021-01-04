@@ -785,6 +785,7 @@ be found in docstring of `posframe-show'."
         (cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ./epimorphism " args)))
     (setq epi-args args)
     (shelly-times)
+    (epi-exit)
     (if (equal major-mode 'vterm-mode)
         (progn
           (vterm-send-string cmd)
@@ -815,6 +816,7 @@ be found in docstring of `posframe-show'."
         (cmd (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && ./epimorphism " args)))
     (setq epi-fb-args args)
     (shelly-times)
+    (epi-exit)
     (if (equal major-mode 'vterm-mode)
         (progn
           (vterm-send-string cmd)
