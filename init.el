@@ -765,6 +765,13 @@ be found in docstring of `posframe-show'."
 
 (global-set-key (kbd "C-M-b") 'transpose-other-buffer)
 
+(defun epi-exit ()
+  "Switch to shell & C-c"
+  (interactive)
+  (progn
+    (shelly-times)
+    (vterm-send-C-c)))
+
 (defvar epi-args)
 (setq epi-args "linux")
 (defun epi-build-and-run (args)
