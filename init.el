@@ -24,7 +24,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode)
 
 (auto-package-update-maybe)
 
@@ -52,6 +52,7 @@
 
 ;; key bindings
 (global-set-key (kbd "M-+") (lambda () (interactive) (load "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-M-+") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (global-set-key (kbd "C-M-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-x 1") 'nil)
 (global-set-key (kbd "M-?") 'nil) ;; was crashing ido?
@@ -129,6 +130,7 @@
 
 ;; shell
 (defvar shell-window)
+(makunbound 'shell-window)
 (defun shelly-times ()
   "Sets the ignore-other-window property or switches to window"
   (interactive)
@@ -136,6 +138,7 @@
       (select-window shell-window)
     (progn
       ;;(purpose-toggle-window-buffer-dedicated)
+      (vterm)
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
@@ -193,7 +196,11 @@
 (global-set-key (kbd "M-B") 'magit-blame)
 
 (defun magit-stage-all-and-commit(message)
-  (interactive "Commit Message: ")
+  "Commits everything & prompts for a message."
+  (interactive (list
+                (read-string (format "Commit Message: ")
+                             nil nil "")))
+
   (magit-stage-modified)
   (magit-commit-create (list "-m" message)))
 
@@ -213,6 +220,15 @@
 (global-set-key (kbd "C-c C-d") #'helpful-at-point)
 (global-set-key (kbd "C-h F") #'helpful-function)
 (global-set-key (kbd "C-h C") #'helpful-command)
+
+(add-to-list 'display-buffer-alist
+             '("*Help*" display-buffer-same-window))
+
+(add-to-list 'display-buffer-alist
+             '("Magit" display-buffer-same-window))
+
+(add-to-list 'display-buffer-alist
+             '("vterm" display-buffer-same-window))
 
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
@@ -492,6 +508,8 @@ be found in docstring of `posframe-show'."
   ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
 
 (require 'lsp-mode)
+(require 'lsp-ui)
+(require 'lsp-ui-doc)
 (add-hook 'c++-mode-hook 'lsp)
 
 ;;(dap-auto-configure-mode 1)
@@ -550,9 +568,9 @@ be found in docstring of `posframe-show'."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-align-annotations t)
  '(haskell-process-type 'stack-ghci)
- '(lsp-prefer-capf t)
+ '(lsp-completion-provider t t)
  '(package-selected-packages
-   '(window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode)))
+   '(git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -674,7 +692,7 @@ be found in docstring of `posframe-show'."
                              nil nil (thing-at-point 'symbol))))
   (eww (concat "www.cplusplus.com " term)))
 
-(global-set-key (kbd "C-M-D") 'cplusplus-search)
+(global-set-key (kbd "C-M-S-d") 'cplusplus-search)
 
 ;; do shit to other buffers
 (defvar other-prefix-ret)
@@ -749,20 +767,29 @@ be found in docstring of `posframe-show'."
 (defvar epi-args)
 (setq epi-args "linux")
 (defun epi-build-and-run (args)
-  "Build epimorphism & run it"
+  "Build epimorphism & run it."
   (interactive (list
                 (read-string (format "Args: (%s): " epi-args)
                              nil nil epi-args)))
-  (let ((epi-exec-ret (selected-window)))
+  (let ((epi-exec-ret (selected-window))
+        (cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ./epimorphism " args)))
     (setq epi-args args)
     (shelly-times)
-    (goto-char (point-max))
-    (insert (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ./epimorphism " args))
-    (comint-send-input)
-    (select-window epi-exec-ret)))
+    (if (equal major-mode 'vterm-mode)
+        (progn
+          (vterm-send-string cmd)
+          (vterm-send-return))
+      (progn
+        (goto-char (point-max))
+        (insert cmd)
+        (comint-send-input))
+      )
+    (select-window epi-exec-ret)
+    ))
+
 
 (defun epi-build-and-run-no-prompt ()
-  "Build epimorphism & run it no prompt"
+  "Build epimorphism & run it no prompt."
   (interactive)
   (epi-build-and-run epi-args))
 
@@ -774,12 +801,19 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " epi-fb-args)
                              nil nil epi-fb-args)))
-  (let ((epi-exec-ret (selected-window)))
+  (let ((epi-exec-ret (selected-window))
+        (cmd (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && ./epimorphism " args)))
     (setq epi-fb-args args)
     (shelly-times)
-    (goto-char (point-max))
-    (insert (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && ./epimorphism " args))
-    (comint-send-input)
+    (if (equal major-mode 'vterm-mode)
+        (progn
+          (vterm-send-string cmd)
+          (vterm-send-return))
+      (progn
+        (goto-char (point-max))
+        (insert cmd)
+        (comint-send-input))
+      )
     ;;(select-window epi-exec-ret)
     ))
 
