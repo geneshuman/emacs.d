@@ -138,7 +138,9 @@
       (select-window shell-window)
     (progn
       ;;(purpose-toggle-window-buffer-dedicated)
-      (vterm)
+      (if (equal major-mode 'vterm-mode)
+          ()
+        (vterm))
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
