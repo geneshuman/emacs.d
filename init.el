@@ -835,6 +835,7 @@ be found in docstring of `posframe-show'."
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "g") 'epi-build-and-run)
+(define-key gene-mode-map (kbd "x") 'epi-exit)
 
 (define-key gene-mode-map (kbd "C-M-f") 'epi-build-and-run-fb-no-prompt)
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
