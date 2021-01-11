@@ -779,32 +779,17 @@ be found in docstring of `posframe-show'."
 ;;(setq epi-args "linux")
 
 
-(defun epi-build-and-run-inner (args path cores)
+(defun epi-build-and-run-inner (args)
   "Build epimorphism & run it."
-  (message args)
-  (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd " path " && make -j" cores "-C build && ./epimorphism " args)))
-    (setq epi-args args)
-    (shelly-times)
-    (epi-exit)
-    (if (equal major-mode 'vterm-mode)
-        (progn
-          (vterm-send-string cmd)
-          (vterm-send-return))
-      (progn
-        (goto-char (point-max))
-        (insert cmd)
-        (comint-send-input))
-      )
-    (select-window epi-exec-ret)
-    ))
+  (message args))
+
 
 (defun epi-build-and-run-osx (args)
   "Build epimorphism & run it."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) (epi-args) "mac"))
                                      nil nil (if (boundp 'epi-args) (epi-args) "mac"))))
-  (epi-build-and-run-inner args "/Users/gene/Programming/epimorphism6" 8))
+  (epi-build-and-run-inner args));; "/Users/gene/Programming/epimorphism6" 8))
 
 
 
