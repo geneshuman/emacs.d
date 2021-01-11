@@ -784,7 +784,6 @@ be found in docstring of `posframe-show'."
 
   (let ((epi-exec-ret (selected-window))
         (cmd (concat "cd " path " && make -j" (number-to-string cores) " -C build && ./epimorphism " args)))
-
     (setq epi-args args)
     (shelly-times)
     (epi-exit)
@@ -814,46 +813,14 @@ be found in docstring of `posframe-show'."
   (interactive)
   (epi-build-and-run epi-args))
 
-(defvar epi-fb-args)
-(setq epi-fb-args "fb")
-(defun epi-build-and-run-fb (args)
-  "Build epimorphism & run it on linaro"
-  ;; TODO: check if sshed in, if not, do so
-  (interactive (list
-                (read-string (format "Args: (%s): " epi-fb-args)
-                             nil nil epi-fb-args)))
-  (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && ./epimorphism " args)))
-    (setq epi-fb-args args)
-    (shelly-times)
-    (epi-exit)
-    (if (equal major-mode 'vterm-mode)
-        (progn
-          (vterm-send-string cmd)
-          (vterm-send-return))
-      (progn
-        (goto-char (point-max))
-        (insert cmd)
-        (comint-send-input))
-      )
-    (select-window epi-exec-ret)
-    ))
-
-(defun epi-build-and-run-fb-no-prompt ()
-  "Build epimorphism & run it no prompt"
-  (interactive)
-  (epi-build-and-run-fb epi-fb-args))
 
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
-(define-key gene-mode-map (kbd "g") 'epi-build-and-run)
-(define-key gene-mode-map (kbd "x") 'epi-exit)
-
-(define-key gene-mode-map (kbd "C-M-f") 'epi-build-and-run-fb-no-prompt)
+(define-key gene-mode-map (kbd "g") 'epi-build-and-run-linux)
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
-
-(define-key gene-mode-map (kbd "C-M-h") 'epi-build-and-run-osx-no-prompt)
 (define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
+
+(define-key gene-mode-map (kbd "x") 'epi-exit)
 
 
 (put 'downcase-region 'disabled nil)
