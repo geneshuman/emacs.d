@@ -783,9 +783,22 @@ be found in docstring of `posframe-show'."
   "Build epimorphism & run it."
 
   (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd " path)))
-    (message cmd)))
+        (cmd (concat "cd " path " && make -j" (number-to-string cores) "-C build && ./epimorphism " args)))
 
+    (setq epi-args args)
+    (shelly-times)
+    (epi-exit)
+    (if (equal major-mode 'vterm-mode)
+        (progn
+          (vterm-send-string cmd)
+          (vterm-send-return))
+      (progn
+        (goto-char (point-max))
+        (insert cmd)
+        (comint-send-input))
+      )
+    (select-window epi-exec-ret)
+    ))
 
 (defun epi-build-and-run-osx (args)
   "Build epimorphism & run it."
