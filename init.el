@@ -781,7 +781,10 @@ be found in docstring of `posframe-show'."
 
 (defun epi-build-and-run-inner (args path cores)
   "Build epimorphism & run it."
-  (message args))
+
+  (let ((epi-exec-ret (selected-window))
+        (cmd (concat "cd " path " && make -j" cores "-C build && ./epimorphism " args)))
+    (message cmd)))
 
 
 (defun epi-build-and-run-osx (args)
