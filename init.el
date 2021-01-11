@@ -779,7 +779,7 @@ be found in docstring of `posframe-show'."
 ;;(setq epi-args "linux")
 
 
-(defun epi-build-and-run-inner (args, cores)
+(defun epi-build-and-run-inner (args cores)
   "Build epimorphism & run it."
   (let ((epi-exec-ret (selected-window))
         (cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j" cores "-C build && ./epimorphism " args)))
