@@ -776,6 +776,8 @@ be found in docstring of `posframe-show'."
     (select-window epi-exec-ret)))
 
 (defvar epi-args)
+(defvar epi-path)
+(defvar epi-cores)
 
 (defun epi-build-and-run-inner (args path cores)
   "Build epimorphism & run it."
@@ -783,6 +785,8 @@ be found in docstring of `posframe-show'."
   (let ((epi-exec-ret (selected-window))
         (cmd (concat "cd " path " && make -j" (number-to-string cores) " -C build && ./epimorphism " args)))
     (setq epi-args args)
+    (setq epi-path path)
+    (setq epi-cores cores)
     (shelly-times)
     (epi-exit)
     (if (equal major-mode 'vterm-mode)
@@ -809,7 +813,7 @@ be found in docstring of `posframe-show'."
 (defun epi-build-and-run-no-prompt ()
   "Build epimorphism & run it no prompt."
   (interactive)
-  (epi-build-and-run epi-args))
+  (epi-build-and-run-inner epi-args epi-path epi-cores))
 
 
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
