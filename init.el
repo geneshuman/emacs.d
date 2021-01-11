@@ -770,9 +770,10 @@ be found in docstring of `posframe-show'."
 (defun epi-exit ()
   "Switch to shell & C-c"
   (interactive)
-  (progn
+  (let ((epi-exec-ret (selected-window)))
     (shelly-times)
-    (vterm-send-C-c)))
+    (vterm-send-C-c)
+    (select-window epi-exec-ret)))
 
 (defvar epi-args)
 (setq epi-args "linux")
@@ -826,7 +827,7 @@ be found in docstring of `posframe-show'."
         (insert cmd)
         (comint-send-input))
       )
-    ;;(select-window epi-exec-ret)
+    (select-window epi-exec-ret)
     ))
 
 (defun epi-build-and-run-fb-no-prompt ()
