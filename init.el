@@ -803,7 +803,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) (epi-args) "mac")
                                      nil nil (if (boundp 'epi-args) (epi-args) "mac")))))
-  (message "hi"))
+  (message args))
   ;;(epi-build-and-run-inner args "/Users/gene/Programming/epimorphism6" 8))
 
 
