@@ -808,6 +808,19 @@ be found in docstring of `posframe-show'."
                                      nil nil (if (boundp 'epi-args) epi-args "mac"))))
   (epi-build-and-run-inner args "/Users/gene/Programming/epimorphism6" 8))
 
+(defun epi-build-and-run-fb (args)
+  "Build epimorphism & run it."
+  (interactive (list
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
+                                     nil nil (if (boundp 'epi-args) epi-args "fb"))))
+  (epi-build-and-run-inner args "/home/linaro/Programming/epimorphism6" 2))
+
+(defun epi-build-and-run-osx (args)
+  "Build epimorphism & run it."
+  (interactive (list
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
+                             nil nil (if (boundp 'epi-args) epi-args "linux"))))
+  (epi-build-and-run-inner args "/home/gene/Programming/epimorphism6" 12))
 
 
 (defun epi-build-and-run-no-prompt ()
