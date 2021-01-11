@@ -776,8 +776,6 @@ be found in docstring of `posframe-show'."
     (select-window epi-exec-ret)))
 
 (defvar epi-args)
-;;(setq epi-args "linux")
-
 
 (defun epi-build-and-run-inner (args path cores)
   "Build epimorphism & run it."
@@ -802,8 +800,8 @@ be found in docstring of `posframe-show'."
 (defun epi-build-and-run-osx (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) (epi-args) "mac"))
-                                     nil nil (if (boundp 'epi-args) (epi-args) "mac"))))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
+                                     nil nil (if (boundp 'epi-args) epi-args "mac"))))
   (epi-build-and-run-inner args "/Users/gene/Programming/epimorphism6" 8))
 
 
