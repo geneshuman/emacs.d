@@ -850,5 +850,8 @@ be found in docstring of `posframe-show'."
 (define-key gene-mode-map (kbd "C-M-f") 'epi-build-and-run-fb-no-prompt)
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
 
+(define-key gene-mode-map (kbd "C-M-h") 'epi-build-and-run-osx-no-prompt)
+(define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
+
 
 (put 'downcase-region 'disabled nil)
