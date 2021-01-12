@@ -815,7 +815,7 @@ be found in docstring of `posframe-show'."
                                      nil nil (if (boundp 'epi-args) epi-args "fb"))))
   (epi-build-and-run-inner args "/home/linaro/Programming/epimorphism6" 2))
 
-(defun epi-build-and-run-osx (args)
+(defun epi-build-and-run-linux (args)
   "Build epimorphism & run it."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
