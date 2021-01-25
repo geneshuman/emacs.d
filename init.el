@@ -828,12 +828,21 @@ be found in docstring of `posframe-show'."
   (interactive)
   (epi-build-and-run-inner epi-args epi-path epi-cores))
 
+(defun epi-prev_cmd ()
+  "Build epimorphism & run it no prompt."
+  (interactive)
+  (let ((epi-exec-ret (selected-window)))
+    (shelly--times)
+    (vterm-send-C-p)
+    (vterm-send-return)
+    (select-window epi-exec-ret)))
 
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "g") 'epi-build-and-run-linux)
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
 (define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
+(define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 
 (define-key gene-mode-map (kbd "x") 'epi-exit)
 
