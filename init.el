@@ -828,7 +828,7 @@ be found in docstring of `posframe-show'."
   (interactive)
   (epi-build-and-run-inner epi-args epi-path epi-cores))
 
-(defun epi-prev_cmd ()
+(defun epi-prev-cmd ()
   "Build epimorphism & run it no prompt."
   (interactive)
   (let ((epi-exec-ret (selected-window)))
