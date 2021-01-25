@@ -832,7 +832,7 @@ be found in docstring of `posframe-show'."
   "Build epimorphism & run it no prompt."
   (interactive)
   (let ((epi-exec-ret (selected-window)))
-    (shelly--times)
+    (shelly-times)
     (vterm-send-C-p)
     (vterm-send-return)
     (select-window epi-exec-ret)))
