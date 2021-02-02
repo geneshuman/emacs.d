@@ -149,6 +149,8 @@
 
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
+(setq vterm-max-scrollback 50000)
+
 ;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
