@@ -38,9 +38,9 @@
 (require 'whole-line-or-region)
 (require 'dired-x)
 
-
-
 ;; misc
+(setq warning-minimum-level :error)
+
 (setq default-directory "~" )
 (global-subword-mode 1) ;; split by camel case
 ;;(define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
