@@ -486,6 +486,11 @@ be found in docstring of `posframe-show'."
   (setq lsp-diagnostics-modeline-scope :project)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
+(lsp-register-client
+    (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+                     :major-modes '(c++-mode)
+                     :remote? t
+                     :server-id 'ccls-remote))
 
 ;;(lsp-treemacs-sync-mode 1)
 
