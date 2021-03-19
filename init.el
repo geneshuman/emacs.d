@@ -38,9 +38,9 @@
 (require 'whole-line-or-region)
 (require 'dired-x)
 
-
-
 ;; misc
+(setq warning-minimum-level :error)
+
 (setq default-directory "~" )
 (global-subword-mode 1) ;; split by camel case
 ;;(define-key key-translation-map [(control ?\;)]  [127]) ;; what is this?
@@ -481,13 +481,18 @@ be found in docstring of `posframe-show'."
 (add-hook 'lsp-ui-mode-hook
           (lambda()
             (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)))
+            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+            (lsp-register-client
+             (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+                              :major-modes '(c++-mode)
+                              :remote? t
+                              :server-id 'ccls-remote))
+            ))
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
   (setq lsp-diagnostics-modeline-scope :project)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
-
 
 ;;(lsp-treemacs-sync-mode 1)
 
