@@ -152,7 +152,7 @@
 (setq vterm-max-scrollback 50000)
 
 (require 'vterm)
-(customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y" "C-M-j" "C-M-i" "C-M-l" "C-M-k" "C-M-g"))
+;;(customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y" "C-M-j" "C-M-i" "C-M-l" "C-M-k" "C-M-g"))
 
 ;;(require 'xterm-color)
 
@@ -163,7 +163,7 @@
           (lambda ()
             ;; Disable font-locking in this buffer to improve performance
             (font-lock-mode -1)
-            ;; Prevent font-locking from being re-enabled in this buffer
+            ;; Prevent font-locking from being re-enabled in this bufferk
             (make-local-variable 'font-lock-function)
             (setq font-lock-function (lambda (_) nil))
             (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
