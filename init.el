@@ -820,7 +820,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
                                      nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (epi-build-and-run-inner args "/home/linaro/Programming/epimorphism6" 2))
+  (epi-build-and-run-inner args "nice -n -10 /home/linaro/Programming/epimorphism6" 2))
 
 (defun epi-build-and-run-linux (args)
   "Build epimorphism & run it."
