@@ -294,7 +294,7 @@
                       ivy-rich-display-transformers-list 'counsel-helpful-keymap-describe
                       '(:columns ((counsel-describe-variable-transformer (:width 40))
                               (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))))
-(ivy-rich-set-display-transformer)
+(ivy-rich-set-display-transformer nil)
 
 (defun posframe-poshandler-bottom-center (info)
   "Posframe's position handler.
