@@ -151,7 +151,7 @@
 
 (setq vterm-max-scrollback 50000)
 
-(require 'vterm)
+;;(require 'vterm)
 (customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y" "C-M-j" "C-M-i" "C-M-l" "C-M-k" "C-M-g"))
 ;;(customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y"))
 (define-key vterm-mode-map (kbd "C-c C-c") 'vterm-send-C-c)
