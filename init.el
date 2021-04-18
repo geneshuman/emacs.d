@@ -152,7 +152,7 @@
 (setq vterm-max-scrollback 50000)
 
 (require 'vterm)
-(customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y" "C-M-j" "C-M-i" "C-M-l" "C-M-k"))
+(customize-set-variable 'vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-v" "M-v" "C-y" "M-y" "C-M-j" "C-M-i" "C-M-l" "C-M-k" "C-g"))
 
 ;;(require 'xterm-color)
 
