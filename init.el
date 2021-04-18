@@ -790,7 +790,7 @@ be found in docstring of `posframe-show'."
   "Build epimorphism & run it."
 
   (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd " path " && make -j" (number-to-string cores) " -C build && nice -n -10 ./epimorphism " args)))
+        (cmd (concat "cd " path " && make -j" (number-to-string cores) " -C build && sudo nice -n -10 ./epimorphism " args)))
     (setq epi-args args)
     (setq epi-path path)
     (setq epi-cores cores)
