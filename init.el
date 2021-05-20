@@ -61,6 +61,8 @@
 (global-set-key (kbd "M-i") 'imenu)
 (global-set-key (kbd "C-=") 'er/expand-region )
 (global-set-key (kbd "C-M-<backspace>") 'kill-sexp)
+(global-set-key (kbd "C-x b") nil)
+(global-set-key (kbd "C-x B") 'list-buff)
 
 ;; gene mode
 (define-prefix-command 'gene-mode-map)
@@ -194,8 +196,6 @@
 
 ;; purpose mode
 ;; (purpose-mode)
-(define-key purpose-mode-map (kbd "C-x b") nil)
-(define-key purpose-mode-map (kbd "C-x B") 'list-buffers)
 ;; (add-to-list 'purpose-user-mode-purposes '(shell-mode . terminal))
 ;; (purpose-compile-user-configuration)
 
