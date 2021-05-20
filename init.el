@@ -194,7 +194,8 @@
 
 ;; purpose mode
 ;; (purpose-mode)
-;; (define-key purpose-mode-map (kbd "C-x b") nil)
+(define-key purpose-mode-map (kbd "C-x b") nil)
+(define-key purpose-mode-map (kbd "C-x B") 'list-buffers)
 ;; (add-to-list 'purpose-user-mode-purposes '(shell-mode . terminal))
 ;; (purpose-compile-user-configuration)
 
