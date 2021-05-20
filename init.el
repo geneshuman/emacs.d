@@ -62,7 +62,7 @@
 (global-set-key (kbd "C-=") 'er/expand-region )
 (global-set-key (kbd "C-M-<backspace>") 'kill-sexp)
 (global-set-key (kbd "C-x C-b") nil)
-(global-set-key (kbd "C-x B") 'list-buff)
+(global-set-key (kbd "C-x B") 'list-buffers)
 
 ;; gene mode
 (define-prefix-command 'gene-mode-map)
