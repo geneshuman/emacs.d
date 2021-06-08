@@ -836,6 +836,28 @@ be found in docstring of `posframe-show'."
                              nil nil (if (boundp 'epi-args) epi-args "linux"))))
   (epi-build-and-run-inner args "/home/gene/Programming/epimorphism6" 12))
 
+(defun epi-build-and-run-cross (args)
+  "Build epimorphism & run it."
+  (interactive (list
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
+                             nil nil (if (boundp 'epi-args) epi-args "fb"))))
+
+  (let ((epi-exec-ret (selected-window))
+        (cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
+    (setq epi-args args)
+    (shelly-times)
+    (epi-exit)
+    (if (equal major-mode 'vterm-mode)
+        (progn
+          (vterm-send-string cmd)
+          (vterm-send-return))
+      (progn
+        (goto-char (point-max))
+        (insert cmd)
+        (comint-send-input))
+      )
+    (select-window epi-exec-ret)
+    ))
 
 (defun epi-build-and-run-no-prompt ()
   "Build epimorphism & run it no prompt."
@@ -856,6 +878,7 @@ be found in docstring of `posframe-show'."
 (define-key gene-mode-map (kbd "g") 'epi-build-and-run-linux)
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
 (define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
+(define-key gene-mode-map (kbd "c") 'epi-build-and-run-cross)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 
 (define-key gene-mode-map (kbd "x") 'epi-exit)
