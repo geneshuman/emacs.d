@@ -844,7 +844,7 @@ be found in docstring of `posframe-show'."
 
   (let ((epi-exec-ret (selected-window))
         ;;(cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-        (cmd (concat "ssh -t gene@192.168.0.28 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
+        (cmd (concat "ssh -t gene@192.168.0.28 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args)))
     (setq epi-args args)
     (shelly-times)
     (epi-exit)
