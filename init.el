@@ -789,18 +789,14 @@ be found in docstring of `posframe-show'."
     (vterm-send-C-c)
     (select-window epi-exec-ret)))
 
+(defvar epi-cmd)
 (defvar epi-args)
-(defvar epi-path)
-(defvar epi-cores)
 
-(defun epi-build-and-run-inner (args path cores)
+(defun epi-build-and-run-inner (cmd)
   "Build epimorphism & run it."
 
-  (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd " path " && make -j" (number-to-string cores) " -C build && sudo nice -n -10 ./epimorphism " args)))
-    (setq epi-args args)
-    (setq epi-path path)
-    (setq epi-cores cores)
+  (let ((epi-exec-ret (selected-window)))
+    (setq epi-cmd cmd)
     (shelly-times)
     (epi-exit)
     (if (equal major-mode 'vterm-mode)
@@ -819,8 +815,9 @@ be found in docstring of `posframe-show'."
   "Build epimorphism & run it."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
-                                     nil nil (if (boundp 'epi-args) epi-args "mac"))))
-  (epi-build-and-run-inner args "/Users/gene/Programming/epimorphism6" 8))
+                             nil nil (if (boundp 'epi-args) epi-args "mac"))))
+  (let (cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args))
+  (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-fb (args)
   "Build epimorphism & run it."
@@ -848,7 +845,7 @@ be found in docstring of `posframe-show'."
     (setq epi-args args)
     (shelly-times)
     (epi-exit)
-    (if (equal major-mode 'vterm-mode)
+    (if (equal major-mode 'vterm-mode)-
         (progn
           (vterm-send-string cmd)
           (vterm-send-return))
