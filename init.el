@@ -816,51 +816,37 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
                              nil nil (if (boundp 'epi-args) epi-args "mac"))))
-  (let (cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args))
+  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args)))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-fb (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
-                                     nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (epi-build-and-run-inner args "/home/linaro/Programming/epimorphism6" 2))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
+                             nil nil (if (boundp 'epi-args) epi-args "mac"))))
+  (let ((cmd (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && sudo nice -n -10 ./epimorphism " args)))
+  (epi-build-and-run-inner cmd)))
 
-(defun epi-build-and-run-linux (args)
+(defun epi-build-and-run-linunx (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
-                             nil nil (if (boundp 'epi-args) epi-args "linux"))))
-  (epi-build-and-run-inner args "/home/gene/Programming/epimorphism6" 12))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
+                             nil nil (if (boundp 'epi-args) epi-args "mac"))))
+  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j12 -C build && sudo nice -n -10 ./epimorphism " args)))
+  (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-cross (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
-                             nil nil (if (boundp 'epi-args) epi-args "fb"))))
-
-  (let ((epi-exec-ret (selected-window))
-        (cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-        ;;(cmd (concat "ssh -t gene@192.168.0.28 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args)))
-    (setq epi-args args)
-    (shelly-times)
-    (epi-exit)
-    (if (equal major-mode 'vterm-mode)-
-        (progn
-          (vterm-send-string cmd)
-          (vterm-send-return))
-      (progn
-        (goto-char (point-max))
-        (insert cmd)
-        (comint-send-input))
-      )
-    (select-window epi-exec-ret)
-    ))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
+                             nil nil (if (boundp 'epi-args) epi-args "mac"))))
+  (let ((cmd (concat "ssh -t gene@192.168.0.28 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args)))
+  (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-no-prompt ()
   "Build epimorphism & run it no prompt."
   (interactive)
-  (epi-build-and-run-inner epi-args epi-path epi-cores))
+  (epi-build-and-run-inner epi-cmd))
 
 (defun epi-prev-cmd ()
   "Build epimorphism & run it no prompt."
@@ -880,6 +866,5 @@ be found in docstring of `posframe-show'."
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 
 (define-key gene-mode-map (kbd "x") 'epi-exit)
-
 
 (put 'downcase-region 'disabled nil)
