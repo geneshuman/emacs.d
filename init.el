@@ -799,6 +799,7 @@ be found in docstring of `posframe-show'."
     (setq epi-cmd cmd)
     (shelly-times)
     (epi-exit)
+    (epi-exit)
     (if (equal major-mode 'vterm-mode)
         (progn
           (vterm-send-string cmd)
