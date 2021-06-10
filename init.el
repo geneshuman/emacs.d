@@ -838,7 +838,7 @@ be found in docstring of `posframe-show'."
 (defun epi-build-and-run-cross (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
                              nil nil (if (boundp 'epi-args) epi-args "fb"))))
   (let ((cmd (concat "ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args)))
   (epi-build-and-run-inner cmd)))
