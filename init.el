@@ -100,6 +100,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
 (setq-default indent-tabs-mode nil)
+(setq indent-tabs-mode nil)
 
 ;; if indent-tabs-mode is off, untabify before saving
 (add-hook 'write-file-hooks
