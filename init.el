@@ -103,10 +103,13 @@
 (setq indent-tabs-mode nil)
 
 ;; if indent-tabs-mode is off, untabify before saving
+;;(add-hook 'write-file-hooks
+;;         (lambda () (if (not indent-tabs-mode)
+;;                        (untabify (point-min) (point-max)))
+;;           nil ))
+
 (add-hook 'write-file-hooks
-         (lambda () (if (not indent-tabs-mode)
-                        (untabify (point-min) (point-max)))
-           nil ))
+         (lambda () (untabify (point-min) (point-max))))
 
 ;; remote sudo function
 (defun sudo ()
