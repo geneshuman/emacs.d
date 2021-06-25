@@ -674,6 +674,14 @@ be found in docstring of `posframe-show'."
     (spaceline-toggle-hud-on) ;; ?
     (spaceline-emacs-theme)))
 
+
+(spaceline-define-segment linaro
+  "Linaro Detector"
+  (when 't
+     "asdasd")
+  :face 'highlight-face
+  :enabled 't)
+
 ;; misc uitls
 
 (global-set-key (kbd "C-M-T") 'open-linaro-todo)
