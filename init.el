@@ -634,8 +634,6 @@ be found in docstring of `posframe-show'."
 (set-background-color "Black")
 (set-foreground-color "White")
 
-(powerline-default-theme)
-
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -652,6 +650,7 @@ be found in docstring of `posframe-show'."
 
 (fringe-mode 6)
 
+(powerline-default-theme)
 (use-package spaceline
 :init
 (progn
