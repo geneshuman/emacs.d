@@ -663,7 +663,7 @@ be found in docstring of `posframe-show'."
     (setq powerline-height 17)
 
     (spaceline-toggle-window-number-off)
-    (spaceline-toggle-projectile-root-off)
+    ;;(spaceline-toggle-projectile-root-off)
     (spaceline-toggle-battery-off)
     (spaceline-toggle-buffer-encoding-abbrev-off)
     (spaceline-toggle-buffer-size-off)
