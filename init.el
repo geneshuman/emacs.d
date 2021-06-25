@@ -507,7 +507,7 @@ be found in docstring of `posframe-show'."
   (setq lsp-diagnostics-modeline-scope :project)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
-(setq lsp-headerline-breadcrumb-path-face ((t (:style wave :color Green) :inherit font-lock-string-face)))
+;;(setq lsp-headerline-breadcrumb-path-face ((t (:style wave :color Green) :inherit font-lock-string-face)))
 
 ;;(lsp-treemacs-sync-mode 1)
 
@@ -590,9 +590,7 @@ be found in docstring of `posframe-show'."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-align-annotations t)
  '(haskell-process-type 'stack-ghci)
- '(lsp-completion-provider t t)
  '(package-selected-packages
    '(git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
  '(safe-local-variable-values '((gac-automatically-add-new-files-p quote t))))
@@ -602,7 +600,8 @@ be found in docstring of `posframe-show'."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-box-selection ((t (:background "dark turquoise" :foreground "black")))))
+ '(company-box-selection ((t (:background "dark turquoise" :foreground "black"))))
+ '(lsp-headerline-breadcrumb-path-face ((t (:inherit font-lock-string-face :foreground "dark blue")))))
 
 ;; windmove setup
 (windmove-default-keybindings)
