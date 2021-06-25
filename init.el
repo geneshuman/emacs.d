@@ -507,7 +507,7 @@ be found in docstring of `posframe-show'."
   (setq lsp-diagnostics-modeline-scope :project)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
-(setq lsp-headerline-breadcrumb-path-face ((t :inherit font-lock-string-face)))
+(setq lsp-headerline-breadcrumb-path-face ((t (:style wave :color Green) :inherit font-lock-string-face)))
 
 ;;(lsp-treemacs-sync-mode 1)
 
