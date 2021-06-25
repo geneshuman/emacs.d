@@ -858,6 +858,7 @@ be found in docstring of `posframe-show'."
   (interactive)
   (let ((epi-exec-ret (selected-window)))
     (shelly-times)
+    (vterm-send-C-c)
     (vterm-send-C-p)
     (vterm-send-return)
     (select-window epi-exec-ret)))
