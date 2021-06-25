@@ -507,6 +507,8 @@ be found in docstring of `posframe-show'."
   (setq lsp-diagnostics-modeline-scope :project)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
+(setq lsp-headerline-breadcrumb-path-face ((t :inherit font-lock-string-face)))
+
 ;;(lsp-treemacs-sync-mode 1)
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
@@ -601,7 +603,6 @@ be found in docstring of `posframe-show'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-box-selection ((t (:background "dark turquoise" :foreground "black")))))
-
 
 ;; windmove setup
 (windmove-default-keybindings)
