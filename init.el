@@ -47,6 +47,7 @@
 (global-key-binding (kbd "C-[") nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-window-vscroll nil) ;; speed up next-line
+
 (setq gc-cons-threshold 100000000) ;; less frequent gc
 (setq read-process-output-max (* 1024 1024))
 
@@ -497,6 +498,8 @@ be found in docstring of `posframe-show'."
 (setq lsp-enable-indentation nil)
 (setq lsp-enable-symbol-highlighting nil)
 (setq lsp-before-save-edits nil)
+
+(setq lsp-idle-delay 0.1)
 
 (add-hook 'lsp-ui-mode-hook
           (lambda()
