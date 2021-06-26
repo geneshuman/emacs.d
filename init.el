@@ -475,7 +475,7 @@ be found in docstring of `posframe-show'."
 
 ;; c & c++
 (setq c-default-style "linux")
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-hook 'c-mode-hook
