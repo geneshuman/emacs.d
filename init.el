@@ -255,6 +255,13 @@
 (setq-default dired-omit-files-p t) ; Buffer-local variable
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "C-<up>")
+    (lambda () (interactive) (find-alternate-file "..")))
+  ; was dired-up-directory
+ ))
+
 ;; ivy/counsel/swiper
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
