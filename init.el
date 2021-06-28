@@ -159,9 +159,6 @@
 (require 'vterm)
 (setq vterm-max-scrollback 50000)
 
-;;(define-key vterm-mode-map (kbd "<C-backspace>")
-;;    (lambda () (interactive) (vterm-send-key (kbd "C-w"))))
-
 (define-key vterm-mode-map (kbd "C-M-g") 'gene-mode-map)
 (define-key vterm-mode-map (kbd "C-M-j") 'windmove-left)
 (define-key vterm-mode-map (kbd "C-M-l") 'windmove-right)
