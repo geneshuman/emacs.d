@@ -159,6 +159,14 @@
 (require 'vterm)
 (setq vterm-max-scrollback 50000)
 
+;;(define-key vterm-mode-map (kbd "<C-backspace>")
+;;    (lambda () (interactive) (vterm-send-key (kbd "C-w"))))
+
+(define-key vterm-mode-map (kbd "C-M-j") 'windmove-left)
+(define-key vterm-mode-map (kbd "C-M-l") 'windmove-right)
+(define-key vterm-mode-map (kbd "C-M-i") 'windmove-up)
+(define-key vterm-mode-map (kbd "C-M-k") 'windmove-down)
+
 ;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
@@ -600,15 +608,15 @@ be found in docstring of `posframe-show'."
 ;; windmove setup
 (windmove-default-keybindings)
 (define-key c-mode-base-map "\C-\M-j" nil)
-(global-set-key (kbd "C-M-j") 'windmove-left)
 ;;(global-set-key (kbd "C-M-o") 'windmove-left)
 (global-set-key (kbd "C-M-<left>") 'windmove-left)
-(global-set-key (kbd "C-M-l") 'windmove-right)
 (global-set-key (kbd "C-M-<right>") 'windmove-right)
-(global-set-key (kbd "C-M-i") 'windmove-up)
 (global-set-key (kbd "C-M-<up>") 'windmove-up)
-(global-set-key (kbd "C-M-k") 'windmove-down)
 (global-set-key (kbd "C-M-<down>") 'windmove-down)
+(global-set-key (kbd "C-M-j") 'windmove-left)
+(global-set-key (kbd "C-M-l") 'windmove-right)
+(global-set-key (kbd "C-M-i") 'windmove-up)
+(global-set-key (kbd "C-M-k") 'windmove-down)
 
 ;; UI CONFIGURATION
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
