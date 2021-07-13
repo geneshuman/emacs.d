@@ -435,11 +435,15 @@ be found in docstring of `posframe-show'."
 (require 'company-tng)
 (company-tng-configure-default)
 (add-to-list 'company-frontends 'company-tng-frontend)
-
 (add-to-list 'company-backends 'company-c-headers)
 
 (setq company-minimum-prefix-length 2
       company-idle-delay 0.0)
+
+(define-key company-active-map (kbd "C-n") nil)
+(define-key company-active-map (kbd "C-p") nil)
+(define-key company-active-map (kbd "M-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "M-p") 'company-select-previous-or-abort)
 
 ;;(global-set-key (kbd "M-/") 'company-select-next) ;; defined in company-tng
 
@@ -601,7 +605,9 @@ be found in docstring of `posframe-show'."
  '(haskell-process-type 'stack-ghci)
  '(package-selected-packages
    '(git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
- '(safe-local-variable-values '((gac-automatically-add-new-files-p quote t))))
+ '(safe-local-variable-values
+   '((gac-automatically-push-p quote t)
+     (gac-automatically-add-new-files-p quote t))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
