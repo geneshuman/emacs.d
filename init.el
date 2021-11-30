@@ -884,3 +884,5 @@ be found in docstring of `posframe-show'."
 (define-key gene-mode-map (kbd "x") 'epi-exit)
 
 (put 'downcase-region 'disabled nil)
+
+(set-face-attribute 'default t :font "Inconsolata" :height 130 )
