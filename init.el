@@ -24,7 +24,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui  'ivy-xref 'lsp-ivy 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
 
 (auto-package-update-maybe)
 
@@ -435,11 +435,15 @@ be found in docstring of `posframe-show'."
 (require 'company-tng)
 (company-tng-configure-default)
 (add-to-list 'company-frontends 'company-tng-frontend)
-
 (add-to-list 'company-backends 'company-c-headers)
 
 (setq company-minimum-prefix-length 2
       company-idle-delay 0.0)
+
+(define-key company-active-map (kbd "C-n") nil)
+(define-key company-active-map (kbd "C-p") nil)
+(define-key company-active-map (kbd "M-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "M-p") 'company-select-previous-or-abort)
 
 ;;(global-set-key (kbd "M-/") 'company-select-next) ;; defined in company-tng
 
@@ -600,8 +604,10 @@ be found in docstring of `posframe-show'."
  ;; If there is more than one, they won't work right.
  '(haskell-process-type 'stack-ghci)
  '(package-selected-packages
-   '(git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
- '(safe-local-variable-values '((gac-automatically-add-new-files-p quote t))))
+   '(noccur git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock dap-lldb company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
+ '(safe-local-variable-values
+   '((gac-automatically-push-p quote t)
+     (gac-automatically-add-new-files-p quote t))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -830,7 +836,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
                              nil nil (if (boundp 'epi-args) epi-args "mac"))))
-  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args)))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-fb (args)
@@ -838,7 +844,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
                              nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (let ((cmd (concat "cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && sudo nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && sudo nice -n -10 ./epimorphism " args)))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-linunx (args)
@@ -846,7 +852,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
                              nil nil (if (boundp 'epi-args) epi-args "linux"))))
-  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && make -j16 -C build && sudo nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " cd /Users/gene/Programming/epimorphism6 && make -j16 -C build && sudo nice -n -10 ./epimorphism " args)))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-cross (args)
@@ -854,7 +860,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
                              nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (let ((cmd (concat "ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j16 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && cd /home/linaro/Programming/epimorphism6 && nice -n -10 ./epimorphism " args)))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
