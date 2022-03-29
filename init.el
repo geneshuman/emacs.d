@@ -895,6 +895,7 @@ be found in docstring of `posframe-show'."
 (define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
 (define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
 (define-key gene-mode-map (kbd "c") 'epi-build-and-run-cross)
+(define-key gene-mode-map (kbd "d") 'epi-build-and-run-deploy)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 
 (define-key gene-mode-map (kbd "x") 'epi-exit)
