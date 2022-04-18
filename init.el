@@ -404,6 +404,9 @@ be found in docstring of `posframe-show'."
 (setq undo-tree-visualizer-diff t   )
 (global-set-key (kbd "C-M-/") 'undo-tree-redo)
 
+;; Prevent undo tree files from polluting your git repo
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 ;; Language modes
 
 ;; Epimorphism
