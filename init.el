@@ -26,7 +26,7 @@
 
 ;;(setq lsp-use-plists t)
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'intero 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'lsp-ivy 'ivy-xref 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'lsp-ivy 'ivy-xref 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
 
 (auto-package-update-maybe)
 
@@ -869,7 +869,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
                              nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && cd /home/linaro/Programming/epimorphism6 && nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " ssh -t gene@192.168.0.27 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && cd /home/linaro/Programming/epimorphism6 && nice -n -10 ./epimorphism " args)))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
@@ -878,7 +878,7 @@ be found in docstring of `posframe-show'."
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb_cur"))
                              nil nil (if (boundp 'epi-args) epi-args "fb_cur"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && cd /home/entropyandsons/epimorphism && nice -n -10 ./epimorphism " args)))
+  (let ((cmd (concat " ssh -t gene@192.168.0.27 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && cd /home/entropyandsons/epimorphism && nice -n -10 ./epimorphism " args)))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
