@@ -27,7 +27,11 @@
 ;;(setq lsp-use-plists t)
 ;; intero
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'lsp-ivy 'ivy-xref 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
+
+(ensure-package-installed 'auto-package-update 'ivy 'avy  'flx 'ivy-rich 'ivy-hydra 'ivy-posframe 'ivy-xref 'counsel 'counsel-projectile 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls)
+
+(ensure-package-installed 'dap-mode 'company 'company-c-headers 'modern-cpp-font-lock 'company-box 'cmake-mode)
 
 ;; (auto-package-update-maybe)
 
@@ -524,6 +528,7 @@ be found in docstring of `posframe-show'."
 ;;                              :remote? t
 ;;                              :server-id 'ccls-remote))
             ))
+
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
