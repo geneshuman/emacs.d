@@ -27,8 +27,6 @@
 ;;(setq lsp-use-plists t)
 ;; intero
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur 'auto-package-update)
-
 (load-file "~/.emacs.d/init_core.el")
 (load-file "~/.emacs.d/init_complete.el")
 (load-file "~/.emacs.d/init_lsp.el")
