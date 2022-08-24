@@ -27,4 +27,4 @@
 
 (setq lsp-idle-delay 0.1)  ;; clangd is fast
 
-(setq lsp-disabled-clients 'ccls)
+(setq lsp-disabled-clients "ccls")
