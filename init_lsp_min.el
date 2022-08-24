@@ -15,6 +15,16 @@
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-'")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (c++-mode . lsp)
+)
+  :commands lsp)
+
+
 (setq lsp-idle-delay 0.1)  ;; clangd is fast
 
 (setq lsp-disabled-clients 'ccls)
