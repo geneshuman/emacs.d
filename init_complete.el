@@ -120,3 +120,30 @@ be found in docstring of `posframe-show'."
 
 (define-key projectile-mode-map [remap projectile-grep] nil)
 (global-set-key (kbd "C-c p s G") 'counsel-projectile-grep)
+
+;; company
+(use-package company
+  :init
+  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev)))
+  :custom
+  (company-tooltip-align-annotations 't)
+  :config
+  (global-company-mode 1))
+
+;; (use-package company-box
+;;   :after company
+;;   :diminish
+;;   :hook (company-mode . company-box-mode))
+
+(require 'company-tng)
+(company-tng-configure-default)
+(add-to-list 'company-frontends 'company-tng-frontend)
+(add-to-list 'company-backends 'company-c-headers)
+
+(setq company-minimum-prefix-length 2
+      company-idle-delay 0.0)
+
+(define-key company-active-map (kbd "C-n") nil)
+(define-key company-active-map (kbd "C-p") nil)
+(define-key company-active-map (kbd "M-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "M-p") 'company-select-previous-or-abort)
