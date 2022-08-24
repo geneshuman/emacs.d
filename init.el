@@ -28,10 +28,8 @@
 ;; intero
 
 (ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
-
-(ensure-package-installed 'auto-package-update 'ivy 'avy  'flx 'ivy-rich 'ivy-hydra 'ivy-posframe 'ivy-xref 'counsel 'counsel-projectile 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls)
-
-(ensure-package-installed 'dap-mode 'company 'company-c-headers 'modern-cpp-font-lock 'company-box 'cmake-mode)
+(ensure-package-installed 'auto-package-update 'ivy 'avy  'flx 'ivy-rich 'ivy-hydra 'ivy-posframe 'ivy-xref 'counsel 'counsel-projectile 'company 'company-box 'company-c-headers)
+(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode)
 
 ;; (auto-package-update-maybe)
 
