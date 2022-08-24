@@ -29,7 +29,7 @@
 
 (load-file "~/.emacs.d/init_core.el")
 (load-file "~/.emacs.d/init_complete.el")
-;;(load-file "~/.emacs.d/init_lsp_min.el")
+(load-file "~/.emacs.d/init_lsp_min.el")
 
 ;; (auto-package-update-maybe)
 
