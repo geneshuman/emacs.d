@@ -25,10 +25,11 @@
     (package-refresh-contents))
 
 ;;(setq lsp-use-plists t)
+;; intero
 
 (ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'auto-package-update 'ivy 'counsel 'counsel-projectile 'flx 'ivy-rich 'whole-line-or-region 'undo-tree 'avy 'dired-filetype-face 'diredfl 'ivy-hydra 'pdf-tools 'lsp-mode 'lsp-ui 'lsp-ivy 'ivy-xref 'company 'company-c-headers 'dap-mode 'modern-cpp-font-lock 'which-key 'treemacs 'lsp-treemacs 'company-box 'cmake-mode 'ccls 'ivy-posframe 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur)
 
-(auto-package-update-maybe)
+;; (auto-package-update-maybe)
 
 ;; requires
 (require 'expand-region)
