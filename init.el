@@ -518,11 +518,11 @@ be found in docstring of `posframe-show'."
           (lambda()
             (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
             (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-            (lsp-register-client
-             (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
-                              :major-modes '(c++-mode)
-                              :remote? t
-                              :server-id 'ccls-remote))
+;;            (lsp-register-client
+;;             (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
+;;                              :major-modes '(c++-mode)
+;;                              :remote? t
+;;                              :server-id 'ccls-remote))
             ))
 
 (with-eval-after-load 'lsp-mode
@@ -543,14 +543,14 @@ be found in docstring of `posframe-show'."
 (global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
 
 
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp)))
-  :config
-  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
-
-  ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
-  ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
+;;(use-package ccls
+;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;         (lambda () (require 'ccls) (lsp)))
+;;  :config
+;;  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
+;;
+;;  ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
+;;  ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
 
 (require 'lsp-mode)
 (require 'lsp-ui)
