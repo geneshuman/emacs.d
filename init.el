@@ -629,7 +629,7 @@ be found in docstring of `posframe-show'."
 
 ;; windmove setup
 (windmove-default-keybindings)
-(define-key c-mode-base-map "\C-\M-j" nil)
+;;(define-key c-mode-base-map "\C-\M-j" nil)
 ;;(global-set-key (kbd "C-M-o") 'windmove-left)
 (global-set-key (kbd "C-M-<left>") 'windmove-left)
 (global-set-key (kbd "C-M-<right>") 'windmove-right)
