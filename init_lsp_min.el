@@ -16,3 +16,5 @@
 (add-hook 'c++-mode-hook 'lsp)
 
 (setq lsp-idle-delay 0.1)  ;; clangd is fast
+
+(setq lsp-disabled-clients 'ccls)
