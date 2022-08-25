@@ -637,6 +637,7 @@
 (define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
 (define-key gene-mode-map (kbd "c") 'epi-build-and-run-cross)
 (define-key gene-mode-map (kbd "d") 'epi-build-and-run-cross-deploy)
+(define-key gene-mode-map (kbd "o") 'epi-build-and-run-cross-deploy-osx)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 
 (define-key gene-mode-map (kbd "x") 'epi-exit)
