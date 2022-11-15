@@ -590,27 +590,27 @@
 (defun epi-build-and-run-cross (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
-                             nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && cd /home/linaro/Programming/epimorphism6 && nice -n -10 ./epimorphism " args)))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
+                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
+  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && sudo systemctl restart meta_launcher")))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-cross-deploy (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb_cur"))
-                             nil nil (if (boundp 'epi-args) epi-args "fb_cur"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && cd /home/entropyandsons/epimorphism && nice -n -10 ./epimorphism " args)))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
+                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
+  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && sudo systemctl restart meta_launcher")))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-cross-deploy-osx (args)
   "Build epimorphism & run it."
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb_cur"))
-                             nil nil (if (boundp 'epi-args) epi-args "fb_cur"))))
-  (let ((cmd (concat " ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib' && cd /home/entropyandsons/epimorphism && nice -n -10 ./epimorphism " args)))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
+                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
+  (let ((cmd (concat " ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib' && sudo systemctl restart meta_launcher")))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
