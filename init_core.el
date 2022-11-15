@@ -601,7 +601,7 @@
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
                              nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && echo'" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl restart meta_launcher")))
+  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && echo '" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl restart meta_launcher")))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
@@ -610,7 +610,7 @@
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
                              nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib'  && echo'" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl restart meta_launcher")))
+  (let ((cmd (concat " ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib'  && echo '" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl restart meta_launcher")))
   ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
   (epi-build-and-run-inner cmd)))
 
