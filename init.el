@@ -4,6 +4,7 @@
 ;; (add-to-list 'default-frame-alist '(undecorated . t))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; PACKAGE CONFIGURATION
 (require 'package)
