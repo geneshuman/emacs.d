@@ -123,6 +123,12 @@
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
 
+(defun my/source-bashrc ()
+      (interactive)
+      (vterm-send-string "source ~/.bash_profile"))
+
+(add-hook 'vterm-mode-hook #'my/source-bashrc)
+
 (global-set-key (kbd "C-M-=") 'shelly-times)
 
 (define-key comint-mode-map (kbd "C-M-l") nil)
