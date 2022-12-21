@@ -3,6 +3,8 @@
 (setq mac-option-modifier 'meta)
 ;; (add-to-list 'default-frame-alist '(undecorated . t))
 
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 ;; PACKAGE CONFIGURATION
 (require 'package)
 (setq package-user-dir "~/.emacs.d/packages/")
