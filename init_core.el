@@ -36,6 +36,10 @@
 (global-set-key (kbd "C-x C-b") nil)
 (global-set-key (kbd "C-x B") 'list-buffers)
 (global-set-key (kbd "C-z") 'nil)
+
+(global-set-key (kbd "C-<wheel-down>") 'nil)
+(global-set-key (kbd "C-<wheel-up>") 'nil)
+
 (global-set-key (kbd "C-M-z") 'suspend-frame)
 
 ;; gene mode
