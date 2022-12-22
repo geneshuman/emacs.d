@@ -10,19 +10,6 @@
 (add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
 (package-initialize)
 
-(defun ensure-package-installed (&rest packages)
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-           (package-install package)
-         package)) ;;)
-   packages))
-
-;; make sure to have downloaded archive description.
-;; Or use package-archive-contents as suggested by Nicolas Dudebout
-(or (file-exists-p package-user-dir)
-    (package-refresh-contents))
 
 ;;(setq lsp-use-plists t)
 ;; intero
