@@ -9,7 +9,6 @@
 (add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
 (package-initialize)
 
-
 ;;(setq lsp-use-plists t)
 ;; intero
 
@@ -18,7 +17,6 @@
 (load-file "~/.emacs.d/init_lsp.el")
 
 ;; (auto-package-update-maybe)
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
