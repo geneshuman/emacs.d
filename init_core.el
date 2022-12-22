@@ -379,6 +379,8 @@
 (add-to-list 'default-frame-alist '(alpha . (95 . 80)))
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 (defun toggle-fullscreen (&optional f)
   (interactive)
