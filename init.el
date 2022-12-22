@@ -6,7 +6,6 @@
 (require 'package)
 (setq package-user-dir "~/.emacs.d/packages/")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("emacs-pe" . "http://emacs-pe.github.io/packages/"))
 (package-initialize)
 
