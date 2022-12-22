@@ -1,8 +1,6 @@
 ;; remap mac modifier keys
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
-;; (add-to-list 'default-frame-alist '(undecorated . t))
-
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(undecorated . t))
 
