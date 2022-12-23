@@ -202,6 +202,7 @@
 (require 'window-purpose)
 (purpose-mode)
 (define-key purpose-mode-map (kbd "C-x b") nil)
+(define-key purpose-mode-map (kbd "C-x f") nil)
 (add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
 (purpose-compile-user-configuration)
 
