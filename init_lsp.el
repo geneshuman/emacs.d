@@ -11,12 +11,9 @@
         (setq indent-tabs-mode t)))
 
 ;;(setq lsp-keymap-prefix "C-'")
-asdfdsa
 
 (use-package lsp-mode :commands lsp :ensure t)
 (use-package lsp-mode
-    :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
-           (lsp-mode . lsp-enable-which-key-integration))
     :init
     (setq lsp-keymap-prefix "C-'")
     :config
@@ -24,7 +21,10 @@ asdfdsa
     :custom
     ;;(lsp-auto-guess-root t)
     (lsp-prefer-capf t)
-    :commands lsp)
+    :commands lsp
+    :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
+           (lsp-mode . lsp-enable-which-key-integration))
+    )
 
 (setq lsp-log-io nil)
 
