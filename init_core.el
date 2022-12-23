@@ -559,7 +559,7 @@
 
 (global-set-key (kbd "C-M-b") 'transpose-other-buffer)
 
-(defun shell-exit ()
+(defun epi-exit ()
   "Switch to shell & C-c"
   (interactive)
   (let ((epi-exec-ret (selected-window)))
@@ -595,7 +595,7 @@
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "bdar dev"))
                              nil nil (if (boundp 'epi-args) epi-args "bdar dev"))))
   (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools.rb " args)))
-    (shell-exit)
+    (epi-exit)
     (epi-build-and-run-inner cmd)))
 
 (defun epi-tools-lib ()
@@ -624,7 +624,7 @@
 (define-key gene-mode-map (kbd "t") 'epi-tools)
 (define-key gene-mode-map (kbd "l") 'epi-tools-lib)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
-(define-key gene-mode-map (kbd "x") 'shell-exit)
+(define-key gene-mode-map (kbd "x") 'epi-exit)
 
 (put 'downcase-region 'disabled nil)
 
