@@ -202,6 +202,7 @@
 (require 'window-purpose)
 (purpose-mode)
 (add-to-list 'purpose-user-mode-purposes '(vterm-mode . terminal))
+(purpose-compile-user-configuration)
 
 ;; (purpose-mode)
 ;;
