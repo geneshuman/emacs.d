@@ -10,8 +10,8 @@
         (setq c-basic-offset 2)
         (setq indent-tabs-mode t)))
 
-(setq lsp-keymap-prefix "C-'")
-
+;;(setq lsp-keymap-prefix "C-'")
+asdfdsa
 
 (use-package lsp-mode :commands lsp :ensure t)
 (use-package lsp-mode
