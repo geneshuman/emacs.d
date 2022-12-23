@@ -19,9 +19,9 @@
 (use-package lsp-mode
   :commands lsp
   :init
-  (setq lsp-keymap-prefix "C-i m")
+  (setq lsp-keymap-prefix "C-c z")
   :config
-  (define-key lsp-mode-map (kbd "C-i m") lsp-command-map)
+  (define-key lsp-mode-map (kbd "C-c z") lsp-command-map)
   (require 'lsp-clients)
   :hook (lsp-mode . lsp-enable-which-key-integration))
 
