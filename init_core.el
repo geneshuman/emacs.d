@@ -135,7 +135,7 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      (purpose-toggle-window-buffer-dedicated)
+      (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (vterm))
