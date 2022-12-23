@@ -199,9 +199,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; purpose mode
-;; this doesn't work, as it messes with C-x b & replaces it with purpose-switch-buffer
 (require 'window-purpose)
-(define-key purpose-mode-map (kbd "C-x b") nil)
 (purpose-mode)
 (define-key purpose-mode-map (kbd "C-x b") nil)
 (add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
