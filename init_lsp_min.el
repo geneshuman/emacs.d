@@ -11,7 +11,7 @@
         (setq indent-tabs-mode t)))
 
 
-(setq lsp-keymap-prefix "C-'")
+(setq lsp-keymap-prefix "C-;")
 
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
