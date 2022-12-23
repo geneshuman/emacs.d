@@ -1,4 +1,4 @@
-(ensure-package-installed 'lsp-mode)
+(ensure-package-installed 'lsp-mode 'dap-mode)
 
 ;; c & c++
 (setq c-default-style "linux")
