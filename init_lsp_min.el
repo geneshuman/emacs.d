@@ -10,6 +10,7 @@
         (setq c-basic-offset 2)
         (setq indent-tabs-mode t)))
 
+
 (setq lsp-keymap-prefix "C-'")
 
 (add-hook 'c-mode-hook 'lsp)
@@ -21,9 +22,14 @@
   (setq lsp-keymap-prefix "C-'")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c++-mode . lsp)
-)
+         )
   :commands lsp)
 
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools))
+  ;;(yas-global-mode))
 
 (setq lsp-idle-delay 0.1)  ;; clangd is fast
 
