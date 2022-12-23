@@ -601,7 +601,7 @@
 (defun epi-tools-lib ()
   "Run tools.rb"
   (interactive)
-  (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools.rb p"))
+  (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools.rb r"))
   (epi-build-and-run-inner cmd)))
 
 (defun epi-build-and-run-no-prompt ()
