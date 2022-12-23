@@ -24,21 +24,6 @@
 ;;           (lsp-mode . lsp-enable-which-key-integration))
 ;;    )
 
-
-(use-package lsp-mode
-  :commands lsp
-  :init
-  (setq lsp-keymap-prefix "C-'")
-  :config
-  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
-  (require 'lsp-clients)
-  :custom
-  ;;(lsp-auto-guess-root t)
-  (lsp-prefer-capf t)
-  :hook (lsp-mode . lsp-enable-which-key-integration))
-
-(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
-
 (setq lsp-log-io nil)
 
 (setq lsp-enable-on-type-formatting nil)
@@ -96,5 +81,21 @@
 ;;(require 'dap-lldb)
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
+
+
+(use-package lsp-mode
+  :commands lsp
+  :init
+  (setq lsp-keymap-prefix "C-'")
+  :config
+  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
+  (require 'lsp-clients)
+  :custom
+  ;;(lsp-auto-guess-root t)
+  (lsp-prefer-capf t)
+  :hook (lsp-mode . lsp-enable-which-key-integration))
+
+(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
+
 
 ;;(setq lsp-disabled-clients "ccls")
