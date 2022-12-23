@@ -1,21 +1,5 @@
 (ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode)
 
-
-(use-package lsp-mode
-  :commands lsp
-  :init
-  (setq lsp-keymap-prefix "C-'")
-  :config
-  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
-  (require 'lsp-clients)
-  :custom
-  ;;(lsp-auto-guess-root t)
-  (lsp-prefer-capf t)
-  :hook (lsp-mode . lsp-enable-which-key-integration))
-
-(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
-
-
 ;; c & c++
 (setq c-default-style "linux")
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
@@ -39,6 +23,21 @@
 ;;    :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
 ;;           (lsp-mode . lsp-enable-which-key-integration))
 ;;    )
+
+
+(use-package lsp-mode
+  :commands lsp
+  :init
+  (setq lsp-keymap-prefix "C-'")
+  :config
+  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
+  (require 'lsp-clients)
+  :custom
+  ;;(lsp-auto-guess-root t)
+  (lsp-prefer-capf t)
+  :hook (lsp-mode . lsp-enable-which-key-integration))
+
+(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
 
 (setq lsp-log-io nil)
 
