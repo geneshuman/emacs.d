@@ -462,8 +462,6 @@
   )
 
 
-
-
 ;; misc function
 (defun find-first-non-ascii-char ()
   "Find the first non-ascii character from point onwards."
@@ -561,7 +559,7 @@
 
 (global-set-key (kbd "C-M-b") 'transpose-other-buffer)
 
-(defun epi-exit ()
+(defun shell-exit ()
   "Switch to shell & C-c"
   (interactive)
   (let ((epi-exec-ret (selected-window)))
@@ -578,7 +576,7 @@
   (let ((epi-exec-ret (selected-window)))
     (setq epi-cmd cmd)
     (shelly-times)
-    (epi-exit)
+    (shell-exit)
     (if (equal major-mode 'vterm-mode)
         (progn
           (vterm-send-string cmd)
@@ -591,66 +589,19 @@
     (select-window epi-exec-ret)
     ))
 
-(defun epi-build-and-run-osx (args)
-  "Build epimorphism & run it."
+
+(defun epi-tools (args)
+  "Run tools.rb"
   (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "mac"))
-                             nil nil (if (boundp 'epi-args) epi-args "mac"))))
-  (let ((cmd (concat " cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && sudo nice -n -10 ./epimorphism " args)))
+                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "bdar dev"))
+                             nil nil (if (boundp 'epi-args) epi-args "bdar dev"))))
+  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools p" args)))
   (epi-build-and-run-inner cmd)))
 
-(defun epi-build-and-run-fb (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "fb"))
-                             nil nil (if (boundp 'epi-args) epi-args "fb"))))
-  (let ((cmd (concat " cd /home/linaro/Programming/epimorphism6 && make -j2 -C build && sudo nice -n -10 ./epimorphism " args)))
+(defun epi-tools-lib
+    "Run tools.rb"
+  (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools p"))
   (epi-build-and-run-inner cmd)))
-
-(defun epi-build-and-run-linunx (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "linux"))
-                             nil nil (if (boundp 'epi-args) epi-args "linux"))))
-  (let ((cmd (concat " cd /Users/gene/Programming/epimorphism6 && make -j16 -C build && sudo nice -n -10 ./epimorphism " args)))
-  (epi-build-and-run-inner cmd)))
-
-(defun epi-build-and-run-cross (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
-                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib' && sudo systemctl restart meta_launcher")))
-  ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-  (epi-build-and-run-inner cmd)))
-
-(defun epi-build-and-run-cross-deploy (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
-                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " ssh -t gene@192.168.0.12 'cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/entropyandsons_remote/root/home/entropyandsons/epimorphism/lib' && echo '" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl restart meta_launcher")))
-  ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-  (epi-build-and-run-inner cmd)))
-
-(defun epi-build-and-run-cross-deploy-osx (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
-                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " sudo systemctl stop meta_launcher && ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib'  && echo '" args "' > /home/entropyandsons/epimorphism/INIT && sudo systemctl start meta_launcher")))
-  ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-  (epi-build-and-run-inner cmd)))
-
-(defun epi-build-and-run-cross-deploy-static (args)
-  "Build epimorphism & run it."
-  (interactive (list
-                (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "dev"))
-                             nil nil (if (boundp 'epi-args) epi-args "dev"))))
-  (let ((cmd (concat " ssh -t gene@192.168.3.1 'cd /Users/gene/Programming/epimorphism6 && make -j8 -C build && cp -r lib/epi /Users/gene/Programming/remote/root/home/entropyandsons/epimorphism/lib'  && cd /home/entropyandsons/epimorphism/ && ./epimorphism " args)))
-  ;;(let ((cmd (concat "cd /home/gene/Programming/epimorphism6 && make -j12 -C build && cp -r lib/epi /home/linaro/root/home/linaro/Programming/epimorphism6/lib && ssh -t linaro 'cd /home/linaro/Programming/epimorphism6 && sudo nice -n -10 ./epimorphism " args "'")))
-  (epi-build-and-run-inner cmd)))
-
 
 
 (defun epi-build-and-run-no-prompt ()
@@ -670,16 +621,9 @@
 
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
-(define-key gene-mode-map (kbd "g") 'epi-build-and-run-linux)
-(define-key gene-mode-map (kbd "f") 'epi-build-and-run-fb)
-(define-key gene-mode-map (kbd "h") 'epi-build-and-run-osx)
-(define-key gene-mode-map (kbd "c") 'epi-build-and-run-cross)
-(define-key gene-mode-map (kbd "d") 'epi-build-and-run-cross-deploy)
-(define-key gene-mode-map (kbd "o") 'epi-build-and-run-cross-deploy-osx)
-(define-key gene-mode-map (kbd "s") 'epi-build-and-run-cross-deploy-static)
+(define-key gene-mode-map (kbd "g") 'epi-tools)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
-
-(define-key gene-mode-map (kbd "x") 'epi-exit)
+(define-key gene-mode-map (kbd "x") 'shell-exit)
 
 (put 'downcase-region 'disabled nil)
 
