@@ -343,11 +343,6 @@
   ;;(setq which-key-idle-secondary-delay 0.05)
   (which-key-mode))
 
-(global-set-key (kbd "M-.") 'xref-find-definitions)
-(global-set-key (kbd "M-?") 'xref-find-references)
-
-(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
-
 ;; css
 (add-hook 'css-mode-hook
       (lambda ()
