@@ -62,7 +62,6 @@
 
 (global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
 
-
 ;;(use-package ccls
 ;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
 ;;         (lambda () (require 'ccls) (lsp)))
@@ -81,5 +80,11 @@
 ;;(require 'dap-lldb)
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
+
+(global-set-key (kbd "M-.") 'xref-find-definitions)
+(global-set-key (kbd "M-?") 'xref-find-references)
+
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
+
 
 ;;(setq lsp-disabled-clients "ccls")
