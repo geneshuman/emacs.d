@@ -575,8 +575,8 @@
 
   (let ((epi-exec-ret (selected-window)))
     (setq epi-cmd cmd)
-    (shelly-times)
     (shell-exit)
+    (shelly-times)
     (if (equal major-mode 'vterm-mode)
         (progn
           (vterm-send-string cmd)
@@ -586,7 +586,7 @@
         (insert cmd)
         (comint-send-input))
       )
-    ;;(select-window epi-exec-ret)
+    (select-window epi-exec-ret)
     ))
 
 (defun epi-tools (args)
