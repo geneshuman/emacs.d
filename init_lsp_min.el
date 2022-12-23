@@ -17,13 +17,23 @@
 (add-hook 'c++-mode-hook 'lsp)
 
 (use-package lsp-mode
+  :commands lsp
   :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-'")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c++-mode . lsp)
-         )
-  :commands lsp)
+  :config
+  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
+  (require 'lsp-clients)
+  :hook (lsp-mode . lsp-enable-which-key-integration))
+
+
+;;(use-package lsp-mode
+;;  :init
+;;  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+;;  (setq lsp-keymap-prefix "C-'")
+;;  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+;;         (c++-mode . lsp)
+;;         )
+;;  :commands lsp)
 
 
 (with-eval-after-load 'lsp-mode
