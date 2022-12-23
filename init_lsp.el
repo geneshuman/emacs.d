@@ -10,9 +10,6 @@
         (setq c-basic-offset 2)
         (setq indent-tabs-mode t)))
 
-;;(setq lsp-keymap-prefix "C-'")
-
-(use-package lsp-mode :commands lsp :ensure t)
 (use-package lsp-mode
     :init
     (setq lsp-keymap-prefix "C-'")
@@ -20,26 +17,12 @@
     ;;(lsp-auto-guess-root t)
     (lsp-prefer-capf t)
     :commands lsp
+    :ensure t
     :config
     (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
     :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
            (lsp-mode . lsp-enable-which-key-integration))
     )
-
-
-;;(use-package lsp-mode
-;;  :commands lsp
-;;  :init
-;;  (setq lsp-keymap-prefix "C-'")
-;;  :config
-;;  (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
-;;  (require 'lsp-clients)
-;;  :custom
-;;  ;;(lsp-auto-guess-root t)
-;;  (lsp-prefer-capf t)
-;;  :hook (lsp-mode . lsp-enable-which-key-integration))
-;;
-;;(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
 
 (setq lsp-log-io nil)
 
