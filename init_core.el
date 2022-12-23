@@ -622,6 +622,7 @@
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "g") 'epi-tools)
+(define-key gene-mode-map (kbd "l") 'epi-tools-lib)
 (define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 (define-key gene-mode-map (kbd "x") 'shell-exit)
 
