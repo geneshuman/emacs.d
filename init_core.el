@@ -598,7 +598,7 @@
   (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools p" args)))
   (epi-build-and-run-inner cmd)))
 
-(defun epi-tools-lib
+(defun epi-tools-lib ()
     "Run tools.rb"
   (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools p"))
   (epi-build-and-run-inner cmd)))
