@@ -575,7 +575,6 @@
 
   (let ((epi-exec-ret (selected-window)))
     (setq epi-cmd cmd)
-    ;;(shell-exit)
     (shelly-times)
     (if (equal major-mode 'vterm-mode)
         (progn
@@ -596,7 +595,8 @@
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "bdar dev"))
                              nil nil (if (boundp 'epi-args) epi-args "bdar dev"))))
   (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools.rb " args)))
-  (epi-build-and-run-inner cmd)))
+    (shell-exit)
+    (epi-build-and-run-inner cmd)))
 
 (defun epi-tools-lib ()
   "Run tools.rb"
