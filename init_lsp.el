@@ -82,7 +82,7 @@
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
 (global-set-key (kbd "M-.") 'xref-find-definitions)
-(global-set-key (kbd "M-?") 'xref-find-references)
+(global-set-key (kbd "M-,") 'xref-find-references)
 
 (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
