@@ -199,8 +199,12 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; purpose mode
+(require 'window-purpose)
+(purpose-mode)
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . terminal))
+
 ;; (purpose-mode)
-;; (add-to-list 'purpose-user-mode-purposes '(shell-mode . terminal))
+;;
 ;; (purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
