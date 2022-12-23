@@ -11,8 +11,6 @@
         (setq indent-tabs-mode t)))
 
 
-;;(setq lsp-keymap-prefix "C-:")
-
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 
@@ -25,6 +23,8 @@
   (require 'lsp-clients)
   :hook (lsp-mode . lsp-enable-which-key-integration))
 
+
+(setq lsp-keymap-prefix "C-'")
 
 ;;(use-package lsp-mode
 ;;  :init
