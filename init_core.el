@@ -589,9 +589,9 @@
     (select-window epi-exec-ret)
     ))
 
-
 (defun epi-tools (args)
   "Run tools.rb"
+
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "bdar dev"))
                              nil nil (if (boundp 'epi-args) epi-args "bdar dev"))))
@@ -602,7 +602,6 @@
     "Run tools.rb"
   (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools p"))
   (epi-build-and-run-inner cmd)))
-
 
 (defun epi-build-and-run-no-prompt ()
   "Build epimorphism & run it no prompt."
