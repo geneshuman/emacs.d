@@ -575,7 +575,7 @@
 
   (let ((epi-exec-ret (selected-window)))
     (setq epi-cmd cmd)
-    (shell-exit)
+    ;;(shell-exit)
     (shelly-times)
     (if (equal major-mode 'vterm-mode)
         (progn
