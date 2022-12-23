@@ -15,7 +15,7 @@
 (use-package lsp-mode :commands lsp :ensure t)
 (use-package lsp-mode
     :init
-    (setq lsp-keymap-prefix "C-c l")
+    (setq lsp-keymap-prefix "C-'")
     :custom
     ;;(lsp-auto-guess-root t)
     (lsp-prefer-capf t)
@@ -24,7 +24,7 @@
            (lsp-mode . lsp-enable-which-key-integration))
     )
 
-(define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
 
 (setq lsp-log-io nil)
 
