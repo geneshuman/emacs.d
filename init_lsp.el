@@ -16,8 +16,6 @@
 (use-package lsp-mode
     :init
     (setq lsp-keymap-prefix "C-'")
-    :config
-    (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
     :custom
     ;;(lsp-auto-guess-root t)
     (lsp-prefer-capf t)
@@ -25,6 +23,8 @@
     :hook (((c-mode c++-mode objc-mode cuda-mode) . lsp)
            (lsp-mode . lsp-enable-which-key-integration))
     )
+
+(define-key lsp-mode-map (kbd "C-'") lsp-command-map)
 
 (setq lsp-log-io nil)
 
