@@ -599,7 +599,7 @@
   (epi-build-and-run-inner cmd)))
 
 (defun epi-tools-lib ()
-    "Run tools.rb"
+  "Run tools.rb"
   (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools p"))
   (epi-build-and-run-inner cmd)))
 
