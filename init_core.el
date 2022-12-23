@@ -201,12 +201,8 @@
 ;; purpose mode
 (require 'window-purpose)
 (purpose-mode)
-(add-to-list 'purpose-user-mode-purposes '(vterm-mode . terminal))
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
 (purpose-compile-user-configuration)
-
-;; (purpose-mode)
-;;
-;; (purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
 ;; (purpose-x-magit-single-on)
