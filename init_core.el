@@ -135,7 +135,7 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      ;;(purpose-toggle-window-purpose-dedicated)
+      (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (vterm))
@@ -200,10 +200,12 @@
 
 ;; purpose mode
 ;; this doesn't work, as it messes with C-x b & replaces it with purpose-switch-buffer
-;; (require 'window-purpose)
-;; (purpose-mode)
-;; (add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
-;; (purpose-compile-user-configuration)
+(require 'window-purpose)
+(define-key purpose-mode-map (kbd "C-x b") nil)
+(purpose-mode)
+(define-key purpose-mode-map (kbd "C-x b") nil)
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+(purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
 ;; (purpose-x-magit-single-on)
