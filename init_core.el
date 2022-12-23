@@ -604,6 +604,18 @@
   (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools.rb p"))
   (epi-build-and-run-inner cmd)))
 
+(defun epi-tools-reset ()
+  "Run tools.rb"
+  (interactive)
+  (let ((cmd "cd /Users/gene/Programming/epimorphism6 && ./tools.rb r"))
+  (epi-build-and-run-inner cmd)))
+
+(defun epi-tools-args (args)
+  "Run tools.rb"
+  (interactive)
+  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools.rb ar " args)))
+  (epi-build-and-run-inner cmd)))
+
 (defun epi-build-and-run-no-prompt ()
   "Build epimorphism & run it no prompt."
   (interactive)
@@ -622,8 +634,10 @@
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "t") 'epi-tools)
-(define-key gene-mode-map (kbd "l") 'epi-tools-lib)
-(define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
+(define-key gene-mode-map (kbd "p") 'epi-tools-lib)
+(define-key gene-mode-map (kbd "r") 'epi-tools-reset)
+(define-key gene-mode-map (kbd "a") 'epi-tools-args)
+;;(define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 (define-key gene-mode-map (kbd "x") 'epi-exit)
 
 (put 'downcase-region 'disabled nil)
