@@ -586,7 +586,7 @@
         (insert cmd)
         (comint-send-input))
       )
-    (select-window epi-exec-ret)
+    ;;(select-window epi-exec-ret)
     ))
 
 (defun epi-tools (args)
