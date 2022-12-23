@@ -32,8 +32,9 @@
   :config
   (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
   (require 'lsp-clients)
-    :custom
-    (lsp-prefer-capf t)
+  :custom
+  ;;(lsp-auto-guess-root t)
+  (lsp-prefer-capf t)
   :hook (lsp-mode . lsp-enable-which-key-integration))
 
 (define-key lsp-mode-map (kbd "C-'") lsp-command-map)
