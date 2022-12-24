@@ -76,8 +76,8 @@
 (require 'lsp-ui-doc)
 (add-hook 'c++-mode-hook 'lsp)
 
-(dap-auto-configure-mode 1)
-(require 'dap-lldb)
+;;(dap-auto-configure-mode 1)
+;; (require 'dap-lldb)
 
 
 
