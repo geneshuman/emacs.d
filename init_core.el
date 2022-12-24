@@ -593,6 +593,7 @@
   (interactive (list
                 (read-string (format "Args: (%s): " (if (boundp 'epi-args) epi-args "bdar dev"))
                              nil nil (if (boundp 'epi-args) epi-args "bdar dev"))))
+  (setq epi-args args)
   (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools.rb " args)))
     (epi-build-and-run-inner cmd)))
 
