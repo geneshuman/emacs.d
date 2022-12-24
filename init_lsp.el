@@ -76,8 +76,11 @@
 (require 'lsp-ui-doc)
 (add-hook 'c++-mode-hook 'lsp)
 
-;;(dap-auto-configure-mode 1)
+(dap-auto-configure-mode 1)
 ;;(require 'dap-lldb)
+
+
+
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
