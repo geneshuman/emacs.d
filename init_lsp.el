@@ -84,7 +84,7 @@
 (use-package dap-mode
   :defer
   :custom
-  (dap-auto-configure-mode t "Automatically configure dap.")
+  ;;(dap-auto-configure-mode t "Automatically configure dap.")
   (dap-auto-configure-features
    '(sessions locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
   :config
