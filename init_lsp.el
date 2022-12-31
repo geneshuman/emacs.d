@@ -108,7 +108,7 @@
   (defun dap-debug-create-or-edit-json-template ()
     "Edit the C++ debugging configuration or create + edit if none exists yet."
     (interactive)
-    (let ((filename (concat (lsp-workspace-root) "/launch.json"))
+    (let ((filename (concat (lsp-workspace-root) "/.launch.json"))
       (default "~/.emacs.d/default-launch.json"))
       (unless (file-exists-p filename)
     (copy-file default filename))
