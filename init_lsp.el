@@ -1,4 +1,4 @@
-(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode)
+(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls  'modern-cpp-font-lock 'cmake-mode)
 
 ;; c & c++
 (setq c-default-style "linux")
