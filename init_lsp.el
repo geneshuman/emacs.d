@@ -26,7 +26,7 @@
 
 (setq lsp-disabled-clients "ccls")
 
-(use-package lsp-clangd)
+;;(use-package lsp-clangd)
 
 (setq lsp-log-io nil)
 
