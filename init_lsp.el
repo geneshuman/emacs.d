@@ -95,7 +95,7 @@
   (require 'dap-lldb)
 
   ;;; set the debugger executable (c++)
-  (setq dap-lldb-debug-program '("/Users/gene/Downloads/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/lldb-vscode"))
+  (setq dap-lldb-debug-program '("/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/lldb-vscode"))
 
   ;;; ask user for executable to debug if not specified explicitly (c++)
   (setq dap-lldb-debugged-program-function (lambda () (read-file-name "Select file to debug.")))
