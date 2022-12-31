@@ -93,8 +93,8 @@
 (dap-mode 1)
 (dap-ui-mode 1)
 (dap-tooltip-mode 1)
-(setq dap-ui-expressions 1)
-(setq dap-ui-locals 1)
+(dap-ui-expressions 1)
+(dap-ui-locals 1)
 
 
 (global-set-key (kbd "C-M-d") 'dap-hydra)
