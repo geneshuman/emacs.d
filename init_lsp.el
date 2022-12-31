@@ -10,8 +10,8 @@
         (setq c-basic-offset 2)
         (setq indent-tabs-mode t)))
 
-(setq lsp-clangd-binary-path "/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/clangd")
-(setq lsp-clangd-executable "/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/clangd")
+(setq lsp-clangd-binary-path "/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/clangdasdfasdf")
+(setq lsp-clangd-executable "/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/clangdasdfasdf")
 
 (use-package lsp-mode
     :init
