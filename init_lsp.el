@@ -97,7 +97,7 @@
 (setq dap-ui-locals 1)
 
 
-;;(global-set-key (kbd "C-M-d") 'dap-hydra)
+(global-set-key (kbd "C-M-d") 'dap-hydra)
 
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
