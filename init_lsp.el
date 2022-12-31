@@ -1,4 +1,4 @@
-(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls  'modern-cpp-font-lock 'cmake-mode)
+(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode)
 
 ;; c & c++
 (setq c-default-style "linux")
@@ -81,14 +81,14 @@
 (add-hook 'c++-mode-hook 'lsp)
 
 
-;;(use-package dap-mode
-;;  :defer
-;;  :custom
-;;  (dap-auto-configure-mode t "Automatically configure dap.")
+(use-package dap-mode
+  :defer
+  :custom
+  (dap-auto-configure-mode t "Automatically configure dap.")
 ;;  ;;(dap-auto-configure-features locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
 ;;  :config
 ;;  ;;; dap for c++
-;;  (require 'dap-codelldb))
+  (require 'dap-codelldb))
 ;;
 ;;(dap-mode 1)
 ;;(dap-ui-mode 1)
