@@ -80,14 +80,11 @@
 (require 'lsp-ui-doc)
 (add-hook 'c++-mode-hook 'lsp)
 
-;;(dap-auto-configure-mode 1)
-;;(require 'dap-lldb)
-
 
 (use-package dap-mode
   :defer
   :custom
-  (dap-auto-configure-mode t                           "Automatically configure dap.")
+  (dap-auto-configure-mode t "Automatically configure dap.")
   ;;(dap-auto-configure-features
   ;; '(sessions locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
   :config
