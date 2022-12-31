@@ -24,9 +24,7 @@
            (lsp-mode . lsp-enable-which-key-integration))
     )
 
-(require 'lsp-clients)
 (lsp-clients-register-clangd)
-(add-hook 'c++-mode-hook 'lsp)
 
 (setq lsp-disabled-clients "ccls")
 
