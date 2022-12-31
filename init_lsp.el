@@ -77,7 +77,7 @@
 (add-hook 'c++-mode-hook 'lsp)
 
 ;;(dap-auto-configure-mode 1)
-(require 'dap-lldb)
+;;(require 'dap-lldb)
 
 
 (use-package dap-mode
