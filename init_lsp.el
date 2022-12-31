@@ -26,6 +26,8 @@
 
 (setq lsp-disabled-clients '(ccls))
 
+(setq lsp-clangd-binary-path "/Users/gene/Programming/clang+llvm-15.0.6-arm64-apple-darwin21.0/bin/clangd")
+
 ;;(use-package lsp-clangd)
 
 (setq lsp-log-io nil)
