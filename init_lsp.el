@@ -24,7 +24,7 @@
            (lsp-mode . lsp-enable-which-key-integration))
     )
 
-(setq lsp-disabled-clients '(ccls))
+;;(setq lsp-disabled-clients '(ccls))
 
 ;;(use-package lsp-clangd)
 
