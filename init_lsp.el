@@ -24,6 +24,8 @@
            (lsp-mode . lsp-enable-which-key-integration))
     )
 
+(setq lsp-disabled-clients "ccls")
+
 (setq lsp-log-io nil)
 
 (setq lsp-enable-on-type-formatting nil)
@@ -123,6 +125,3 @@
 (global-set-key (kbd "M-,") 'xref-find-references)
 
 (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
-
-
-(setq lsp-disabled-clients "ccls")
