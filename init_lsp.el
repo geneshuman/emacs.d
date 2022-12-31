@@ -91,6 +91,8 @@
   ;;; dap for c++
   (require 'dap-codelldb))
 
+(global-set-key (kbd "C-M-d") 'dap-hydra)
+
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
