@@ -91,7 +91,7 @@
   (require 'dap-lldb)
 
   ;;; set the debugger executable (c++)
-  (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
+  (setq dap-lldb-debug-program '("/usr/local/bin/lldb-vscode"))
 
   ;;; ask user for executable to debug if not specified explicitly (c++)
   (setq dap-lldb-debugged-program-function (lambda () (read-file-name "Select file to debug.")))
