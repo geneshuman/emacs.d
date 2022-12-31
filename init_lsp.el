@@ -86,8 +86,8 @@
   :custom
   (dap-auto-configure-mode t "Automatically configure dap.")
 ;;  ;;(dap-auto-configure-features locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
-;;  :config
-;;  ;;; dap for c++
+  :config
+  ;;; dap for c++
   (require 'dap-codelldb))
 ;;
 ;;(dap-mode 1)
