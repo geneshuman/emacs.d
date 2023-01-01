@@ -88,9 +88,8 @@ be found in docstring of `posframe-show'."
 (defun cleanup-posframe (str)
   "Cleanup posframe if forcus changed"
   (interactive)
-  (let ((cur (buffer-name))))
-    (unless (string-match-p (regexp-quote "*Minibuf") cur)
-      (message "hi %s" cur) ())))
+  (unless (string-match-p (regexp-quote "*Minibuf") (buffer-name))
+    (message "hi %s" cur) ()))
 
 (setq window-selection-change-functions '(cleanup-posframe))
 
