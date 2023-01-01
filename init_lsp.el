@@ -59,7 +59,7 @@
 ;;(setq lsp-ui-doc-use-webkit t)
 (setq lsp-ui-doc-enable nil)
 
-(global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
+;;(global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
 
 (require 'lsp-mode)
 (require 'lsp-ui)
