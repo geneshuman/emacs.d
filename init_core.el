@@ -140,7 +140,7 @@
       (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
-        (multi-vterm))
+        (vterm))
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
