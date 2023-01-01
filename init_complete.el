@@ -85,6 +85,14 @@ be found in docstring of `posframe-show'."
         (right-fringe . 3)
         (alpha . (95 . 95))))
 
+(defun cleanup_posframe (str)
+  "Cleanup posframe if forcus changed"
+  (interactive)
+  (message "hi %s" str)
+)
+
+
+
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-M-y") 'counsel-yank-pop)
