@@ -169,7 +169,6 @@
 (define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
 
 
-
 ;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
