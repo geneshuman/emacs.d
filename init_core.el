@@ -127,6 +127,7 @@
 (rvm-activate-corresponding-ruby)
 
 (use-package multi-vterm :ensure t)
+(require 'vterm)
 
 ;; shell
 (defvar shell-window)
@@ -140,7 +141,7 @@
       (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
-        (vterm))
+        (multi-vterm))
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
@@ -154,8 +155,6 @@
 (global-set-key (kbd "C-M-=") 'shelly-times)
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
-
-(require 'vterm)
 (setq vterm-max-scrollback 50000)
 
 (define-key vterm-mode-map (kbd "C-M-g") 'gene-mode-map)
