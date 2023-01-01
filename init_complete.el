@@ -90,7 +90,7 @@ be found in docstring of `posframe-show'."
   (interactive)
   (progn
     (message "hi %s" str)
-    (ivy-done)
+    (exit-minibuffer)
     )
 
 )
