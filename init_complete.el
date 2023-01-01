@@ -80,18 +80,18 @@ be found in docstring of `posframe-show'."
 (ivy-posframe-mode 1)
 
 
-(setq ivy-posframe-parameters
-      '((left-fringe . 3)
-        (right-fringe . 3)
-        (alpha . (95 . 95))))
+;; (setq ivy-posframe-parameters
+;;       '((left-fringe . 3)
+;;         (right-fringe . 3)
+;;         (alpha . (95 . 95))))
+;;
+;; (defun cleanup-posframe (str)
+;;   "Cleanup posframe if forcus changed"
+;;   (interactive)
+;;   (unless (string-match-p (regexp-quote "*Minibuf") (buffer-name))
+;;     (exit-minibuffer) ()))
 
-(defun cleanup-posframe (str)
-  "Cleanup posframe if forcus changed"
-  (interactive)
-  (unless (string-match-p (regexp-quote "*Minibuf") (buffer-name))
-    (exit-minibuffer) ()))
-
-(setq window-selection-change-functions '(cleanup-posframe))
+;;(setq window-selection-change-functions '(cleanup-posframe))
 
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -118,7 +118,7 @@ be found in docstring of `posframe-show'."
 
 ;; avy
 (global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
-(global-set-key (kbd "C-M-r") 'avy-goto-char-timer)
+(global-set-key (kbd "C-M-r") 'avy-goto-char-timer)f
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (setq avy-timeout-seconds 0.3)
 
