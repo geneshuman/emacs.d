@@ -12,7 +12,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur 'auto-package-update 'window-purpose)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'noccur 'auto-package-update 'window-purpose, 'popper)
 
 ;; requires
 (require 'expand-region)
@@ -197,6 +197,22 @@
 
 ;; rainbow
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+
+(use-package popper
+  :ensure t ; or :straight t
+  :bind (("C-`"   . popper-toggle-latest)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          ;; "\\*Async Shell Command\\*"
+          help-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1))
 
 ;; purpose mode
 (require 'window-purpose)
