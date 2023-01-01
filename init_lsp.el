@@ -1,4 +1,4 @@
-(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode)
+(ensure-package-installed 'lsp-mode 'lsp-ui 'lsp-ivy 'lsp-treemacs 'ccls 'dap-mode 'modern-cpp-font-lock 'cmake-mode 'yasnippet)
 
 ;; c & c++
 (setq c-default-style "linux")
@@ -79,7 +79,7 @@
 
 (global-set-key (kbd "C-M-d") 'dap-hydra)
 
-;;(yas-global-mode)
+(yas-global-mode)
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
