@@ -56,7 +56,7 @@
 (setq lsp-ui-sideline-show-code-actions nil)
 (setq lsp-ui-doc-position 'bottom)
 (setq lsp-ui-doc-alignment 'window)
-;;(setq lsp-ui-doc-use-webkit t)
+(setq lsp-ui-doc-use-webkit t)
 (setq lsp-ui-doc-enable nil)
 
 (global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
