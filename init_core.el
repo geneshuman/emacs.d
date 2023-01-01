@@ -135,7 +135,7 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      ;;(purpose-toggle-window-purpose-dedicated)
+      (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (vterm))
@@ -203,7 +203,7 @@
 (purpose-mode)
 (define-key purpose-mode-map (kbd "C-x b") nil)
 (define-key purpose-mode-map (kbd "C-x C-f") nil)
-;;(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
 (purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
