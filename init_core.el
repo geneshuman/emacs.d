@@ -663,7 +663,16 @@
   (other-window)
   (split-window-below)
   (shelly-times)
-  (purpose-window
+  (multi-vterm)
+  (vterm-send-string (concat "ssh entropyandsons@" epi-host))
+  (vterm-send-return)
+  (multi-vterm)
+  (vterm-send-string (concat "ssh entropyandsons@" epi-host " && tail -f epimorphism/log/log.txt | perl -pe 's/^.*FATAL.*$/\e[1;37;41m$&\e[0m/g; s/^.*ERROR.*$/\e[1;31;40m$&\e[0m/g; s/^.*WARN.*$/\e[0;33;40m$&\e[0m/g; s/^.*INFO.*$/\e[0;36;40m$&\e[0m/g; s/^.*DEBUG.*$/\e[0;37;40m$&\e[0m/g'"))
+  (vterm-send-return)
+  (multi-vterm)
+  (vterm-send-string (concat "ssh entropyandsons@" epi-host " && grc tail -f epimorphism/log/*launcher*"))
+  (vterm-send-return)
+
   )
 
 
