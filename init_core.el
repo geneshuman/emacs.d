@@ -672,7 +672,7 @@
   (multi-vterm)
   (vterm-send-string (concat "ssh entropyandsons@" epi-host " && grc tail -f epimorphism/log/*launcher*"))
   (vterm-send-return)
-
+  (multi-vtern-next)
   )
 
 
