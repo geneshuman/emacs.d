@@ -83,7 +83,7 @@
   :config
   (yas-global-mode 1))
 
-(define-key yas-minor-mode-map (kbd "C-c s") #'yas-expand)
+;;(define-key yas-minor-mode-map (kbd "C-c s") #'yas-expand)
 
 (global-set-key (kbd "C-M-d") 'dap-hydra)
 
