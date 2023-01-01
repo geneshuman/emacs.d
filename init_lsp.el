@@ -41,11 +41,6 @@
           (lambda()
             (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
             (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-;;            (lsp-register-client
-;;             (make-lsp-client :new-connection (lsp-tramp-connection "ccls")
-;;                              :major-modes '(c++-mode)
-;;                              :remote? t
-;;                              :server-id 'ccls-remote))
             ))
 
 
@@ -66,15 +61,6 @@
 
 (global-set-key (kbd "C-M-d") 'lsp-ui-doc-glance)
 
-;;(use-package ccls
-;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;         (lambda () (require 'ccls) (lsp)))
-;;  :config
-;;  (setq ccls-initialization-options '(:compilationDatabaseDirectory "build")))
-;;
-;;  ;;(setq ccls-initialization-options '(:cache (:directory ".ccls-cache2"))))
-;;  ;;(setq ccls-initialization-options '(:index (:initialBlacklist ["extern"]))))
-
 (require 'lsp-mode)
 (require 'lsp-ui)
 (require 'lsp-ui-doc)
@@ -85,7 +71,8 @@
   :defer
   :custom
   (dap-auto-configure-mode t "Automatically configure dap.")
-  (dap-auto-configure-features sessions locals breakpoints expressions)  "Remove the button panel in the top.")
+  (dap-auto-configure-features
+   '(sessions locals breakpoints expressions)  "Remove the button panel in the top.")
   :config
   ;;; dap for c++
   (require 'dap-codelldb))
