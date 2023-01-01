@@ -85,14 +85,14 @@ be found in docstring of `posframe-show'."
         (right-fringe . 3)
         (alpha . (95 . 95))))
 
-(defun cleanup_posframe (str)
+(defun cleanup-posframe (str)
   "Cleanup posframe if forcus changed"
   (interactive)
   (let ((cur (current-buffer))
   (unless (string-match-p (regexp-quote "*Minibuf") cur)
       (message "hi %s" cur) ()))
 
-(setq window-selection-change-functions '(cleanup_posframe))
+(setq window-selection-change-functions '(cleanup-posframe))
 
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
