@@ -135,7 +135,7 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      (purpose-toggle-window-purpose-dedicated)
+      ;;(purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (vterm))
@@ -406,7 +406,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
 ;;(set-frame-parameter (selected-frame) 'alpha '(87 . 50))
-(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+(add-to-list 'default-frame-alist '(alpha . (95 . 90)))
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
