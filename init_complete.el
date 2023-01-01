@@ -80,11 +80,11 @@ be found in docstring of `posframe-show'."
 (ivy-posframe-mode 1)
 
 
-;; (setq ivy-posframe-parameters
-;;       '((left-fringe . 3)
-;;         (right-fringe . 3)
-;;         (alpha . (95 . 95))))
-;;
+(setq ivy-posframe-parameters
+      '((left-fringe . 3)
+        (right-fringe . 3)
+        (alpha . (95 . 95))))
+
 ;; (defun cleanup-posframe (str)
 ;;   "Cleanup posframe if forcus changed"
 ;;   (interactive)
@@ -92,7 +92,7 @@ be found in docstring of `posframe-show'."
 ;;     (exit-minibuffer) ()))
 
 ;;(setq window-selection-change-functions '(cleanup-posframe))
-(add-function :after after-focus-change-function #'posframe-delete-all)
+;;(add-function :after after-focus-change-function #'posframe-delete-all)
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
