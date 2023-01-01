@@ -406,7 +406,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
 ;;(set-frame-parameter (selected-frame) 'alpha '(87 . 50))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
