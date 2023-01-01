@@ -92,7 +92,7 @@ be found in docstring of `posframe-show'."
 ;;     (exit-minibuffer) ()))
 
 ;;(setq window-selection-change-functions '(cleanup-posframe))
-
+(add-function :after after-focus-change-function #'posframe-delete-all)
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
