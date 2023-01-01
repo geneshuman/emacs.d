@@ -25,7 +25,7 @@
  ;; If there is more than one, they won't work right.
  '(haskell-process-type 'stack-ghci)
  '(package-selected-packages
-   '(yasnippet-snippets popper dap-mode lsp-clangd noccur git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
+   '(layout-restore yasnippet-snippets popper dap-mode lsp-clangd noccur git-auto-commit-mode vterm window-purpose rainbow-delimiters xterm-color helpful ivy-posframe counsel-projectile counsel modern-c++-font-lock company-c-headers company-mode company-capf modern-cpp-font-lock lsp-ivy which-key lsp-company lsp-ui ivy-xref lsp-mode diredfl dired-filetype-face avy ivy-hydra whole-line-or-region ivy-rich pdf-tools undo-tree auto-package-update cmake-mode projectile psc-ide spaceline use-package intero intero-mode powerlinem rvm exec-path-from-shell yaml-mode rubocop purescript-mode powerline markdown-mode magit helm-projectile grizzl glsl-mode flx-ido expand-region coffee-mode))
  '(safe-local-variable-values
    '((gac-automatically-push-p quote t)
      (gac-automatically-add-new-files-p quote t)))
