@@ -88,7 +88,11 @@ be found in docstring of `posframe-show'."
 (defun cleanup_posframe (str)
   "Cleanup posframe if forcus changed"
   (interactive)
-  (message "hi %s" str)
+  (progn
+    (message "hi %s" str)
+    (ivy-done)
+    )
+
 )
 
 (setq window-selection-change-functions '(cleanup_posframe))
