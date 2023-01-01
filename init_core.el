@@ -152,10 +152,6 @@
 (add-hook 'vterm-mode-hook #'my/source-bashrc)
 
 (global-set-key (kbd "C-M-=") 'shelly-times)
-(define-key vterm-mode-map (kbd "C-M-[") 'multi-vterm-prev)
-(define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
-(define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
-
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
 
@@ -167,6 +163,11 @@
 (define-key vterm-mode-map (kbd "C-M-l") 'windmove-right)
 (define-key vterm-mode-map (kbd "C-M-i") 'windmove-up)
 (define-key vterm-mode-map (kbd "C-M-k") 'windmove-down)
+(define-key vterm-mode-map (kbd "C-M-[") 'multi-vterm-prev)
+(define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
+(define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
+
+
 
 ;;(require 'xterm-color)
 
