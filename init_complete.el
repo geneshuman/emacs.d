@@ -118,7 +118,7 @@ be found in docstring of `posframe-show'."
 
 ;; avy
 (global-set-key (kbd "C-M-s") 'avy-goto-char-timer)
-(global-set-key (kbd "C-M-r") 'avy-goto-char-timer)f
+(global-set-key (kbd "C-M-r") 'avy-goto-char-timer)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (setq avy-timeout-seconds 0.3)
 
