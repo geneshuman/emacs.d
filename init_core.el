@@ -587,6 +587,7 @@
 
 (defvar epi-cmd)
 (defvar epi-args)
+(defvar epi-host)
 
 (defun epi-build-and-run-inner (cmd)
   "Build epimorphism & run it."
@@ -649,6 +650,18 @@
     (vterm-send-C-p)
     (vterm-send-return)
     (select-window epi-exec-ret)))
+
+
+(defun epi-init-mac (host)
+  "Run tools.rb"
+
+  (interactive (list
+                (read-string (format "Host: (%s): " (if (boundp 'epi-host) epi-host "192.168.3.2"))
+                             nil nil (if (boundp 'epi-args) epi-args "192.168.3.2"))))
+  (setq epi-host host)
+  (let ((cmd (concat "cd /Users/gene/Programming/epimorphism6 && ./tools.rb " args)))
+    (epi-build-and-run-inner cmd)))
+
 
 ;;(define-key gene-mode-map (kbd "g") 'epi-build-and-run-no-prompt)
 (define-key gene-mode-map (kbd "C-M-g") 'epi-build-and-run-no-prompt)
