@@ -216,11 +216,11 @@
 
 ;; purpose mode
 (require 'window-purpose)
-(purpose-mode)
-(define-key purpose-mode-map (kbd "C-x b") nil)
-(define-key purpose-mode-map (kbd "C-x C-f") nil)
-(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
-(purpose-compile-user-configuration)
+;;(purpose-mode)
+;;(define-key purpose-mode-map (kbd "C-x b") nil)
+;;(define-key purpose-mode-map (kbd "C-x C-f") nil)
+;;(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+;;(purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
 ;; (purpose-x-magit-single-on)
