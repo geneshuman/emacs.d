@@ -126,6 +126,8 @@
   (exec-path-from-shell-initialize))
 (rvm-activate-corresponding-ruby)
 
+(use-package multi-vterm :ensure t)
+
 ;; shell
 (defvar shell-window)
 (makunbound 'shell-window)
@@ -138,7 +140,7 @@
       (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
-        (vterm))
+        (multi-vterm))
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
