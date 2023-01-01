@@ -89,7 +89,7 @@ be found in docstring of `posframe-show'."
   "Cleanup posframe if forcus changed"
   (interactive)
   (unless (string-match-p (regexp-quote "*Minibuf") (buffer-name))
-    (message "hi %s" (buffer-name)) ()))
+    (exit-minibuffer) ()))
 
 (setq window-selection-change-functions '(cleanup-posframe))
 
