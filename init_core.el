@@ -12,7 +12,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'multi-vterm 'noccur 'auto-package-update 'window-purpose 'popper 'layout-restore)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'multi-vterm 'noccur 'auto-package-update 'window-purpose 'popper)
 
 ;; requires
 (require 'expand-region)
@@ -406,8 +406,6 @@
 (global-set-key (kbd "C-M-i") 'windmove-up)
 (global-set-key (kbd "C-M-k") 'windmove-down)
 
- (require 'layout-restore)
-
 ;; UI CONFIGURATION
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'prassee t)
@@ -660,6 +658,9 @@
 (define-key gene-mode-map (kbd "a") 'epi-tools-args)
 ;;(define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 (define-key gene-mode-map (kbd "x") 'epi-exit)
+
+
+(define-key gene-mode-map (kbd "M") 'epi-init-mac)
 
 (put 'downcase-region 'disabled nil)
 
