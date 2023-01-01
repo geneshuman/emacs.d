@@ -51,7 +51,8 @@
 (global-set-key (kbd "C-x B") 'list-buffers)
 (global-set-key (kbd "C-z") 'nil)
 
- (global-set-key (kbd "C-c o") 'occur)
+(global-set-key (kbd "C-c o") 'occur)
+(global-set-key (kbd "C-c n") 'noccur-project)
 
 (global-set-key (kbd "C-<wheel-down>") 'nil)
 (global-set-key (kbd "C-<wheel-up>") 'nil)
