@@ -138,10 +138,11 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      (purpose-toggle-window-purpose-dedicated)
+      ;;(purpose-toggle-window-purpose-dedicated)
+      (multi-vterm-dedicated-toggle)
       (if (equal major-mode 'vterm-mode)
           ()
-        (vterm))
+        (multi-vterm))
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
@@ -220,12 +221,12 @@
 ;;  (popper-echo-mode +1))
 
 ;; purpose mode
-(require 'window-purpose)
-(purpose-mode)
-(define-key purpose-mode-map (kbd "C-x b") nil)
-(define-key purpose-mode-map (kbd "C-x C-f") nil)
-(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
-(purpose-compile-user-configuration)
+;;(require 'window-purpose)
+;;(purpose-mode)
+;;(define-key purpose-mode-map (kbd "C-x b") nil)
+;;(define-key purpose-mode-map (kbd "C-x C-f") nil)
+;;(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+;;(purpose-compile-user-configuration)
 
 ;; (require 'window-purpose-x)
 ;; (purpose-x-magit-single-on)
