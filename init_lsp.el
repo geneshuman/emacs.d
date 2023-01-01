@@ -82,6 +82,9 @@
 (use-package :yasnippet
   :config
   (yas-global-mode 1))
+(define-key yas-minor-mode-map (kbd "C-c s") #'yas-expand)
+
+(global-set-key (kbd "C-M-d") 'dap-hydra)
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
