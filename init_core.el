@@ -152,9 +152,9 @@
 (add-hook 'vterm-mode-hook #'my/source-bashrc)
 
 (global-set-key (kbd "C-M-=") 'shelly-times)
-(global-set-key (kbd "C-M-[") 'multi-vterm-prev)
-(global-set-key (kbd "C-M-]") 'multi-vterm-next)
-(global-set-key (kbd "C-M-\\") 'multi-vterm)
+(define-key vterm-mode-map (kbd "C-M-[") 'multi-vterm-prev)
+(define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
+(define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
 
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
