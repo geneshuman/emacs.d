@@ -90,7 +90,7 @@ be found in docstring of `posframe-show'."
   (interactive)
   (let ((cur (current-buffer))
   (unless (string-match-p (regexp-quote "*Minibuf") cur)
-      (message "hi %s" cur) ()))
+      (message "hi %s" cur) ()))))
 
 (setq window-selection-change-functions '(cleanup-posframe))
 
