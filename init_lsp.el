@@ -76,13 +76,6 @@
   :config
   ;;; dap for c++
   (require 'dap-codelldb))
-;;
-;;(dap-mode 1)
-;;(dap-ui-mode 1)
-;;(dap-tooltip-mode 1)
-;;(dap-ui-expressions)
-;;(dap-ui-locals)
-
 
 (global-set-key (kbd "C-M-d") 'dap-hydra)
 
