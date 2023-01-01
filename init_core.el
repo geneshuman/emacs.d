@@ -138,8 +138,7 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      ;;(purpose-toggle-window-purpose-dedicated)
-      (multi-vterm-dedicated-toggle)
+      (purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (multi-vterm))
@@ -221,15 +220,12 @@
 ;;  (popper-echo-mode +1))
 
 ;; purpose mode
-;;(require 'window-purpose)
-;;(purpose-mode)
-;;(define-key purpose-mode-map (kbd "C-x b") nil)
-;;(define-key purpose-mode-map (kbd "C-x C-f") nil)
-;;(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
-;;(purpose-compile-user-configuration)
-
-;; (require 'window-purpose-x)
-;; (purpose-x-magit-single-on)
+(require 'window-purpose)
+(purpose-mode)
+(define-key purpose-mode-map (kbd "C-x b") nil)
+(define-key purpose-mode-map (kbd "C-x C-f") nil)
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+(purpose-compile-user-configuration)
 
 ;; magit
 (require 'magit)
