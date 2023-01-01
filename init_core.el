@@ -659,9 +659,9 @@
                 (read-string (format "Host: (%s): " (if (boundp 'epi-host) epi-host "192.168.3.2"))
                              nil nil (if (boundp 'epi-host) epi-host "192.168.3.2"))))
   (setq epi-host host)
-  ()
-  ()
-  ()
+  (split-window-right)
+  (other-window)
+  (split-window-below)
   ()
   )
 
