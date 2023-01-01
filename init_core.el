@@ -163,6 +163,7 @@
 (define-key vterm-mode-map (kbd "C-M-l") 'windmove-right)
 (define-key vterm-mode-map (kbd "C-M-i") 'windmove-up)
 (define-key vterm-mode-map (kbd "C-M-k") 'windmove-down)
+
 (define-key vterm-mode-map (kbd "C-M-[") 'multi-vterm-prev)
 (define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
 (define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
