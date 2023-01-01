@@ -167,7 +167,6 @@
 (define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
 (define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
 
-
 ;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
@@ -190,6 +189,14 @@
             (setq xterm-color-preserve-properties t)))
 
 (setenv "TERM" "ansi")
+
+;; purpose mode
+(require 'window-purpose)
+(purpose-mode)
+(define-key purpose-mode-map (kbd "C-x b") nil)
+(define-key purpose-mode-map (kbd "C-x C-f") nil)
+(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
+(purpose-compile-user-configuration)
 
 ;; tab width bs
 (setq-default c-basic-offset 2
@@ -218,14 +225,6 @@
 ;;          compilation-mode))
 ;;  (popper-mode +1)
 ;;  (popper-echo-mode +1))
-
-;; purpose mode
-(require 'window-purpose)
-(purpose-mode)
-(define-key purpose-mode-map (kbd "C-x b") nil)
-(define-key purpose-mode-map (kbd "C-x C-f") nil)
-(add-to-list 'purpose-user-mode-purposes '(vterm-mode . system))
-(purpose-compile-user-configuration)
 
 ;; magit
 (require 'magit)
