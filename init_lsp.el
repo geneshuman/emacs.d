@@ -79,7 +79,7 @@
 
 (global-set-key (kbd "C-M-d") 'dap-hydra)
 
-(yas-global-mode)
+;;(yas-global-mode)
 
 (define-key lsp-mode-map [remap xref-find-apropos] #'lsp-ivy-workspace-symbol)
 
