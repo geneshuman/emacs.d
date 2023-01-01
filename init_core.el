@@ -167,6 +167,9 @@
 (define-key vterm-mode-map (kbd "C-M-]") 'multi-vterm-next)
 (define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
 
+
+(winner-mode 1)
+
 ;;(require 'xterm-color)
 
 (setq comint-output-filter-functions
