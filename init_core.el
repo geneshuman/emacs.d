@@ -138,10 +138,10 @@
   (if (boundp 'shell-window)
       (select-window shell-window)
     (progn
-      ;;(purpose-toggle-window-purpose-dedicated)
       (if (equal major-mode 'vterm-mode)
           ()
         (multi-vterm))
+      (purpose-toggle-window-purpose-dedicated)
       (setq shell-window (selected-window))
       (set-window-parameter (selected-window) 'no-other-window 't)
       (message "shelly times"))))
@@ -662,7 +662,8 @@
   (split-window-right)
   (other-window)
   (split-window-below)
-  ()
+  (shelly-times)
+  (purpose-window
   )
 
 
