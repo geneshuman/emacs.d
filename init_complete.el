@@ -91,6 +91,7 @@ be found in docstring of `posframe-show'."
   (message "hi %s" str)
 )
 
+(setq window-selection-change-functions '(cleanup_posframe))
 
 
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
