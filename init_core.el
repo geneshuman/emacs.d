@@ -154,6 +154,7 @@
 (global-set-key (kbd "C-M-=") 'shelly-times)
 (global-set-key (kbd "C-M-[") 'multi-vterm-prev)
 (global-set-key (kbd "C-M-]") 'multi-vterm-next)
+(global-set-key (kbd "C-M-\") 'multi-vterm)
 
 (define-key comint-mode-map (kbd "C-M-l") nil)
 
