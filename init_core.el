@@ -12,7 +12,7 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'multi-vterm 'noccur 'auto-package-update 'window-purpose 'popper)
+(ensure-package-installed 'exec-path-from-shell 'flycheck 'coffee-mode 'expand-region 'haskell-mode 'projectile 'async 'magit 'powerline 'rvm 'psc-ide 'use-package 'spaceline 'purescript-mode 'glsl-mode 'whole-line-or-region 'undo-tree  'dired-filetype-face 'diredfl 'pdf-tools  'which-key 'treemacs 'helpful 'rainbow-delimiters 'git-auto-commit-mode 'vterm 'multi-vterm 'noccur 'auto-package-update 'window-purpose 'popper 'layout-restore)
 
 ;; requires
 (require 'expand-region)
@@ -405,6 +405,8 @@
 (global-set-key (kbd "C-M-l") 'windmove-right)
 (global-set-key (kbd "C-M-i") 'windmove-up)
 (global-set-key (kbd "C-M-k") 'windmove-down)
+
+ (require 'layout-restore)
 
 ;; UI CONFIGURATION
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
