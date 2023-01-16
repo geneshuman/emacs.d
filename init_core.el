@@ -139,7 +139,7 @@
   (if (boundp 'shell-window)
       (progn
         (select-window shell-window)
-        (switch-to-buffer ""*vterminal<1>*"")
+        (switch-to-buffer "*vterminal<1>*")
         (redisplay))
     (progn
       (if (equal major-mode 'vterm-mode)
