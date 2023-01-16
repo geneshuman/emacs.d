@@ -137,7 +137,10 @@
   "Sets the ignore-other-window property or switches to window"
   (interactive)
   (if (boundp 'shell-window)
-      (select-window shell-window)
+      (progn
+        (select-window shell-window)
+        ;; (switch-to-buffer "vterm1")
+        (redisplay))
     (progn
       (if (equal major-mode 'vterm-mode)
           ()
