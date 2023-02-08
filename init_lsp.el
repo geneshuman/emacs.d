@@ -71,8 +71,8 @@
   :defer
   :custom
   (dap-auto-configure-mode t "Automatically configure dap.")
-  ;; (dap-auto-configure-features
-  ;;  '(sessions locals breakpoints expressions)  "Remove the button panel in the top.")
+   (dap-auto-configure-features
+    '(sessions locals breakpoints expressions)  "Remove the button panel in the top.")
   :config
   ;;; dap for c++
   (require 'dap-codelldb))
