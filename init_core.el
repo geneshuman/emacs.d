@@ -172,6 +172,26 @@
 (define-key vterm-mode-map (kbd "C-M-\\") 'multi-vterm)
 
 
+(define-key vterm-mode-map (kbd "C-M-1") (lambda()(interactive) (progn
+        (select-window shell-window)
+        (switch-to-buffer "*vterminal<1>*")
+        (redisplay))))
+
+(define-key vterm-mode-map (kbd "C-M-2") (lambda()(interactive) (progn
+        (select-window shell-window)
+        (switch-to-buffer "*vterminal<2>*")
+        (redisplay))))
+
+(define-key vterm-mode-map (kbd "C-M-3") (lambda()(interactive) (progn
+        (select-window shell-window)
+        (switch-to-buffer "*vterminal<3>*")
+        (redisplay))))
+
+(define-key vterm-mode-map (kbd "C-M-4") (lambda()(interactive) (progn
+        (select-window shell-window)
+        (switch-to-buffer "*vterminal<4>*")
+        (redisplay))))
+
 (winner-mode 1)
 
 ;;(require 'xterm-color)
