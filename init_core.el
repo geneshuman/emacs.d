@@ -717,6 +717,7 @@
 (define-key gene-mode-map (kbd "x") 'epi-exit)
 
 (define-key gene-mode-map (kbd "h") (lambda () (interactive) (epi-tools "H")))
+(define-key gene-mode-map (kbd "r") (lambda () (interactive) (epi-tools "bdR")))
 
 (define-key gene-mode-map (kbd "M") 'epi-init-mac)
 
