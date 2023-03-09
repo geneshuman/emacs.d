@@ -1,6 +1,6 @@
 (defun ensure-package-installed (&rest packages)
   (mapcar
-   (lambda (package)
+   (lambdab (package)
      (if (package-installed-p package)
          nil
            (package-install package)
@@ -716,6 +716,7 @@
 ;;(define-key gene-mode-map (kbd "p") 'epi-prev-cmd)
 (define-key gene-mode-map (kbd "x") 'epi-exit)
 
+(define-key gene-mode-map (kbd "h") (lambda () (interactive) (epi-tools "H")))
 
 (define-key gene-mode-map (kbd "M") 'epi-init-mac)
 
