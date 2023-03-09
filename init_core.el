@@ -1,6 +1,6 @@
 (defun ensure-package-installed (&rest packages)
   (mapcar
-   (lambdab (package)
+   (lambda (package)
      (if (package-installed-p package)
          nil
            (package-install package)
