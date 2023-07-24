@@ -701,7 +701,7 @@
   (multi-vterm)
   (vterm-send-string (concat "ssh entropyandsons@" epi-host))
   (vterm-send-return)
-  (vterm-send-string "grc tail -f epimorphism/log/*launcher*")
+  (vterm-send-string "grc tail -f epimorphism/log/*launcher* -f epimorphism/log/update_epi.log")
   (vterm-send-return)
   (multi-vterm-next)
   )
