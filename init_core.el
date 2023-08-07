@@ -56,6 +56,9 @@
 
 (global-set-key (kbd "C-<wheel-down>") 'nil)
 (global-set-key (kbd "C-<wheel-up>") 'nil)
+(global-set-key (kbd "C-M-<wheel-down>") 'nil)
+(global-set-key (kbd "C-M-<wheel-up>") 'nil)
+
 
 (global-set-key (kbd "C-M-z") 'suspend-frame)
 
