@@ -726,4 +726,4 @@
 
 (put 'downcase-region 'disabled nil)
 
-(set-face-attribute 'default t :font "Inconsolata" :height 130)
+;;(set-face-attribute 'default t :font "Inconsolata" :height 130)
